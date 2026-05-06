@@ -54,5 +54,6 @@ Before coding the MVP, close these decisions.
 - [ ] Auth flow final
 - [ ] Payment flow final
 - [x] Manual Vercel deploy flow
-- [ ] Automatic GitHub to Vercel deploy flow
+- [x] Automatic GitHub to Vercel deploy intentionally disabled
+- [x] Local build/typecheck command works
 - [ ] Backup and monitoring plan

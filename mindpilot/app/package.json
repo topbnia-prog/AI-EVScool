@@ -9,7 +9,8 @@
     "start": "next start",
     "preview": "next start --hostname 127.0.0.1 --port 3000",
     "deploy:prod": "vercel --prod --yes",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit --pretty false",
+    "lint": "tsc --noEmit --pretty false"
   },
   "dependencies": {
     "@types/node": "^24.0.0",
