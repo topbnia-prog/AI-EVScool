@@ -28,7 +28,8 @@ This folder is the clean source of truth for building MindPilot. It replaces ear
 20. Local workflow: `operations/05_local_workflow.md`
 21. Molecular project audit: `operations/06_molecular_project_audit.md`
 22. Next build sequence: `operations/07_next_build_sequence.md`
-23. Research validation: `research/01_research_validation_log.md`
+23. MVP build specification: `operations/08_mvp_build_spec.md`
+24. Research validation: `research/01_research_validation_log.md`
 
 ## Build Rule
 

@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
+import { adminTasks } from "../../lib/mockData";
 
 export const metadata: Metadata = {
   title: "Admin Tasks | MindPilot",
   description: "Внутренние задачи MindPilot."
 };
-
-const tasks = [
-  ["High", "Legal", "Проверить документы с адвокатом"],
-  ["High", "AI Mentor", "Собрать тесты плохих запросов"],
-  ["High", "Course", "Написать миссии 3-7 на иврите"],
-  ["Medium", "UX", "Перенести prototype HUD в React без личных данных"]
-];
 
 export default function AdminTasksPage() {
   return (
@@ -21,6 +15,7 @@ export default function AdminTasksPage() {
         </a>
         <div>
           <a href="/admin/safety">Safety</a>
+          <a href="/admin/operators">Operators</a>
           <a href="/">Site</a>
         </div>
       </nav>
@@ -34,13 +29,13 @@ export default function AdminTasksPage() {
         </p>
       </section>
 
-      <section className="flowPanel">
+      <section className="flowPanel taskPagePanel">
         <div className="taskRows">
-          {tasks.map(([priority, area, task]) => (
-            <div key={task}>
-              <span>{priority}</span>
-              <strong>{area}</strong>
-              <p>{task}</p>
+          {adminTasks.map((task) => (
+            <div key={task.id}>
+              <span>{task.priority} · {task.status}</span>
+              <strong>{task.area}</strong>
+              <p>{task.task}</p>
             </div>
           ))}
         </div>

@@ -18,13 +18,15 @@ This file tracks tasks that should appear in the future admin dashboard task sys
 | High | Safety | Todo | Specify and implement 90-day mentor message retention job | `docs/legal/01_safety_privacy_legal_requirements.md` |
 | High | Course | Todo | Finish Mission 3 Hebrew draft | `docs/course/02_mission_template.md` |
 | High | Course | Todo | Write Missions 4-7 Hebrew drafts before payment testing | `docs/operations/06_molecular_project_audit.md` |
-| High | App | Todo | Create shared mock data and TypeScript types for parent/operator/missions/admin | `docs/operations/07_next_build_sequence.md` |
-| High | App | Todo | Create parent dashboard with summary, consent, billing, progress, and safety placeholders | `docs/operations/07_next_build_sequence.md` |
-| High | App | Todo | Create operator login and MindScan routes | `docs/operations/07_next_build_sequence.md` |
-| High | App | Todo | Refactor mission runner to read mission data and support all 6 steps | `docs/operations/07_next_build_sequence.md` |
-| High | AI Mentor | Todo | Create frontend mentor guardrail states before real Claude integration | `docs/operations/07_next_build_sequence.md` |
-| High | Admin | Todo | Create admin operators list and operator detail pages | `docs/operations/07_next_build_sequence.md` |
-| High | Operations | Todo | Create canonical MVP build spec from accepted docs | `docs/operations/07_next_build_sequence.md` |
+| High | App | Done | Create shared mock data and TypeScript types for parent/operator/missions/admin | `app/app/lib/mockData.ts` |
+| High | App | Done | Create parent dashboard with summary, consent, billing, progress, and safety placeholders | `app/app/parent/dashboard/page.tsx` |
+| High | App | Done | Create operator login and MindScan routes | `app/app/operator/login/page.tsx` |
+| High | App | Done | Refactor mission runner to read mission data and support all 6 steps | `app/app/operator/mission/[id]/page.tsx` |
+| High | AI Mentor | Done | Create frontend mentor guardrail states before real Claude integration | `app/app/lib/mockData.ts` |
+| High | Admin | Done | Create admin operators list and operator detail pages | `app/app/admin/operators/page.tsx` |
+| High | Operations | Done | Create canonical MVP build spec from accepted docs | `docs/operations/08_mvp_build_spec.md` |
+| High | Technical | Todo | Plan Supabase schema and RLS from current TypeScript data shapes | `docs/operations/08_mvp_build_spec.md` |
+| High | Technical | Todo | Build mentor API route with schema validation and mock provider before Claude | `docs/operations/08_mvp_build_spec.md` |
 | Medium | Technical | Done | Scaffold Next.js app | `docs/operations/01_deploy_plan.md` |
 | Medium | Deploy | Done | Configure manual Vercel deploy only | `docs/operations/01_deploy_plan.md` |
 | Medium | Technical | Done | Add frontend operator dashboard prototype to local app | `app/app/operator/dashboard/page.tsx` |

@@ -1,35 +1,10 @@
+import { missions, operatorProfile } from "./lib/mockData";
+
 const parentSignals = [
   "AI-грамотность для 10-16 лет",
   "Аккаунт создаёт родитель",
   "Первый курс на 30 дней",
   "Не делает домашние задания"
-];
-
-const missionPath = [
-  {
-    day: "01",
-    title: "AI не магия",
-    focus: "Оператор понимает, что AI предсказывает паттерны и может ошибаться."
-  },
-  {
-    day: "02",
-    title: "Поймай уверенную ошибку",
-    focus: "Уверенность AI становится сигналом для проверки, а не причиной верить."
-  },
-  {
-    day: "03",
-    title: "Собери команду",
-    focus: "Контекст, цель, ограничения и формат превращают вопрос в управление."
-  }
-];
-
-const metrics = [
-  { label: "Понимание AI", value: 72 },
-  { label: "Критическое мышление", value: 64 },
-  { label: "Качество промптов", value: 58 },
-  { label: "Проверка фактов", value: 69 },
-  { label: "Поиск ошибок", value: 61 },
-  { label: "Самостоятельность", value: 76 }
 ];
 
 const safetyRules = [
@@ -40,6 +15,8 @@ const safetyRules = [
 ];
 
 export default function Home() {
+  const visibleMissions = missions.slice(0, 3);
+
   return (
     <main>
       <section className="hero" id="top">
@@ -52,7 +29,7 @@ export default function Home() {
           <div className="node nodeC" />
           <div className="cockpitPanel">
             <div className="panelTop">
-              <span>ОПЕРАТОР 01</span>
+              <span>{operatorProfile.displayName}</span>
               <strong>МИССИЯ АКТИВНА</strong>
             </div>
             <div className="promptLine">Спроси - проверь - улучши - реши</div>
@@ -84,8 +61,8 @@ export default function Home() {
           </p>
           <div className="heroActions" aria-label="Primary actions">
             <a href="/parent/signup">Начать путь родителя</a>
-            <a href="/operator/dashboard" className="secondary">
-              Открыть cockpit оператора
+            <a href="/operator/login" className="secondary">
+              Войти как оператор
             </a>
           </div>
           <div className="signalList">
@@ -114,11 +91,11 @@ export default function Home() {
           <h2>30 дней. Каждый день - один навык оператора.</h2>
         </div>
         <div className="missionGrid">
-          {missionPath.map((mission) => (
-            <article className="missionCard" key={mission.day}>
-              <span>Миссия {mission.day}</span>
+          {visibleMissions.map((mission) => (
+            <article className="missionCard" key={mission.id}>
+              <span>Миссия {String(mission.number).padStart(2, "0")}</span>
               <h3>{mission.title}</h3>
-              <p>{mission.focus}</p>
+              <p>{mission.concept}</p>
             </article>
           ))}
         </div>
@@ -131,14 +108,14 @@ export default function Home() {
               <span className="eyebrow">Профиль пилота</span>
               <h2>Прогресс без оценок.</h2>
             </div>
-            <strong>Ранг: Навигатор</strong>
+            <strong>Ранг: {operatorProfile.rank}</strong>
           </div>
           <div className="metricsGrid">
-            {metrics.map((metric) => (
-              <div className="metric" key={metric.label}>
+            {operatorProfile.metrics.map((metric) => (
+              <div className="metric" key={metric.id}>
                 <span>{metric.label}</span>
                 <div className="bar">
-                  <i style={{ width: `${metric.value}%` }} />
+                  <i style={{ width: `${metric.value * 20}%` }} />
                 </div>
               </div>
             ))}
@@ -163,7 +140,7 @@ export default function Home() {
       <section className="section pilotSection" id="pilot">
         <div>
           <p className="eyebrow">Теперь это путь продукта</p>
-          <h2>Главная ведёт в регистрацию, cockpit, миссию и safety-панель.</h2>
+          <h2>Главная ведёт в регистрацию, MindScan, миссию и safety-панель.</h2>
           <p>
             На этом этапе экраны работают как локальный frontend-прототип. Дальше
             мы подключим Supabase, реальный AI-наставник, прогресс миссий,

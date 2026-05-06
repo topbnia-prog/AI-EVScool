@@ -20,7 +20,8 @@ export default function ParentSignupPage() {
           MindPilot
         </a>
         <div>
-          <a href="/operator/dashboard">Operator</a>
+          <a href="/parent/dashboard">Parent Dashboard</a>
+          <a href="/operator/login">Operator Login</a>
           <a href="/admin/safety">Admin</a>
         </div>
       </nav>
@@ -30,7 +31,7 @@ export default function ParentSignupPage() {
         <h1>Регистрация родителя</h1>
         <p>
           В MVP ребёнок не создаёт аккаунт сам. Родитель владеет аккаунтом,
-          подтверждает consent и создаёт профиль оператора.
+          подтверждает согласие и создаёт профиль оператора.
         </p>
       </section>
 
@@ -62,7 +63,7 @@ export default function ParentSignupPage() {
               Я родитель или законный опекун и принимаю Parent Consent.
             </span>
           </label>
-          <a className="wideButton" href="/operator/dashboard">
+          <a className="wideButton" href="/parent/dashboard">
             Создать operator profile
           </a>
         </form>

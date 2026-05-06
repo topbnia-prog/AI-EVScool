@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
+import { safetyAlerts } from "../../lib/mockData";
 
 export const metadata: Metadata = {
   title: "Admin Safety | MindPilot",
   description: "Админская safety-панель MindPilot."
 };
-
-const alerts = [
-  ["A-102", "Homework boundary", "Нужна проверка refusal flow", "Low"],
-  ["A-103", "Out of context", "Наставник вернул оператора к миссии", "Info"],
-  ["A-104", "Sensitive topic", "Требует ручной проверки перед запуском", "High"]
-];
 
 export default function AdminSafetyPage() {
   return (
@@ -20,6 +15,7 @@ export default function AdminSafetyPage() {
         </a>
         <div>
           <a href="/admin/tasks">Tasks</a>
+          <a href="/admin/operators">Operators</a>
           <a href="/operator/dashboard">Operator</a>
         </div>
       </nav>
@@ -37,12 +33,12 @@ export default function AdminSafetyPage() {
         <div className="flowPanel">
           <h2>Сигналы</h2>
           <div className="alertRows">
-            {alerts.map(([id, type, note, severity]) => (
-              <div key={id}>
-                <span>{id}</span>
-                <strong>{type}</strong>
-                <p>{note}</p>
-                <em>{severity}</em>
+            {safetyAlerts.map((alert) => (
+              <div key={alert.id}>
+                <span>{alert.id} · {alert.severity}</span>
+                <strong>{alert.category}</strong>
+                <p>{alert.summary}</p>
+                <em>{alert.status}</em>
               </div>
             ))}
           </div>

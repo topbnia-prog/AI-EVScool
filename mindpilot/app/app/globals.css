@@ -937,6 +937,135 @@ h2 {
   line-height: 1.75;
 }
 
+.compactHero {
+  max-width: 760px;
+}
+
+.profileRows {
+  display: grid;
+  gap: 12px;
+}
+
+.profileRows div {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1fr);
+  gap: 14px;
+  border: 1px solid rgba(244, 242, 234, 0.12);
+  border-radius: 8px;
+  background: rgba(244, 242, 234, 0.045);
+  padding: 14px;
+}
+
+.profileRows span {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+}
+
+.profileRows strong {
+  color: var(--ink);
+}
+
+.summaryText {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.choicePill {
+  display: block;
+  cursor: pointer;
+}
+
+.choicePill input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choicePill span {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(244, 242, 234, 0.14);
+  border-radius: 8px;
+  background: rgba(244, 242, 234, 0.05);
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.choicePill input:checked + span {
+  border-color: rgba(68, 215, 168, 0.58);
+  background: rgba(68, 215, 168, 0.12);
+  color: var(--mint);
+}
+
+.guardrailGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.guardrailGrid div,
+.operatorRows a {
+  border: 1px solid rgba(244, 242, 234, 0.12);
+  border-radius: 8px;
+  background: rgba(244, 242, 234, 0.045);
+  padding: 14px;
+}
+
+.guardrailGrid span,
+.operatorRows span {
+  display: block;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+}
+
+.guardrailGrid strong,
+.operatorRows strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--ink);
+}
+
+.guardrailGrid p,
+.operatorRows p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.operatorRows {
+  display: grid;
+  gap: 12px;
+}
+
+.operatorRows a {
+  display: grid;
+  gap: 6px;
+}
+
+.operatorRows em {
+  color: var(--mint);
+  font-style: normal;
+  font-size: 13px;
+}
+
+.taskPagePanel {
+  width: min(1160px, 100%);
+  margin: 28px auto 0;
+}
+
 @media (max-width: 860px) {
   .hero {
     min-height: auto;
@@ -1000,6 +1129,11 @@ h2 {
   .stepRail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .guardrailGrid,
+  .choiceGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1027,6 +1161,10 @@ h2 {
   }
 
   .metricTiles {
+    grid-template-columns: 1fr;
+  }
+
+  .profileRows div {
     grid-template-columns: 1fr;
   }
 }

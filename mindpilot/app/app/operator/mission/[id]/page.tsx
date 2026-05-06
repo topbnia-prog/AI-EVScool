@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { mentorMessages, mentorScenarios, missions } from "../../../lib/mockData";
 
 export const metadata: Metadata = {
   title: "Миссия оператора | MindPilot",
   description: "Экран прохождения миссии с AI-наставником."
 };
 
-const steps = ["Зацеп", "Концепт", "Визуал", "Испытание", "Симуляция", "Рефлексия"];
-
 export default function MissionPage() {
+  const mission = missions.find((item) => item.status === "active") ?? missions[0];
+  const activeStep = mission.steps.find((step) => step.id === "challenge") ?? mission.steps[0];
+
   return (
     <main className="appPage">
       <nav className="appNav">
@@ -16,37 +18,42 @@ export default function MissionPage() {
         </a>
         <div>
           <a href="/operator/dashboard">Dashboard</a>
-          <a href="/parent/signup">Parent</a>
+          <a href="/parent/dashboard">Parent</a>
+          <a href="/admin/safety">Safety</a>
         </div>
       </nav>
 
       <section className="missionLayout">
         <article className="missionMain">
-          <p className="eyebrow">Миссия 02</p>
-          <h1>Поймай уверенную ошибку</h1>
-          <p>
-            AI может звучать уверенно даже тогда, когда ошибается. Оператор не
-            спорит с уверенностью. Оператор проверяет.
-          </p>
+          <p className="eyebrow">Миссия {String(mission.number).padStart(2, "0")}</p>
+          <h1>{mission.title}</h1>
+          <p>{mission.concept}</p>
 
           <div className="stepRail">
-            {steps.map((step, index) => (
-              <span className={index === 3 ? "active" : ""} key={step}>
-                {step}
+            {mission.steps.map((step) => (
+              <span className={step.id === activeStep.id ? "active" : ""} key={step.id}>
+                {step.label}
               </span>
             ))}
           </div>
 
           <div className="challengeBox">
-            <h2>Испытание</h2>
-            <p>
-              Спроси AI о факте, который мог измениться недавно. Затем найди
-              внешний источник и запиши, что именно требует проверки.
-            </p>
+            <h2>{activeStep.title}</h2>
+            <p>{activeStep.body}</p>
             <textarea placeholder="Мой вывод: AI ответил уверенно, но я проверил..." />
             <a className="wideButton" href="/operator/dashboard">
               Сохранить рефлексию
             </a>
+          </div>
+
+          <div className="guardrailGrid">
+            {mentorScenarios.map((scenario) => (
+              <div key={scenario.intent}>
+                <span>{scenario.label}</span>
+                <strong>{scenario.trigger}</strong>
+                <p>{scenario.response}</p>
+              </div>
+            ))}
           </div>
         </article>
 
@@ -55,17 +62,11 @@ export default function MissionPage() {
             <span>AI-наставник</span>
             <strong>Только вопросы</strong>
           </div>
-          <div className="chatBubble mentor">
-            Что в ответе AI звучит как факт, а что пока только выглядит
-            уверенно?
-          </div>
-          <div className="chatBubble operator">
-            Он назвал точную дату, но не дал источник.
-          </div>
-          <div className="chatBubble mentor">
-            Хорошо замечено. Какой один внешний источник ты выберешь для
-            проверки?
-          </div>
+          {mentorMessages.map((message, index) => (
+            <div className={`chatBubble ${message.role}`} key={`${message.role}-${index}`}>
+              {message.text}
+            </div>
+          ))}
           <div className="mentorInput">Ответ оператора будет здесь...</div>
         </aside>
       </section>
