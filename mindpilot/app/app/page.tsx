@@ -1,100 +1,178 @@
-const missions = [
+const parentSignals = [
+  "AI literacy for ages 10-16",
+  "Parent-owned account",
+  "Hebrew MVP course",
+  "No homework automation"
+];
+
+const missionPath = [
   {
-    id: "01",
-    title: "Demystification",
-    status: "Ready",
-    copy: "AI is a tool that predicts, not a mind that knows."
+    day: "01",
+    title: "AI is not magic",
+    focus: "The operator learns that AI predicts patterns and can be wrong."
   },
   {
-    id: "02",
-    title: "Anatomy of an Error",
-    status: "Ready",
-    copy: "Confidence is not proof. Operators verify."
+    day: "02",
+    title: "Catch the confident error",
+    focus: "Confidence becomes a signal to verify, not a reason to trust."
   },
   {
-    id: "03",
-    title: "Prompt Structure",
-    status: "Next",
-    copy: "Context, goal, constraints, and format."
+    day: "03",
+    title: "Build the command",
+    focus: "Context, goal, constraints, and format turn a question into control."
   }
 ];
 
 const metrics = [
-  "AI Understanding",
-  "Critical Thinking",
-  "Prompt Quality",
-  "Verification",
-  "Error Detection",
-  "Autonomy"
+  { label: "AI understanding", value: 72 },
+  { label: "Critical thinking", value: 64 },
+  { label: "Prompt quality", value: 58 },
+  { label: "Verification", value: 69 },
+  { label: "Error detection", value: 61 },
+  { label: "Autonomy", value: 76 }
+];
+
+const safetyRules = [
+  "Guiding questions instead of ready answers",
+  "No schoolwork completion",
+  "No public leaderboards",
+  "Parent consent before child access"
 ];
 
 export default function Home() {
   return (
-    <main className="shell">
-      <section className="hero">
-        <div className="eyebrow">MindPilot MVP cockpit</div>
-        <h1>Think clearly. Command AI.</h1>
-        <p>
-          A mission-based AI literacy platform for young operators. The first
-          build is ready for Vercel deployment and will grow into the child,
-          parent, and admin dashboards.
-        </p>
-        <div className="heroActions">
-          <a href="#missions">View missions</a>
-          <a href="#system" className="secondary">
-            System status
+    <main>
+      <section className="hero" id="top">
+        <div className="heroScene" aria-hidden="true">
+          <div className="scanline" />
+          <div className="orbit orbitOne" />
+          <div className="orbit orbitTwo" />
+          <div className="node nodeA" />
+          <div className="node nodeB" />
+          <div className="node nodeC" />
+          <div className="cockpitPanel">
+            <div className="panelTop">
+              <span>OPERATOR 01</span>
+              <strong>MISSION ACTIVE</strong>
+            </div>
+            <div className="promptLine">Ask - verify - improve - decide</div>
+            <div className="signalRows">
+              <i />
+              <i />
+              <i />
+            </div>
+          </div>
+        </div>
+
+        <nav className="nav">
+          <a href="#" className="brand">
+            MindPilot
           </a>
+          <div className="navLinks">
+            <a href="#course">Course</a>
+            <a href="#safety">Safety</a>
+            <a href="#pilot">Pilot</a>
+          </div>
+        </nav>
+
+        <div className="heroContent">
+          <p className="eyebrow">AI literacy for young operators</p>
+          <h1>MindPilot</h1>
+          <p className="lead">
+            A mission-based platform that teaches children to command AI, check
+            its answers, and keep their own thinking in control.
+          </p>
+          <div className="heroActions" aria-label="Primary actions">
+            <a href="#pilot">Start pilot review</a>
+            <a href="#course" className="secondary">
+              View 30-day path
+            </a>
+          </div>
+          <div className="signalList">
+            {parentSignals.map((signal) => (
+              <span key={signal}>{signal}</span>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="grid" id="system">
-        <article className="panel statusPanel">
-          <div className="panelLabel">Deployment</div>
-          <h2>Project shell is online-ready</h2>
-          <p>
-            Next.js App Router, TypeScript, and MindPilot design tokens are in
-            place. Supabase, Claude, and PayPal connect after the documentation
-            gate.
-          </p>
-          <div className="statusList">
-            <span>Clean public repo</span>
-            <span>Vercel root: mindpilot/app</span>
-            <span>No private child data</span>
-          </div>
-        </article>
+      <section className="section introBand">
+        <div>
+          <p className="eyebrow">The parent problem</p>
+          <h2>Children already use AI. Most were never taught how to think with it.</h2>
+        </div>
+        <p>
+          MindPilot turns AI use into a guided practice: the child learns to
+          question confident answers, ask for evidence, build better prompts,
+          and decide what should stay human.
+        </p>
+      </section>
 
-        <article className="panel">
-          <div className="panelLabel">Operator metrics</div>
-          <div className="metrics">
-            {metrics.map((metric, index) => (
-              <div className="metric" key={metric}>
-                <span>{metric}</span>
+      <section className="section courseSection" id="course">
+        <div className="sectionHeader">
+          <p className="eyebrow">First course</p>
+          <h2>30 days, one operator habit at a time.</h2>
+        </div>
+        <div className="missionGrid">
+          {missionPath.map((mission) => (
+            <article className="missionCard" key={mission.day}>
+              <span>Mission {mission.day}</span>
+              <h3>{mission.title}</h3>
+              <p>{mission.focus}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section cockpitSection">
+        <div className="operatorSurface">
+          <div className="surfaceHeader">
+            <div>
+              <span className="eyebrow">Pilot profile</span>
+              <h2>Progress without grades.</h2>
+            </div>
+            <strong>Rank: Navigator</strong>
+          </div>
+          <div className="metricsGrid">
+            {metrics.map((metric) => (
+              <div className="metric" key={metric.label}>
+                <span>{metric.label}</span>
                 <div className="bar">
-                  <i style={{ width: `${38 + index * 7}%` }} />
+                  <i style={{ width: `${metric.value}%` }} />
                 </div>
               </div>
             ))}
           </div>
-        </article>
+        </div>
       </section>
 
-      <section className="missions" id="missions">
-        <div className="sectionHeader">
-          <div className="eyebrow">First trajectory</div>
-          <h2>Free tier missions</h2>
+      <section className="section safetySection" id="safety">
+        <div>
+          <p className="eyebrow">Guardrails</p>
+          <h2>Designed to build independence, not dependency.</h2>
         </div>
-        <div className="missionGrid">
-          {missions.map((mission) => (
-            <article className="missionCard" key={mission.id}>
-              <div className="missionTop">
-                <span>Mission {mission.id}</span>
-                <strong>{mission.status}</strong>
-              </div>
-              <h3>{mission.title}</h3>
-              <p>{mission.copy}</p>
-            </article>
+        <div className="ruleList">
+          {safetyRules.map((rule) => (
+            <div className="rule" key={rule}>
+              {rule}
+            </div>
           ))}
         </div>
+      </section>
+
+      <section className="section pilotSection" id="pilot">
+        <div>
+          <p className="eyebrow">MVP direction</p>
+          <h2>The first build stays local-first until the product is ready.</h2>
+          <p>
+            Next step: turn this landing page into a real flow with parent
+            signup, operator dashboard, mission runner, mentor chat, and admin
+            safety controls.
+          </p>
+        </div>
+        <a href="#top" className="finalCta">
+          Back to cockpit
+        </a>
       </section>
     </main>
   );

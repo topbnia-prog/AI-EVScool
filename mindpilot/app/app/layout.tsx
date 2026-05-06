@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MindPilot",
-  description: "Think clearly. Command AI."
+  title: "MindPilot | AI literacy for young operators",
+  description:
+    "A mission-based AI literacy platform that teaches children to command, verify, and think independently with AI."
 };
 
 export default function RootLayout({
