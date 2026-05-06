@@ -18,7 +18,8 @@ This folder is the clean source of truth for building MindPilot. It replaces ear
 10. Database schema: `technical/02_database_schema.md`
 11. Deployment: `operations/01_deploy_plan.md`
 12. Gap audit: `operations/02_gap_audit_checklist.md`
-13. Research validation: `research/01_research_validation_log.md`
+13. Full gap audit specification: `operations/03_full_gap_audit.md`
+14. Research validation: `research/01_research_validation_log.md`
 
 ## Build Rule
 
