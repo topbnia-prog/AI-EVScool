@@ -30,7 +30,8 @@ This file tracks tasks that should appear in the future admin dashboard task sys
 | Medium | Technical | Done | Scaffold Next.js app | `docs/operations/01_deploy_plan.md` |
 | Medium | Deploy | Done | Configure manual Vercel deploy only | `docs/operations/01_deploy_plan.md` |
 | Medium | Technical | Done | Add frontend operator dashboard prototype to local app | `app/app/operator/dashboard/page.tsx` |
-| Medium | UX | Todo | Rebuild sanitized UX prototype ideas as React components without private names | `docs/operations/06_molecular_project_audit.md` |
+| Medium | UX | Done | Rebuild sanitized UX prototype ideas as React components without private names | `app/app/_components/OperatorPhone.tsx` |
+| Medium | UX | Done | Align landing, login/register, operator dashboard, mission, mentor, and profile screens with planned mobile cockpit UX | `app/app/page.tsx` |
 | Medium | Admin | Done | Build admin task dashboard UI prototype from admin task system spec | `app/app/admin/tasks/page.tsx` |
 | Medium | Operations | Todo | Add backup, monitoring, cost, and safety notification plan | `docs/operations/06_molecular_project_audit.md` |
 

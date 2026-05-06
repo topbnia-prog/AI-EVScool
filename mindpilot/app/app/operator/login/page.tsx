@@ -2,33 +2,39 @@ import type { Metadata } from "next";
 import { operatorProfile } from "../../lib/mockData";
 
 export const metadata: Metadata = {
-  title: "Operator Login | MindPilot",
-  description: "Вход оператора в MindPilot."
+  title: "Вход оператора | MindPilot",
+  description: "Вход ребёнка-оператора в MindPilot."
 };
 
 export default function OperatorLoginPage() {
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="authPage">
+      <nav className="systemNav">
         <a href="/" className="brand">
           MindPilot
         </a>
         <div>
-          <a href="/parent/signup">Parent</a>
-          <a href="/operator/mindscan">MindScan</a>
+          <a href="/login">Все входы</a>
+          <a href="/register">Регистрация</a>
+          <a href="/parent/dashboard">Parent</a>
         </div>
       </nav>
 
-      <section className="flowHero compactHero">
-        <p className="eyebrow">Operator access</p>
-        <h1>Вход оператора</h1>
-        <p>
-          В MVP ребёнок входит по коду оператора и PIN, без собственного email.
-        </p>
-      </section>
+      <section className="authShell">
+        <div className="authCopy">
+          <p className="eyebrow">Operator access</p>
+          <h1>Вход оператора</h1>
+          <p>
+            Ребёнок входит по операторскому коду и PIN. Email ребёнка не нужен:
+            так мы уменьшаем сбор личных данных.
+          </p>
+          <div className="softNotice">
+            После входа оператор проходит MindScan, открывает базу, миссии,
+            наставника и профиль роста.
+          </div>
+        </div>
 
-      <section className="flowGrid">
-        <form className="flowPanel">
+        <form className="authForm">
           <label>
             Код оператора
             <input defaultValue={operatorProfile.displayName} />
@@ -41,14 +47,6 @@ export default function OperatorLoginPage() {
             Войти
           </a>
         </form>
-
-        <aside className="flowPanel">
-          <h2>Почему без email ребёнка?</h2>
-          <p className="summaryText">
-            Так мы уменьшаем сбор данных. Родитель владеет аккаунтом, а ребёнок
-            получает отдельный операторский вход.
-          </p>
-        </aside>
       </section>
     </main>
   );

@@ -14,36 +14,44 @@ const steps = [
 
 export default function ParentSignupPage() {
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="authPage">
+      <nav className="systemNav">
         <a href="/" className="brand">
           MindPilot
         </a>
         <div>
+          <a href="/login">Вход</a>
           <a href="/parent/dashboard">Parent Dashboard</a>
-          <a href="/operator/login">Operator Login</a>
-          <a href="/admin/safety">Admin</a>
+          <a href="/operator/login">Operator</a>
         </div>
       </nav>
 
-      <section className="flowHero">
-        <p className="eyebrow">Шаг 1</p>
-        <h1>Регистрация родителя</h1>
-        <p>
-          В MVP ребёнок не создаёт аккаунт сам. Родитель владеет аккаунтом,
-          подтверждает согласие и создаёт профиль оператора.
-        </p>
-      </section>
+      <section className="authShell">
+        <div className="authCopy">
+          <p className="eyebrow">Шаг 1</p>
+          <h1>Регистрация родителя</h1>
+          <p>
+            В MVP ребёнок не создаёт аккаунт сам. Родитель владеет аккаунтом,
+            подтверждает consent и создаёт профиль оператора.
+          </p>
+          <div className="stepList">
+            {steps.map((step, index) => (
+              <div key={step}>
+                <span>{index + 1}</span>
+                {step}
+              </div>
+            ))}
+          </div>
+        </div>
 
-      <section className="flowGrid">
-        <form className="flowPanel">
+        <form className="authForm">
           <label>
             Email родителя
             <input placeholder="parent@example.com" type="email" />
           </label>
           <label>
             Имя или псевдоним оператора
-            <input placeholder="Например: Operator Alpha" />
+            <input placeholder="Operator Alpha" />
           </label>
           <label>
             Возраст ребёнка
@@ -67,22 +75,6 @@ export default function ParentSignupPage() {
             Создать operator profile
           </a>
         </form>
-
-        <aside className="flowPanel">
-          <h2>Что произойдёт дальше</h2>
-          <div className="stepList">
-            {steps.map((step, index) => (
-              <div key={step}>
-                <span>{index + 1}</span>
-                {step}
-              </div>
-            ))}
-          </div>
-          <div className="softNotice">
-            Это пока локальный frontend-прототип. Реальная регистрация будет
-            подключена через Supabase Auth и RLS.
-          </div>
-        </aside>
       </section>
     </main>
   );

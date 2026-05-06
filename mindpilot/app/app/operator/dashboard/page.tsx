@@ -1,83 +1,53 @@
 import type { Metadata } from "next";
+import { DashboardPhone } from "../../_components/OperatorPhone";
 import { missions, operatorProfile } from "../../lib/mockData";
 
 export const metadata: Metadata = {
   title: "Operator Dashboard | MindPilot",
-  description: "Локальный dashboard оператора MindPilot."
+  description: "Dashboard оператора MindPilot."
 };
 
 export default function OperatorDashboardPage() {
   const activeMission = missions.find((mission) => mission.status === "active") ?? missions[0];
 
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="operatorScreenPage">
+      <nav className="systemNav">
         <a href="/" className="brand">
           MindPilot
         </a>
         <div>
-          <a href="/operator/mindscan">MindScan</a>
-          <a href={`/operator/mission/${activeMission.id}`}>Миссия</a>
-          <a href="/admin/safety">Safety</a>
+          <a href="/operator/mission/2">Миссия</a>
+          <a href="/operator/mentor">Наставник</a>
+          <a href="/operator/profile">Профиль</a>
         </div>
       </nav>
 
-      <section className="operatorGrid">
-        <div className="operatorHero">
+      <section className="operatorScreenShell">
+        <div className="screenSideCopy">
           <p className="eyebrow">Operator cockpit</p>
-          <h1>{operatorProfile.displayName}</h1>
+          <h1>База оператора</h1>
           <p>
-            Сегодня цель простая: не получить ответ от AI, а проверить систему
-            и принять решение самому.
+            Здесь ребёнок видит серию дней, XP, ранг и траекторию миссий.
+            Главная задача: продолжить активную миссию без давления и рейтингов.
           </p>
           <a className="wideButton" href={`/operator/mission/${activeMission.id}`}>
-            Продолжить миссию
+            Продолжить: {activeMission.title}
           </a>
-        </div>
-
-        <aside className="statusStack">
-          <div className="miniPanel">
-            <span>Streak</span>
-            <strong>{operatorProfile.streakCurrent} дня</strong>
-          </div>
-          <div className="miniPanel">
-            <span>Ранг</span>
-            <strong>{operatorProfile.rank}</strong>
-          </div>
-          <div className="miniPanel">
-            <span>Сегодня</span>
-            <strong>
-              {operatorProfile.missionsCompletedToday} / {operatorProfile.dailyMissionLimit} миссии
-            </strong>
-          </div>
-        </aside>
-      </section>
-
-      <section className="dashboardSplit">
-        <div className="flowPanel">
-          <h2>Метрики роста</h2>
-          <div className="metricTiles">
-            {operatorProfile.metrics.map((metric) => (
-              <div key={metric.id}>
-                <span>{metric.label}</span>
-                <strong>{metric.value}/5</strong>
-              </div>
-            ))}
+          <div className="profileRows">
+            <div>
+              <span>Оператор</span>
+              <strong>{operatorProfile.displayName}</strong>
+            </div>
+            <div>
+              <span>Дневной лимит</span>
+              <strong>
+                {operatorProfile.missionsCompletedToday} / {operatorProfile.dailyMissionLimit}
+              </strong>
+            </div>
           </div>
         </div>
-
-        <div className="flowPanel">
-          <h2>Путь миссий</h2>
-          <div className="missionRows">
-            {missions.map((mission) => (
-              <a href={`/operator/mission/${mission.id}`} key={mission.id}>
-                <span>Миссия {String(mission.number).padStart(2, "0")}</span>
-                <strong>{mission.title}</strong>
-                <em>{mission.status}</em>
-              </a>
-            ))}
-          </div>
-        </div>
+        <DashboardPhone />
       </section>
     </main>
   );

@@ -9,17 +9,26 @@
 The app now has a local frontend-only MVP path:
 
 - `/` landing page
+- `/login`
+- `/register`
 - `/parent/signup`
+- `/parent/dashboard`
+- `/operator/login`
+- `/operator/mindscan`
 - `/operator/dashboard`
-- `/operator/mission/1`
+- `/operator/mission/[id]`
+- `/operator/mentor`
+- `/operator/profile`
 - `/admin/safety`
 - `/admin/tasks`
+- `/admin/operators`
+- `/admin/operators/[id]`
 - `/terms`
 - `/privacy`
 - `/parent-consent`
 - `/child-safety-policy`
 
-This is a visible product skeleton, not a working platform yet. The next work should turn static pages into a consistent local product model before connecting Supabase, Claude, or payments.
+This is a visible product skeleton with a consistent local data model, not a working platform yet. The next work should add server-side guardrails and persistence before connecting real payments or production AI.
 
 ## What To Create Next
 
@@ -114,6 +123,8 @@ Create:
 
 ### 5. Mentor Chat Prototype With Guardrail States
 
+Status: frontend prototype complete. Backend API and tests are still required.
+
 Create frontend mentor states before using a real model.
 
 States:
@@ -131,6 +142,8 @@ Why:
 - later tests can use the same scenario list
 
 ### 6. Admin Operator Detail
+
+Status: frontend prototype complete. Database-backed notes, filtering, and role checks are still required.
 
 Create `/admin/operators` and `/admin/operators/[id]`.
 
@@ -183,13 +196,13 @@ Do not create these before the shared local model and user flow are clearer:
 
 ## Recommended Immediate Order
 
-1. Shared mock data and types.
-2. Parent dashboard.
-3. Operator login and MindScan.
-4. Mission runner from data.
-5. Mentor guardrail state prototype.
-6. Admin operator detail.
-7. Canonical MVP build spec.
+1. Supabase schema and RLS plan.
+2. Mock mentor API route with strict state validation.
+3. Guardrail test suite for safety, homework, bypass, manipulation, and out-of-context prompts.
+4. Local progress persistence.
+5. Parent consent state wired to registration.
+6. Admin task CRUD backed by database.
+7. Payment provider decision and checkout prototype.
 
 ## Done Criteria For Next Stage
 

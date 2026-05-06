@@ -24,6 +24,8 @@ MindPilot teaches children ages 10-16 to manage AI instead of depending on it. T
 ### Public
 
 - `/`
+- `/login`
+- `/register`
 - `/terms`
 - `/privacy`
 - `/parent-consent`
@@ -40,6 +42,8 @@ MindPilot teaches children ages 10-16 to manage AI instead of depending on it. T
 - `/operator/mindscan`
 - `/operator/dashboard`
 - `/operator/mission/[id]`
+- `/operator/mentor`
+- `/operator/profile`
 
 ### Admin
 
@@ -124,6 +128,27 @@ The dashboard must show:
 - continue mission button
 
 No public comparison with other children.
+
+### Operator Mentor
+
+The mentor screen must show guided conversation behavior before the real AI provider exists:
+
+- mission context
+- Socratic questions
+- homework refusal
+- out-of-context redirect
+- safety fallback
+- no free-form progress unlock controlled only by the model
+
+### Operator Profile
+
+The profile screen must show:
+
+- operator rank
+- current XP and streak
+- six metric radar
+- unlocked and locked achievements
+- no public leaderboard
 
 ## Mission Runner
 
@@ -236,4 +261,4 @@ The local app should pass:
 
 ## Current Next Step
 
-The next build step after this specification is Supabase schema and RLS planning, not production deployment.
+The next build step after this specification is Supabase schema/RLS planning and a mock mentor API route with tests, not production deployment.
