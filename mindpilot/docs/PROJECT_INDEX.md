@@ -27,7 +27,8 @@ This folder is the clean source of truth for building MindPilot. It replaces ear
 19. Project task seed: `operations/04_project_tasks_seed.md`
 20. Local workflow: `operations/05_local_workflow.md`
 21. Molecular project audit: `operations/06_molecular_project_audit.md`
-22. Research validation: `research/01_research_validation_log.md`
+22. Next build sequence: `operations/07_next_build_sequence.md`
+23. Research validation: `research/01_research_validation_log.md`
 
 ## Build Rule
 
