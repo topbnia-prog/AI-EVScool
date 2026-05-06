@@ -1,42 +1,42 @@
 const parentSignals = [
-  "AI literacy for ages 10-16",
-  "Parent-owned account",
-  "Hebrew MVP course",
-  "No homework automation"
+  "AI-грамотность для 10-16 лет",
+  "Аккаунт создаёт родитель",
+  "Первый курс на 30 дней",
+  "Не делает домашние задания"
 ];
 
 const missionPath = [
   {
     day: "01",
-    title: "AI is not magic",
-    focus: "The operator learns that AI predicts patterns and can be wrong."
+    title: "AI не магия",
+    focus: "Оператор понимает, что AI предсказывает паттерны и может ошибаться."
   },
   {
     day: "02",
-    title: "Catch the confident error",
-    focus: "Confidence becomes a signal to verify, not a reason to trust."
+    title: "Поймай уверенную ошибку",
+    focus: "Уверенность AI становится сигналом для проверки, а не причиной верить."
   },
   {
     day: "03",
-    title: "Build the command",
-    focus: "Context, goal, constraints, and format turn a question into control."
+    title: "Собери команду",
+    focus: "Контекст, цель, ограничения и формат превращают вопрос в управление."
   }
 ];
 
 const metrics = [
-  { label: "AI understanding", value: 72 },
-  { label: "Critical thinking", value: 64 },
-  { label: "Prompt quality", value: 58 },
-  { label: "Verification", value: 69 },
-  { label: "Error detection", value: 61 },
-  { label: "Autonomy", value: 76 }
+  { label: "Понимание AI", value: 72 },
+  { label: "Критическое мышление", value: 64 },
+  { label: "Качество промптов", value: 58 },
+  { label: "Проверка фактов", value: 69 },
+  { label: "Поиск ошибок", value: 61 },
+  { label: "Самостоятельность", value: 76 }
 ];
 
 const safetyRules = [
-  "Guiding questions instead of ready answers",
-  "No schoolwork completion",
-  "No public leaderboards",
-  "Parent consent before child access"
+  "Направляющие вопросы вместо готовых ответов",
+  "Запрет на выполнение школьных заданий за ребёнка",
+  "Без публичных рейтингов и давления",
+  "Доступ ребёнка только после согласия родителя"
 ];
 
 export default function Home() {
@@ -52,10 +52,10 @@ export default function Home() {
           <div className="node nodeC" />
           <div className="cockpitPanel">
             <div className="panelTop">
-              <span>OPERATOR 01</span>
-              <strong>MISSION ACTIVE</strong>
+              <span>ОПЕРАТОР 01</span>
+              <strong>МИССИЯ АКТИВНА</strong>
             </div>
-            <div className="promptLine">Ask - verify - improve - decide</div>
+            <div className="promptLine">Спроси - проверь - улучши - реши</div>
             <div className="signalRows">
               <i />
               <i />
@@ -69,23 +69,23 @@ export default function Home() {
             MindPilot
           </a>
           <div className="navLinks">
-            <a href="#course">Course</a>
-            <a href="#safety">Safety</a>
-            <a href="#pilot">Pilot</a>
+            <a href="#course">Курс</a>
+            <a href="#safety">Безопасность</a>
+            <a href="#pilot">Пилот</a>
           </div>
         </nav>
 
         <div className="heroContent">
-          <p className="eyebrow">AI literacy for young operators</p>
+          <p className="eyebrow">AI-грамотность для юных операторов</p>
           <h1>MindPilot</h1>
           <p className="lead">
-            A mission-based platform that teaches children to command AI, check
-            its answers, and keep their own thinking in control.
+            Платформа миссий, которая учит детей управлять AI, проверять его
+            ответы и сохранять собственное мышление под контролем.
           </p>
           <div className="heroActions" aria-label="Primary actions">
-            <a href="#pilot">Start pilot review</a>
+            <a href="#pilot">Посмотреть пилот</a>
             <a href="#course" className="secondary">
-              View 30-day path
+              Путь на 30 дней
             </a>
           </div>
           <div className="signalList">
@@ -98,25 +98,25 @@ export default function Home() {
 
       <section className="section introBand">
         <div>
-          <p className="eyebrow">The parent problem</p>
-          <h2>Children already use AI. Most were never taught how to think with it.</h2>
+          <p className="eyebrow">Боль родителя</p>
+          <h2>Дети уже используют AI. Почти никто не учит их думать вместе с ним.</h2>
         </div>
         <p>
-          MindPilot turns AI use into a guided practice: the child learns to
-          question confident answers, ask for evidence, build better prompts,
-          and decide what should stay human.
+          MindPilot превращает использование AI в управляемую практику: ребёнок
+          учится сомневаться в уверенных ответах, просить доказательства,
+          строить сильные промпты и понимать, что нельзя отдавать машине.
         </p>
       </section>
 
       <section className="section courseSection" id="course">
         <div className="sectionHeader">
-          <p className="eyebrow">First course</p>
-          <h2>30 days, one operator habit at a time.</h2>
+          <p className="eyebrow">Первый курс</p>
+          <h2>30 дней. Каждый день - один навык оператора.</h2>
         </div>
         <div className="missionGrid">
           {missionPath.map((mission) => (
             <article className="missionCard" key={mission.day}>
-              <span>Mission {mission.day}</span>
+              <span>Миссия {mission.day}</span>
               <h3>{mission.title}</h3>
               <p>{mission.focus}</p>
             </article>
@@ -128,10 +128,10 @@ export default function Home() {
         <div className="operatorSurface">
           <div className="surfaceHeader">
             <div>
-              <span className="eyebrow">Pilot profile</span>
-              <h2>Progress without grades.</h2>
+              <span className="eyebrow">Профиль пилота</span>
+              <h2>Прогресс без оценок.</h2>
             </div>
-            <strong>Rank: Navigator</strong>
+            <strong>Ранг: Навигатор</strong>
           </div>
           <div className="metricsGrid">
             {metrics.map((metric) => (
@@ -148,8 +148,8 @@ export default function Home() {
 
       <section className="section safetySection" id="safety">
         <div>
-          <p className="eyebrow">Guardrails</p>
-          <h2>Designed to build independence, not dependency.</h2>
+          <p className="eyebrow">Границы</p>
+          <h2>Система строит самостоятельность, а не зависимость.</h2>
         </div>
         <div className="ruleList">
           {safetyRules.map((rule) => (
@@ -162,16 +162,16 @@ export default function Home() {
 
       <section className="section pilotSection" id="pilot">
         <div>
-          <p className="eyebrow">MVP direction</p>
-          <h2>The first build stays local-first until the product is ready.</h2>
+          <p className="eyebrow">MVP-направление</p>
+          <h2>Сначала строим локально. В интернет отправляем только по решению владельца.</h2>
           <p>
-            Next step: turn this landing page into a real flow with parent
-            signup, operator dashboard, mission runner, mentor chat, and admin
-            safety controls.
+            Следующий шаг: превратить эту страницу в реальный путь с регистрацией
+            родителя, dashboard оператора, прохождением миссий, AI-наставником и
+            админскими safety-контролями.
           </p>
         </div>
         <a href="#top" className="finalCta">
-          Back to cockpit
+          Вернуться наверх
         </a>
       </section>
     </main>
