@@ -35,7 +35,7 @@ export const operatorProfile: OperatorProfile = {
     { id: "critical_thinking", label: "Критичность", value: 3, previous: 2 },
     { id: "prompt_quality", label: "Промпты", value: 3, previous: 2 },
     { id: "verification", label: "Проверка", value: 3, previous: 1 },
-    { id: "error_detection", label: "Скорость", value: 2, previous: 1 },
+    { id: "error_detection", label: "Ошибки", value: 2, previous: 1 },
     { id: "autonomy", label: "Автономность", value: 2, previous: 1 }
   ]
 };
@@ -100,14 +100,14 @@ export const missions: Mission[] = [
       {
         id: "hook",
         label: "Зацеп",
-        title: "Анатомия ошибки",
+        title: "AI может звучать уверенно и ошибаться",
         body: "Представь: AI ответил тебе с полной уверенностью. Потом ты проверил - и оказалось, что он это выдумал. Как думаешь, почему это происходит?"
       },
       {
         id: "concept",
         label: "Контент",
         title: "Галлюцинация",
-        body: "AI может создать правдоподобный, но неверный ответ. Проблема не только в ошибке, а в уверенности."
+        body: "AI может создать правдоподобный, но неверный ответ. Проблема не только в ошибке, а в уверенном тоне."
       },
       {
         id: "visual",
@@ -119,7 +119,7 @@ export const missions: Mission[] = [
         id: "challenge",
         label: "Испытание",
         title: "Найди, что требует проверки",
-        body: "Спроси AI о свежем факте и найди внешний источник. Успех - не только поймать ошибку, но и найти место, где нужен источник."
+        body: "Спроси AI о свежем факте и найди внешний источник. Успех - не только поймать ошибку, но и объяснить, что именно ты проверил."
       },
       {
         id: "simulation",
@@ -164,7 +164,7 @@ export const mentorMessages: MentorMessage[] = [
   },
   {
     role: "operator",
-    text: "Открыл новостной сайт и там другие цифры."
+    text: "Открыл новостной сайт и там были другие цифры."
   }
 ];
 
@@ -189,7 +189,7 @@ export const mentorScenarios: MentorScenario[] = [
   },
   {
     intent: "out_of_context_redirect",
-    label: "Возврат в контекст",
+    label: "Возврат в миссию",
     trigger: "Давай поговорим о другой теме.",
     response: "Это не часть текущей миссии. Какой следующий шаг проверки у нас сейчас?"
   },
@@ -210,7 +210,7 @@ export const weeklySummary = {
 
 export const achievements = [
   { id: "first_prompt", title: "Первый промпт", icon: "target", unlocked: true },
-  { id: "caught_hallucination", title: "Поймал галлюцинацию", icon: "search", unlocked: true },
+  { id: "caught_hallucination", title: "Поймал ошибку", icon: "search", unlocked: true },
   { id: "five_days", title: "5 дней подряд", icon: "energy", unlocked: true },
   { id: "critic", title: "Критик AI", icon: "brain", unlocked: false },
   { id: "verifier", title: "Верификатор", icon: "shield", unlocked: false },
@@ -244,7 +244,7 @@ export const adminTasks: AdminTask[] = [
     priority: "Medium",
     area: "UX",
     status: "Doing",
-    task: "Перенести HUD-прототип в React без личных данных."
+    task: "Перенести игровую UX-систему в React без личных данных."
   }
 ];
 

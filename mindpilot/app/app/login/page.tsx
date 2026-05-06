@@ -5,11 +5,33 @@ export const metadata: Metadata = {
   description: "Выбор входа в MindPilot для родителя, оператора или админа."
 };
 
+const cards = [
+  {
+    href: "/parent/dashboard",
+    badge: "Род",
+    title: "Родитель",
+    text: "Прогресс, согласие, оплата, недельные отчёты и безопасность."
+  },
+  {
+    href: "/operator/login",
+    badge: "Игрок",
+    title: "Оператор",
+    text: "Вход по коду и PIN без email ребёнка. Дальше - MindScan и миссии."
+  },
+  {
+    href: "/admin/safety",
+    badge: "Контроль",
+    title: "Админ",
+    text: "Safety-сигналы, задачи проекта, операторы и контроль качества."
+  }
+];
+
 export default function LoginPage() {
   return (
-    <main className="authPage">
-      <nav className="systemNav">
-        <a href="/" className="brand">
+    <main className="gameAuthPage">
+      <nav className="gameNav">
+        <a href="/" className="gameBrand">
+          <span>MP</span>
           MindPilot
         </a>
         <div>
@@ -18,31 +40,23 @@ export default function LoginPage() {
         </div>
       </nav>
 
-      <section className="authShell">
-        <div className="authCopy">
-          <p className="eyebrow">Вход</p>
+      <section className="gameAuthShell">
+        <div className="gameAuthIntro">
+          <p className="gameEyebrow">Выбор роли</p>
           <h1>Кто входит в систему?</h1>
           <p>
-            У MindPilot разные входы для родителя, ребёнка-оператора и админа.
-            Это нужно для безопасности данных и правильных прав доступа.
+            У MindPilot разные входы: взрослый управляет аккаунтом и согласием, ребёнок проходит
+            миссии, админ смотрит безопасность и задачи.
           </p>
         </div>
-        <div className="authCards">
-          <a href="/parent/dashboard">
-            <span>Parent</span>
-            <strong>Родитель</strong>
-            <p>Прогресс, consent, summaries, оплата и safety-сигналы.</p>
-          </a>
-          <a href="/operator/login">
-            <span>Operator</span>
-            <strong>Оператор</strong>
-            <p>Вход по коду и PIN без email ребёнка.</p>
-          </a>
-          <a href="/admin/safety">
-            <span>Admin</span>
-            <strong>Админ</strong>
-            <p>Safety queue, задачи, операторы и QA-контроль.</p>
-          </a>
+        <div className="roleCards">
+          {cards.map((card) => (
+            <a href={card.href} key={card.href}>
+              <span>{card.badge}</span>
+              <strong>{card.title}</strong>
+              <p>{card.text}</p>
+            </a>
+          ))}
         </div>
       </section>
     </main>

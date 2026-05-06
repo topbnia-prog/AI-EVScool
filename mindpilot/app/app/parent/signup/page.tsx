@@ -14,43 +14,42 @@ const steps = [
 
 export default function ParentSignupPage() {
   return (
-    <main className="authPage">
-      <nav className="systemNav">
-        <a href="/" className="brand">
+    <main className="gameAuthPage">
+      <nav className="gameNav">
+        <a href="/" className="gameBrand">
+          <span>MP</span>
           MindPilot
         </a>
         <div>
           <a href="/login">Вход</a>
-          <a href="/parent/dashboard">Parent Dashboard</a>
           <a href="/operator/login">Operator</a>
         </div>
       </nav>
 
-      <section className="authShell">
-        <div className="authCopy">
-          <p className="eyebrow">Шаг 1</p>
+      <section className="gameAuthShell signupMission">
+        <div className="gameAuthIntro">
+          <p className="gameEyebrow">Шаг 1</p>
           <h1>Регистрация родителя</h1>
           <p>
-            В MVP ребёнок не создаёт аккаунт сам. Родитель владеет аккаунтом,
-            подтверждает consent и создаёт профиль оператора.
+            В MVP родитель владеет аккаунтом, подтверждает consent и создаёт детский профиль без
+            лишнего сбора данных.
           </p>
-          <div className="stepList">
+          <div className="signupSteps">
             {steps.map((step, index) => (
-              <div key={step}>
-                <span>{index + 1}</span>
-                {step}
-              </div>
+              <span key={step}>
+                {index + 1}. {step}
+              </span>
             ))}
           </div>
         </div>
 
-        <form className="authForm">
+        <form className="gameForm">
           <label>
             Email родителя
             <input placeholder="parent@example.com" type="email" />
           </label>
           <label>
-            Имя или псевдоним оператора
+            Псевдоним оператора
             <input placeholder="Operator Alpha" />
           </label>
           <label>
@@ -67,11 +66,9 @@ export default function ParentSignupPage() {
           </label>
           <label className="checkLine">
             <input type="checkbox" />
-            <span>
-              Я родитель или законный опекун и принимаю Parent Consent.
-            </span>
+            <span>Я родитель или законный опекун и принимаю Parent Consent.</span>
           </label>
-          <a className="wideButton" href="/parent/dashboard">
+          <a className="wideButton gameWideButton" href="/parent/dashboard">
             Создать operator profile
           </a>
         </form>

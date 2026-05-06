@@ -14,6 +14,15 @@ const tabs = [
   { id: "profile", label: "Профиль", href: "/operator/profile" }
 ] satisfies { id: PhoneScreen; label: string; href: string }[];
 
+const achievementIcons: Record<string, string> = {
+  brain: "AI",
+  energy: "XP",
+  rocket: "GO",
+  search: "OK",
+  shield: "SH",
+  target: "01"
+};
+
 function PhoneFrame({
   screen,
   children
@@ -22,7 +31,7 @@ function PhoneFrame({
   children: React.ReactNode;
 }) {
   return (
-    <div className="phoneFrame">
+    <div className="phoneFrame gamePhone">
       <div className="phoneTop">
         <div />
       </div>
@@ -43,14 +52,14 @@ export function DashboardPhone() {
   return (
     <PhoneFrame screen="dashboard">
       <div className="phoneStatus">
-        <span className="operatorBadge">Оператор I</span>
+        <span className="operatorBadge">{operatorProfile.rank}</span>
         <strong>{operatorProfile.streakCurrent * 68} XP</strong>
       </div>
 
-      <section className="phoneBlock">
+      <section className="phoneBlock streakQuest">
         <h2>Серия дней</h2>
         <div className="streakGrid">
-          {["пн", "вт", "ср", "чт", "пт", "сб", "вс"].map((day, index) => (
+          {["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"].map((day, index) => (
             <div className={index < 5 ? "done" : ""} key={day}>
               <i />
               {day}
@@ -60,14 +69,20 @@ export function DashboardPhone() {
       </section>
 
       <section className="phoneBlock">
-        <h2>Траектория</h2>
+        <h2>Карта миссий</h2>
         <div className="phoneMissionList">
           {missions.map((mission) => (
             <a className={mission.status} href={`/operator/mission/${mission.id}`} key={mission.id}>
               <span>Миссия {mission.number}</span>
               <strong>{mission.title}</strong>
               <p>{mission.concept}</p>
-              <em>{mission.status === "completed" ? "Завершена" : mission.status === "active" ? "В процессе" : "Заперта"}</em>
+              <em>
+                {mission.status === "completed"
+                  ? "Пройдена"
+                  : mission.status === "active"
+                    ? "В процессе"
+                    : "Заперта"}
+              </em>
               <i />
             </a>
           ))}
@@ -100,7 +115,7 @@ export function MissionPhone() {
       </div>
 
       <a className="phonePrimary" href="/operator/mentor">
-        Я готов - Контент
+        Я готов - дальше
       </a>
     </PhoneFrame>
   );
@@ -176,23 +191,12 @@ export function ProfilePhone() {
         <div className="achievementGrid">
           {achievements.map((achievement) => (
             <div className={achievement.unlocked ? "unlocked" : ""} key={achievement.id}>
-              <span>{achievement.icon}</span>
+              <span>{achievementIcons[achievement.icon] ?? "XP"}</span>
               <strong>{achievement.title}</strong>
             </div>
           ))}
         </div>
       </section>
     </PhoneFrame>
-  );
-}
-
-export function PhoneShowcase() {
-  return (
-    <div className="showcasePhones">
-      <DashboardPhone />
-      <MissionPhone />
-      <MentorPhone />
-      <ProfilePhone />
-    </div>
   );
 }

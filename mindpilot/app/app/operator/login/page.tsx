@@ -8,9 +8,10 @@ export const metadata: Metadata = {
 
 export default function OperatorLoginPage() {
   return (
-    <main className="authPage">
-      <nav className="systemNav">
-        <a href="/" className="brand">
+    <main className="gameAuthPage operatorGate">
+      <nav className="gameNav">
+        <a href="/" className="gameBrand">
+          <span>MP</span>
           MindPilot
         </a>
         <div>
@@ -20,21 +21,22 @@ export default function OperatorLoginPage() {
         </div>
       </nav>
 
-      <section className="authShell">
-        <div className="authCopy">
-          <p className="eyebrow">Operator access</p>
-          <h1>Вход оператора</h1>
+      <section className="gameAuthShell">
+        <div className="operatorGateCard">
+          <div className="gateAvatar">OP</div>
+          <p className="gameEyebrow">Operator access</p>
+          <h1>Вход в базу</h1>
           <p>
-            Ребёнок входит по операторскому коду и PIN. Email ребёнка не нужен:
-            так мы уменьшаем сбор личных данных.
+            Введи код оператора и PIN. Email ребёнка не нужен: так мы уменьшаем сбор личных данных.
           </p>
-          <div className="softNotice">
-            После входа оператор проходит MindScan, открывает базу, миссии,
-            наставника и профиль роста.
+          <div className="gateBadges">
+            <span>MindScan после входа</span>
+            <span>2 миссии максимум в день</span>
+            <span>Наставник задаёт вопросы</span>
           </div>
         </div>
 
-        <form className="authForm">
+        <form className="gameForm gateForm">
           <label>
             Код оператора
             <input defaultValue={operatorProfile.displayName} />
@@ -43,7 +45,7 @@ export default function OperatorLoginPage() {
             PIN
             <input placeholder="4 цифры" type="password" />
           </label>
-          <a className="wideButton" href="/operator/mindscan">
+          <a className="wideButton gameWideButton" href="/operator/mindscan">
             Войти
           </a>
         </form>
