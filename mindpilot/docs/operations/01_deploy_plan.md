@@ -2,19 +2,30 @@
 
 ## Current State
 
-The repository currently contains clean documentation and folders. The app is not scaffolded yet.
+The repository contains clean documentation and a minimal deployable Next.js app.
+
+Production deployment is already working through Vercel CLI.
+
+Current production URL:
+
+- `https://mindpilot-kappa.vercel.app`
+
+Deployment URL:
+
+- `https://mindpilot-h18g9tvqt-c88ntyngdb-9105s-projects.vercel.app`
+
+Vercel project:
+
+- `c88ntyngdb-9105s-projects/mindpilot`
 
 ## Next Deploy Steps
 
-1. Scaffold Next.js app inside `mindpilot/app`.
-2. Add TypeScript, Tailwind CSS, linting, and app router.
-3. Add base design tokens.
-4. Create initial child operator UX screens.
-5. Add Supabase client setup.
-6. Add `.env.example`.
-7. Push to GitHub.
-8. Connect Vercel.
-9. Set Vercel project root to `mindpilot/app`.
+1. Add GitHub Login Connection inside Vercel account settings.
+2. Connect Vercel project to GitHub repository `topbnia-prog/AI-EVScool`.
+3. Confirm project root is `mindpilot/app`.
+4. Add Supabase client setup.
+5. Add Claude and PayPal environment variables when accounts are ready.
+6. Replace shell page with real operator dashboard.
 
 ## Environment Variables
 
@@ -33,6 +44,34 @@ To add later:
 - Root directory: `mindpilot/app`
 - Build command: default
 - Output directory: default
+
+## Manual Deploy Command
+
+From `mindpilot/app`:
+
+```bash
+npx vercel --prod --yes
+```
+
+## Git Integration Status
+
+CLI command attempted:
+
+```bash
+npx vercel git connect https://github.com/topbnia-prog/AI-EVScool.git
+```
+
+Current blocker:
+
+```text
+You need to add a Login Connection to your GitHub account first.
+```
+
+Resolution:
+
+- Open Vercel account settings.
+- Add GitHub as a Login Connection / Git provider.
+- Then rerun the `vercel git connect` command or connect the repo from the Vercel dashboard.
 
 ## Pre-Deploy Gate
 

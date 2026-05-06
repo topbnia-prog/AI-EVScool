@@ -53,5 +53,6 @@ Before coding the MVP, close these decisions.
 - [ ] RLS policies final
 - [ ] Auth flow final
 - [ ] Payment flow final
-- [ ] Deploy flow final
+- [x] Manual Vercel deploy flow
+- [ ] Automatic GitHub to Vercel deploy flow
 - [ ] Backup and monitoring plan

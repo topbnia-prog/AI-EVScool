@@ -173,11 +173,22 @@ insert into admin_tasks (
   'Create the application under mindpilot/app with Next.js, TypeScript, Tailwind, and initial design tokens.',
   'technical',
   'medium',
-  'todo',
+  'done',
   'admin',
   'after documentation gate',
   'mindpilot/docs/operations/01_deploy_plan.md',
   null
+),
+(
+  'Connect GitHub repository to Vercel automatic deployments',
+  'Add GitHub as a Login Connection in Vercel account settings, then connect topbnia-prog/AI-EVScool to the mindpilot Vercel project with root mindpilot/app.',
+  'deploy',
+  'high',
+  'todo',
+  'admin',
+  'before production workflow',
+  'mindpilot/docs/operations/01_deploy_plan.md',
+  'Manual CLI production deploy already works. Automatic deploys need Vercel GitHub connection.'
 );
 ```
 
