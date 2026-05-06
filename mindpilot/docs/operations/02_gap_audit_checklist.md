@@ -14,8 +14,8 @@ Before coding the MVP, close these decisions.
 
 - [ ] 30 mission titles
 - [ ] Junior/Senior content rules
-- [ ] Mission 1 fully written
-- [ ] Mission 2 fully written
+- [x] Mission 1 fully written
+- [x] Mission 2 fully written
 - [ ] Paywall after Mission 2 tested
 - [ ] Metrics rubric accepted
 
@@ -30,7 +30,7 @@ Before coding the MVP, close these decisions.
 
 ## AI Mentor
 
-- [ ] System prompt
+- [x] System prompt
 - [ ] Refusal prompt for homework-copy requests
 - [ ] Safety fallback prompts
 - [ ] Mission-step awareness
@@ -38,7 +38,7 @@ Before coding the MVP, close these decisions.
 
 ## Safety And Legal
 
-- [ ] Parent consent text
+- [x] Parent consent text
 - [ ] Privacy policy draft
 - [ ] Terms draft
 - [ ] Child safety policy draft
