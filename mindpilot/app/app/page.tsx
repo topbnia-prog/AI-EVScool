@@ -65,13 +65,13 @@ export default function Home() {
         </div>
 
         <nav className="nav">
-          <a href="#" className="brand">
+          <a href="/" className="brand">
             MindPilot
           </a>
           <div className="navLinks">
             <a href="#course">Курс</a>
             <a href="#safety">Безопасность</a>
-            <a href="#pilot">Пилот</a>
+            <a href="/parent/signup">Старт</a>
           </div>
         </nav>
 
@@ -83,9 +83,9 @@ export default function Home() {
             ответы и сохранять собственное мышление под контролем.
           </p>
           <div className="heroActions" aria-label="Primary actions">
-            <a href="#pilot">Посмотреть пилот</a>
-            <a href="#course" className="secondary">
-              Путь на 30 дней
+            <a href="/parent/signup">Начать путь родителя</a>
+            <a href="/operator/dashboard" className="secondary">
+              Открыть cockpit оператора
             </a>
           </div>
           <div className="signalList">
@@ -162,16 +162,16 @@ export default function Home() {
 
       <section className="section pilotSection" id="pilot">
         <div>
-          <p className="eyebrow">MVP-направление</p>
-          <h2>Сначала строим локально. В интернет отправляем только по решению владельца.</h2>
+          <p className="eyebrow">Теперь это путь продукта</p>
+          <h2>Главная ведёт в регистрацию, cockpit, миссию и safety-панель.</h2>
           <p>
-            Следующий шаг: превратить эту страницу в реальный путь с регистрацией
-            родителя, dashboard оператора, прохождением миссий, AI-наставником и
-            админскими safety-контролями.
+            На этом этапе экраны работают как локальный frontend-прототип. Дальше
+            мы подключим Supabase, реальный AI-наставник, прогресс миссий,
+            родительские summaries и админские safety-события.
           </p>
         </div>
-        <a href="#top" className="finalCta">
-          Вернуться наверх
+        <a href="/admin/safety" className="finalCta">
+          Открыть safety-панель
         </a>
       </section>
 
