@@ -180,15 +180,15 @@ insert into admin_tasks (
   null
 ),
 (
-  'Connect GitHub repository to Vercel automatic deployments',
-  'Add GitHub as a Login Connection in Vercel account settings, then connect topbnia-prog/AI-EVScool to the mindpilot Vercel project with root mindpilot/app.',
+  'Keep deployment manual',
+  'Do not connect GitHub automatic deployments. Deploy production only after explicit owner request using npm run deploy:prod from mindpilot/app.',
   'deploy',
-  'high',
-  'todo',
+  'medium',
+  'done',
   'admin',
-  'before production workflow',
+  'current workflow',
   'mindpilot/docs/operations/01_deploy_plan.md',
-  'Manual CLI production deploy already works. Automatic deploys need Vercel GitHub connection.'
+  'Manual CLI production deploy works. Automatic GitHub deployments are intentionally disabled for now.'
 );
 ```
 

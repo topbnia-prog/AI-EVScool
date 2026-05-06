@@ -6,6 +6,8 @@ The repository contains clean documentation and a minimal deployable Next.js app
 
 Production deployment is already working through Vercel CLI.
 
+Deployment policy: deploy to the internet only after an explicit owner request. Do not enable automatic GitHub deployments.
+
 Current production URL:
 
 - `https://mindpilot-kappa.vercel.app`
@@ -18,14 +20,17 @@ Vercel project:
 
 - `c88ntyngdb-9105s-projects/mindpilot`
 
-## Next Deploy Steps
+## Next App Steps
 
-1. Add GitHub Login Connection inside Vercel account settings.
-2. Connect Vercel project to GitHub repository `topbnia-prog/AI-EVScool`.
-3. Confirm project root is `mindpilot/app`.
-4. Add Supabase client setup.
-5. Add Claude and PayPal environment variables when accounts are ready.
-6. Replace shell page with real operator dashboard.
+1. Work locally in `mindpilot/app`.
+2. Run local development server.
+3. Review changes in the browser.
+4. Run production build locally.
+5. Commit and push to GitHub.
+6. Deploy manually only when requested.
+7. Add Supabase client setup when accounts are ready.
+8. Add Claude and PayPal environment variables when accounts are ready.
+9. Replace shell page with real operator dashboard.
 
 ## Environment Variables
 
@@ -50,28 +55,44 @@ To add later:
 From `mindpilot/app`:
 
 ```bash
+npm run deploy:prod
+```
+
+Equivalent raw command:
+
+```bash
 npx vercel --prod --yes
 ```
 
-## Git Integration Status
+## Local Development
 
-CLI command attempted:
+From `mindpilot/app`:
 
 ```bash
-npx vercel git connect https://github.com/topbnia-prog/AI-EVScool.git
+npm run dev:local
 ```
 
-Current blocker:
+Open:
 
 ```text
-You need to add a Login Connection to your GitHub account first.
+http://127.0.0.1:3000
 ```
 
-Resolution:
+Before deploy:
 
-- Open Vercel account settings.
-- Add GitHub as a Login Connection / Git provider.
-- Then rerun the `vercel git connect` command or connect the repo from the Vercel dashboard.
+```bash
+npm run build
+```
+
+## Git Integration Policy
+
+Do not connect GitHub automatic deployments for now.
+
+Reason:
+
+- The owner wants to make local changes first.
+- Production should update only after explicit deployment request.
+- This avoids accidental public changes while the product and legal docs are still evolving.
 
 ## Pre-Deploy Gate
 

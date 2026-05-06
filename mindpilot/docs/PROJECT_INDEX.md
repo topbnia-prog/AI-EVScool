@@ -25,7 +25,8 @@ This folder is the clean source of truth for building MindPilot. It replaces ear
 17. Gap audit: `operations/02_gap_audit_checklist.md`
 18. Full gap audit specification: `operations/03_full_gap_audit.md`
 19. Project task seed: `operations/04_project_tasks_seed.md`
-20. Research validation: `research/01_research_validation_log.md`
+20. Local workflow: `operations/05_local_workflow.md`
+21. Research validation: `research/01_research_validation_log.md`
 
 ## Build Rule
 

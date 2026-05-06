@@ -10,7 +10,8 @@ This file tracks tasks that should appear in the future admin dashboard task sys
 | High | Legal | Todo | Create privacy policy draft | `docs/legal/01_safety_privacy_legal_requirements.md` |
 | High | Course | Todo | Finish Mission 3 Hebrew draft | `docs/course/02_mission_template.md` |
 | Medium | Technical | Done | Scaffold Next.js app | `docs/operations/01_deploy_plan.md` |
-| High | Deploy | Todo | Add GitHub Login Connection in Vercel and connect repo for automatic deployments | `docs/operations/01_deploy_plan.md` |
+| Medium | Deploy | Done | Configure manual Vercel deploy only | `docs/operations/01_deploy_plan.md` |
+| Medium | Technical | Todo | Add real operator dashboard to local app before next deploy | `docs/ux/01_child_operator_ux.md` |
 
 ## Rule
 
