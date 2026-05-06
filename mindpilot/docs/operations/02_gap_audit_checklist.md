@@ -26,6 +26,7 @@ Before coding the MVP, close these decisions.
 - [ ] Mentor chat spec
 - [ ] Parent dashboard spec
 - [ ] Admin dashboard spec
+- [x] Admin task system spec
 - [ ] Mobile-first behavior
 
 ## AI Mentor
@@ -39,6 +40,7 @@ Before coding the MVP, close these decisions.
 ## Safety And Legal
 
 - [x] Parent consent text
+- [x] Lawyer review email draft
 - [ ] Privacy policy draft
 - [ ] Terms draft
 - [ ] Child safety policy draft
