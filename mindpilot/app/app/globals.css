@@ -443,6 +443,125 @@ h2 {
   justify-self: end;
 }
 
+.siteFooter {
+  width: min(1160px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 26px 0 42px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.siteFooter a:hover {
+  color: var(--mint);
+}
+
+.legalPage {
+  min-height: 100svh;
+  background:
+    linear-gradient(rgba(244, 242, 234, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 242, 234, 0.03) 1px, transparent 1px),
+    var(--night);
+  background-size: 42px 42px;
+  padding: 24px clamp(18px, 4vw, 56px) 70px;
+}
+
+.legalNav {
+  width: min(1160px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.legalNavLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.legalNavLinks a:hover {
+  color: var(--mint);
+}
+
+.legalDocument {
+  width: min(860px, 100%);
+  margin: clamp(54px, 8vw, 94px) auto 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 16, 20, 0.76);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+  padding: clamp(24px, 5vw, 54px);
+}
+
+.legalDocument h1 {
+  margin-top: 16px;
+  font-size: clamp(42px, 7vw, 78px);
+}
+
+.legalUpdated {
+  margin-top: 14px;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+
+.legalIntro {
+  margin-top: 24px;
+  color: #d5dddc;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.legalNotice {
+  margin-top: 24px;
+  border-left: 4px solid var(--amber);
+  background: rgba(255, 176, 0, 0.1);
+  color: #ffe4a5;
+  padding: 15px 16px;
+  line-height: 1.55;
+}
+
+.legalSection {
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.legalSection h2 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.15;
+}
+
+.legalSection p,
+.legalSection li {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.legalSection p {
+  margin-top: 14px;
+}
+
+.legalSection ul {
+  margin: 16px 0 0;
+  padding-left: 22px;
+}
+
+.legalSection li + li {
+  margin-top: 9px;
+}
+
 @media (max-width: 860px) {
   .hero {
     min-height: auto;
@@ -474,6 +593,15 @@ h2 {
 
   .finalCta {
     justify-self: start;
+  }
+
+  .legalNav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .legalNavLinks {
+    justify-content: flex-start;
   }
 }
 

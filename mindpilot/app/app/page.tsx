@@ -174,6 +174,13 @@ export default function Home() {
           Вернуться наверх
         </a>
       </section>
+
+      <footer className="siteFooter">
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/parent-consent">Parent Consent</a>
+        <a href="/child-safety-policy">Child Safety Policy</a>
+      </footer>
     </main>
   );
 }
