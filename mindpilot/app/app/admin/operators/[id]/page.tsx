@@ -24,6 +24,7 @@ export default function AdminOperatorDetailPage() {
         <div>
           <a href="/admin/operators">Operators</a>
           <a href="/admin/safety">Safety</a>
+          <a href="/admin/courses">Courses</a>
           <a href="/admin/tasks">Tasks</a>
         </div>
       </nav>

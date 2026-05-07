@@ -60,6 +60,7 @@ export const operatorProfile: OperatorProfile = {
       "Завершить одним выводом словами ребёнка."
     ]
   },
+  activeCourseId: "mindpilot-30-day-ai-literacy",
   metrics: [
     { id: "ai_understanding", label: "Понимание AI", value: 4, previous: 2 },
     { id: "critical_thinking", label: "Критичность", value: 3, previous: 2 },

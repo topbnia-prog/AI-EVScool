@@ -15,6 +15,7 @@ export default function AdminSafetyPage() {
         </a>
         <div>
           <a href="/admin/tasks">Tasks</a>
+          <a href="/admin/courses">Courses</a>
           <a href="/admin/operators">Operators</a>
           <a href="/operator/dashboard">Operator</a>
         </div>

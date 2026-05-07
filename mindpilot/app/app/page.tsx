@@ -68,6 +68,7 @@ export default function Home() {
           <b>AI Mission Academy</b>
         </a>
         <div>
+          <a href="/courses">Курсы</a>
           <a href="/login">Вход</a>
           <a href="/register" className="academyNavPrimary">
             Начать
@@ -85,7 +86,7 @@ export default function Home() {
           </p>
           <div className="academyActions">
             <a href="/register">Создать аккаунт родителя</a>
-            <a href="/operator/login">Войти как оператор</a>
+            <a href="/login">Единый вход</a>
           </div>
         </div>
 
@@ -145,6 +146,38 @@ export default function Home() {
           </div>
 
         </div>
+      </section>
+
+      <section className="preLessonSection courseIntroSection">
+        <div>
+          <p className="academyKicker">Система курсов</p>
+          <h2>Сначала 30 дней базы, потом новые траектории.</h2>
+          <p>
+            Курсы теперь встроены в проект как каталог и прогресс оператора. Первый курс учит
+            понимать AI, проверять факты и управлять промптами. Второй курс открывается позже:
+            ребёнок сможет строить проекты с Codex только после базовой AI-грамотности.
+          </p>
+        </div>
+        <div className="preLessonCards">
+          <article>
+            <span>01</span>
+            <h3>30-Day AI Literacy</h3>
+            <p>Активная траектория: миссии, наставник, 6 метрик и дневной лимит.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Codex Inventor Kids</h3>
+            <p>Следующий курс: создание реальных проектов после базовой подготовки.</p>
+          </article>
+          <article>
+            <span>QA</span>
+            <h3>Контроль админа</h3>
+            <p>Каждый курс имеет статус, источник, метрики, уроки и safety-review.</p>
+          </article>
+        </div>
+        <a className="courseIntroAction" href="/courses">
+          Открыть каталог курсов
+        </a>
       </section>
 
       <section className="growthBaseSection">

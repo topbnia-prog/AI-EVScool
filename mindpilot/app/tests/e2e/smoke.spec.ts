@@ -3,7 +3,9 @@ import { expect, test } from "@playwright/test";
 const publicRoutes = [
   { path: "/", text: "MindPilot" },
   { path: "/login", text: "Вход" },
+  { path: "/courses", text: "Курсы встроены" },
   { path: "/register", text: "родителя" },
+  { path: "/operator/courses", text: "Траектория оператора" },
   { path: "/operator/mindscan", text: "MindScan" },
   { path: "/operator/dashboard", text: "Серия дней" },
   { path: "/operator/mission/2", text: "Анатомия ошибки" },
@@ -12,6 +14,7 @@ const publicRoutes = [
   { path: "/parent/dashboard", text: "Parent dashboard" },
   { path: "/admin/operators", text: "Операторы" },
   { path: "/admin/operators/operator_alpha", text: "Карта подхода" },
+  { path: "/admin/courses", text: "состояние курса" },
   { path: "/admin/safety", text: "Safety" },
   { path: "/admin/tasks", text: "Задачи" },
   { path: "/terms", text: "Terms" },
@@ -38,4 +41,14 @@ test("parent registration leads to child MindScan", async ({ page }) => {
     "href",
     "/operator/mindscan"
   );
+});
+
+test("unified login routes operator account to operator dashboard", async ({ page }) => {
+  await page.goto("/login");
+
+  await page.getByLabel("Логин").fill("operator-alpha");
+  await page.getByLabel("Пароль").fill("1234");
+  await page.getByRole("button", { name: "Войти" }).click();
+
+  await expect(page).toHaveURL(/\/operator\/dashboard$/);
 });

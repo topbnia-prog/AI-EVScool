@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GrowthRadar3D, MentorCore3D, OperatorBase3D } from "../../_components/MindPilot3D";
+import { getActiveEnrollment, getCourseById } from "../../lib/courses";
 import { missions, operatorProfile } from "../../lib/mockData";
 
 export const metadata: Metadata = {
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 
 export default function OperatorDashboardPage() {
   const activeMission = missions.find((mission) => mission.status === "active") ?? missions[0];
+  const activeEnrollment = getActiveEnrollment(operatorProfile.id);
+  const activeCourse = activeEnrollment ? getCourseById(activeEnrollment.courseId) : undefined;
 
   return (
     <main className="operatorScreenPage">
@@ -18,6 +21,7 @@ export default function OperatorDashboardPage() {
         </a>
         <div>
           <a href="/operator/mission/2">Миссия</a>
+          <a href="/operator/courses">Курсы</a>
           <a href="/operator/mentor">Наставник</a>
           <a href="/operator/profile">Профиль</a>
         </div>
@@ -35,6 +39,10 @@ export default function OperatorDashboardPage() {
             Продолжить: {activeMission.title}
           </a>
           <div className="profileRows">
+            <div>
+              <span>Курс</span>
+              <strong>{activeCourse?.title ?? "курс не назначен"}</strong>
+            </div>
             <div>
               <span>Оператор</span>
               <strong>{operatorProfile.displayName}</strong>
@@ -68,6 +76,9 @@ export default function OperatorDashboardPage() {
               <strong>6 навыков роста</strong>
             </article>
           </div>
+          <a className="liquidPrimaryAction" href="/operator/courses">
+            Открыть карту курсов
+          </a>
         </div>
       </section>
     </main>

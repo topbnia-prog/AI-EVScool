@@ -1,30 +1,10 @@
 import type { Metadata } from "next";
+import { SmartLoginForm } from "../_components/SmartLoginForm";
 
 export const metadata: Metadata = {
   title: "Вход | MindPilot",
-  description: "Выбор входа в MindPilot для родителя, оператора или админа."
+  description: "Единый вход MindPilot: система сама распознаёт роль аккаунта."
 };
-
-const cards = [
-  {
-    href: "/parent/dashboard",
-    badge: "Родитель",
-    title: "Контроль и отчёты",
-    text: "Consent, прогресс, недельные summaries, оплата и safety-уведомления."
-  },
-  {
-    href: "/operator/login",
-    badge: "Оператор",
-    title: "Миссии ребёнка",
-    text: "Вход по коду и PIN без email ребёнка. Дальше MindScan, база и миссии."
-  },
-  {
-    href: "/admin/safety",
-    badge: "Админ",
-    title: "Безопасность",
-    text: "Очередь safety-сигналов, задачи проекта, операторы и контроль качества."
-  }
-];
 
 export default function LoginPage() {
   return (
@@ -36,28 +16,28 @@ export default function LoginPage() {
         </a>
         <div>
           <a href="/register">Регистрация</a>
+          <a href="/courses">Курсы</a>
           <a href="/terms">Terms</a>
         </div>
       </nav>
 
-      <section className="academyAuthShell">
+      <section className="academyAuthShell unifiedLoginShell">
         <div className="academyAuthIntro">
-          <p className="academyKicker">Выбор роли</p>
-          <h1>У каждого входа своя зона ответственности.</h1>
+          <p className="academyKicker">Единый вход</p>
+          <h1>Логин и пароль. Роль определяет система.</h1>
           <p>
-            Родитель управляет аккаунтом и согласием, ребёнок проходит миссии, админ следит за
-            безопасностью и качеством системы.
+            Родитель, ребёнок и админ не выбирают роль вручную. После входа MindPilot проверяет
+            аккаунт и открывает правильную зону: родительский dashboard, базу оператора или
+            админский контроль.
           </p>
+          <div className="academySteps">
+            <span>меньше ошибок входа</span>
+            <span>нет email ребёнка</span>
+            <span>админ отделён правами</span>
+          </div>
         </div>
-        <div className="academyRoleCards">
-          {cards.map((card) => (
-            <a href={card.href} key={card.href}>
-              <span>{card.badge}</span>
-              <strong>{card.title}</strong>
-              <p>{card.text}</p>
-            </a>
-          ))}
-        </div>
+
+        <SmartLoginForm />
       </section>
     </main>
   );

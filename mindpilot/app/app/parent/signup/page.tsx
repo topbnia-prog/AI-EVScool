@@ -22,7 +22,7 @@ export default function ParentSignupPage() {
         </a>
         <div>
           <a href="/login">Вход</a>
-          <a href="/operator/login">Operator</a>
+          <a href="/courses">Курсы</a>
         </div>
       </nav>
 

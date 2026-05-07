@@ -2,6 +2,12 @@ export type AgeBranch = "junior" | "senior";
 
 export type MissionStatus = "completed" | "active" | "locked";
 
+export type UserRole = "parent" | "operator" | "admin";
+
+export type CourseStatus = "active" | "locked" | "draft";
+
+export type CourseAudience = "operator" | "parent" | "admin";
+
 export type MentorIntent =
   | "mission_guidance"
   | "reflection_guidance"
@@ -70,6 +76,7 @@ export type OperatorProfile = {
   parentInsight: ParentInsight;
   mindScan: MindScanProfile;
   adminProfile: AdminChildProfile;
+  activeCourseId: string;
 };
 
 export type MissionStep = {
@@ -88,6 +95,52 @@ export type Mission = {
   status: MissionStatus;
   estimatedMinutes: string;
   steps: MissionStep[];
+};
+
+export type CourseLesson = {
+  id: string;
+  number: number;
+  title: string;
+  concept: string;
+  metricFocus: string;
+  status: MissionStatus;
+  estimatedMinutes: string;
+};
+
+export type Course = {
+  id: string;
+  order: number;
+  slug: string;
+  title: string;
+  subtitle: string;
+  audience: CourseAudience[];
+  status: CourseStatus;
+  durationDays: number;
+  requiredCourseId?: string;
+  promise: string;
+  childPitch: string;
+  parentPitch: string;
+  sourceFolder: string;
+  metrics: string[];
+  lessons: CourseLesson[];
+};
+
+export type CourseEnrollment = {
+  operatorId: string;
+  courseId: string;
+  status: "not_started" | "active" | "completed" | "locked";
+  completedLessons: number;
+  activeLessonNumber: number;
+  streakDays: number;
+};
+
+export type AuthAccount = {
+  id: string;
+  role: UserRole;
+  identifier: string;
+  displayName: string;
+  passwordHint: string;
+  redirectTo: string;
 };
 
 export type MentorMessage = {

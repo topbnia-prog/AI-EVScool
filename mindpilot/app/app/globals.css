@@ -5692,3 +5692,270 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Course integration and unified auth */
+.unifiedLoginShell {
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 460px);
+}
+
+.smartLoginForm button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.loginSystemMessage {
+  color: var(--liquid-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.loginDemoAccounts {
+  display: grid;
+  gap: 8px;
+}
+
+.loginDemoAccounts button {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  border: 1px solid rgba(22, 32, 51, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--liquid-text);
+  padding: 12px;
+  text-align: left;
+}
+
+.loginDemoAccounts button:hover {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.loginDemoAccounts span,
+.loginDemoAccounts small,
+.courseCard span,
+.courseMetaGrid span,
+.operatorCourseHeader span,
+.operatorCourseCard small,
+.adminCourseRows article > span {
+  color: #667089;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.loginDemoAccounts strong {
+  color: var(--liquid-text);
+  font-weight: 620;
+}
+
+.courseCatalog {
+  width: min(1160px, 100%);
+  margin: 28px auto 0;
+  display: grid;
+  gap: 18px;
+}
+
+.courseCard,
+.operatorCourseCard,
+.adminCourseRows article {
+  border: 1px solid rgba(22, 32, 51, 0.1);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(191, 232, 245, 0.34), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(248, 253, 246, 0.72));
+  color: var(--liquid-text);
+  box-shadow: 0 18px 44px rgba(22, 32, 51, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.courseCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr) minmax(250px, 0.74fr);
+  gap: 18px;
+  align-items: center;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.courseCard.locked {
+  opacity: 0.72;
+}
+
+.courseCard strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--liquid-text);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 640;
+  line-height: 1.05;
+}
+
+.courseCard p,
+.coursePromise p,
+.operatorCourseHeader p,
+.adminCourseRows p {
+  margin-top: 10px;
+  color: var(--liquid-muted);
+  line-height: 1.55;
+}
+
+.courseMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.courseMetaGrid.compact {
+  margin-top: 16px;
+}
+
+.courseMetaGrid div {
+  min-height: 82px;
+  border: 1px solid rgba(22, 32, 51, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 12px;
+}
+
+.courseMetaGrid strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--liquid-text);
+  font-size: 18px;
+}
+
+.coursePromise a,
+.courseIntroAction {
+  display: inline-grid;
+  min-height: 42px;
+  margin-top: 14px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255, 214, 198, 0.96), rgba(255, 242, 168, 0.9));
+  color: var(--liquid-text);
+  font-weight: 680;
+  padding: 10px 14px;
+  box-shadow: 0 12px 28px rgba(22, 32, 51, 0.09);
+}
+
+.courseIntroAction {
+  width: max-content;
+}
+
+.courseOperatorShell {
+  grid-template-columns: minmax(0, 0.72fr) minmax(480px, 1.28fr);
+}
+
+.operatorCoursePanel {
+  display: grid;
+  gap: 14px;
+}
+
+.operatorCourseCard {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.operatorCourseCard.locked {
+  opacity: 0.64;
+}
+
+.operatorCourseHeader strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--liquid-text);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 640;
+}
+
+.courseProgressBar {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(22, 32, 51, 0.08);
+}
+
+.courseProgressBar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--liquid-mint), var(--liquid-blue));
+}
+
+.lessonPath {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.lessonPath a {
+  display: grid;
+  gap: 7px;
+  min-height: 112px;
+  border: 1px solid rgba(22, 32, 51, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.74);
+  padding: 12px;
+}
+
+.lessonPath a.completed {
+  background: rgba(205, 238, 199, 0.78);
+}
+
+.lessonPath a.active {
+  border-color: rgba(73, 130, 210, 0.32);
+  background: rgba(191, 232, 245, 0.84);
+}
+
+.lessonPath span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--liquid-text);
+  font-weight: 720;
+}
+
+.lessonPath strong {
+  color: var(--liquid-text);
+  font-size: 15px;
+  font-weight: 620;
+}
+
+.adminCourseRows {
+  display: grid;
+  gap: 14px;
+}
+
+.adminCourseRows article {
+  padding: 18px;
+}
+
+.adminCourseRows article > strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--liquid-text);
+  font-size: 24px;
+  font-weight: 640;
+}
+
+@media (max-width: 980px) {
+  .unifiedLoginShell,
+  .courseCard,
+  .courseOperatorShell {
+    grid-template-columns: 1fr;
+  }
+
+  .lessonPath {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .courseMetaGrid,
+  .lessonPath {
+    grid-template-columns: 1fr;
+  }
+}

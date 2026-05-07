@@ -16,6 +16,7 @@ export default function AdminTasksPage() {
         <div>
           <a href="/admin/safety">Safety</a>
           <a href="/admin/operators">Operators</a>
+          <a href="/admin/courses">Courses</a>
           <a href="/">Site</a>
         </div>
       </nav>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getActiveEnrollment, getCourseById } from "../../lib/courses";
 import {
   operatorProfile,
   parentAccount,
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
 
 export default function ParentDashboardPage() {
   const openSafetyAlerts = safetyAlerts.filter((alert) => alert.status !== "resolved");
+  const activeEnrollment = getActiveEnrollment(operatorProfile.id);
+  const activeCourse = activeEnrollment ? getCourseById(activeEnrollment.courseId) : undefined;
 
   return (
     <main className="appPage academyLitePage">
@@ -21,7 +24,8 @@ export default function ParentDashboardPage() {
           MindPilot Parent
         </a>
         <div>
-          <a href="/operator/login">Operator Login</a>
+          <a href="/login">Login</a>
+          <a href="/courses">Courses</a>
           <a href="/parent-consent">Consent</a>
           <a href="/privacy">Privacy</a>
         </div>
@@ -53,6 +57,10 @@ export default function ParentDashboardPage() {
               <strong>{operatorProfile.rank}</strong>
             </div>
             <div>
+              <span>Курс</span>
+              <strong>{activeCourse?.title ?? "не назначен"}</strong>
+            </div>
+            <div>
               <span>Consent</span>
               <strong>{parentAccount.consentStatus}</strong>
             </div>
@@ -78,6 +86,12 @@ export default function ParentDashboardPage() {
             <div>
               <span>Миссий завершено</span>
               <strong>{weeklySummary.completedMissions}</strong>
+            </div>
+            <div>
+              <span>Курс пройден</span>
+              <strong>
+                {activeEnrollment?.completedLessons ?? 0} / {activeCourse?.lessons.length ?? 0}
+              </strong>
             </div>
             <div>
               <span>Рост</span>
