@@ -8,31 +8,31 @@ export const metadata: Metadata = {
 const cards = [
   {
     href: "/parent/dashboard",
-    badge: "Род",
-    title: "Родитель",
-    text: "Прогресс, согласие, оплата, недельные отчёты и безопасность."
+    badge: "Родитель",
+    title: "Контроль и отчёты",
+    text: "Consent, прогресс, недельные summaries, оплата и safety-уведомления."
   },
   {
     href: "/operator/login",
-    badge: "Игрок",
-    title: "Оператор",
-    text: "Вход по коду и PIN без email ребёнка. Дальше - MindScan и миссии."
+    badge: "Оператор",
+    title: "Миссии ребёнка",
+    text: "Вход по коду и PIN без email ребёнка. Дальше MindScan, база и миссии."
   },
   {
     href: "/admin/safety",
-    badge: "Контроль",
-    title: "Админ",
-    text: "Safety-сигналы, задачи проекта, операторы и контроль качества."
+    badge: "Админ",
+    title: "Безопасность",
+    text: "Очередь safety-сигналов, задачи проекта, операторы и контроль качества."
   }
 ];
 
 export default function LoginPage() {
   return (
-    <main className="gameAuthPage">
-      <nav className="gameNav">
-        <a href="/" className="gameBrand">
-          <span>MP</span>
-          MindPilot
+    <main className="academyAuthPage">
+      <nav className="academyNav">
+        <a href="/" className="academyBrand">
+          <span>MindPilot</span>
+          <b>AI Mission Academy</b>
         </a>
         <div>
           <a href="/register">Регистрация</a>
@@ -40,16 +40,16 @@ export default function LoginPage() {
         </div>
       </nav>
 
-      <section className="gameAuthShell">
-        <div className="gameAuthIntro">
-          <p className="gameEyebrow">Выбор роли</p>
-          <h1>Кто входит в систему?</h1>
+      <section className="academyAuthShell">
+        <div className="academyAuthIntro">
+          <p className="academyKicker">Выбор роли</p>
+          <h1>У каждого входа своя зона ответственности.</h1>
           <p>
-            У MindPilot разные входы: взрослый управляет аккаунтом и согласием, ребёнок проходит
-            миссии, админ смотрит безопасность и задачи.
+            Родитель управляет аккаунтом и согласием, ребёнок проходит миссии, админ следит за
+            безопасностью и качеством системы.
           </p>
         </div>
-        <div className="roleCards">
+        <div className="academyRoleCards">
           {cards.map((card) => (
             <a href={card.href} key={card.href}>
               <span>{card.badge}</span>

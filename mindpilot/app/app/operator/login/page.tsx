@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 
 export default function OperatorLoginPage() {
   return (
-    <main className="gameAuthPage operatorGate">
-      <nav className="gameNav">
-        <a href="/" className="gameBrand">
-          <span>MP</span>
-          MindPilot
+    <main className="academyAuthPage operatorAccessPage">
+      <nav className="academyNav">
+        <a href="/" className="academyBrand">
+          <span>MindPilot</span>
+          <b>AI Mission Academy</b>
         </a>
         <div>
           <a href="/login">Все входы</a>
@@ -21,22 +21,22 @@ export default function OperatorLoginPage() {
         </div>
       </nav>
 
-      <section className="gameAuthShell">
-        <div className="operatorGateCard">
-          <div className="gateAvatar">OP</div>
-          <p className="gameEyebrow">Operator access</p>
-          <h1>Вход в базу</h1>
+      <section className="academyAuthShell">
+        <div className="operatorAccessPanel">
+          <div className="operatorAccessAvatar">OP</div>
+          <p className="academyKicker">Operator access</p>
+          <h1>Вход в базу миссий</h1>
           <p>
             Введи код оператора и PIN. Email ребёнка не нужен: так мы уменьшаем сбор личных данных.
           </p>
-          <div className="gateBadges">
+          <div className="academySteps">
             <span>MindScan после входа</span>
             <span>2 миссии максимум в день</span>
             <span>Наставник задаёт вопросы</span>
           </div>
         </div>
 
-        <form className="gameForm gateForm">
+        <form className="academyForm">
           <label>
             Код оператора
             <input defaultValue={operatorProfile.displayName} />
@@ -45,7 +45,7 @@ export default function OperatorLoginPage() {
             PIN
             <input placeholder="4 цифры" type="password" />
           </label>
-          <a className="wideButton gameWideButton" href="/operator/mindscan">
+          <a className="academySubmit" href="/operator/mindscan">
             Войти
           </a>
         </form>

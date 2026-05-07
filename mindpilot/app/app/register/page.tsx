@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 
 export default function RegisterPage() {
   return (
-    <main className="gameAuthPage">
-      <nav className="gameNav">
-        <a href="/" className="gameBrand">
-          <span>MP</span>
-          MindPilot
+    <main className="academyAuthPage">
+      <nav className="academyNav">
+        <a href="/" className="academyBrand">
+          <span>MindPilot</span>
+          <b>AI Mission Academy</b>
         </a>
         <div>
           <a href="/login">Вход</a>
@@ -19,15 +19,15 @@ export default function RegisterPage() {
         </div>
       </nav>
 
-      <section className="gameAuthShell signupMission">
-        <div className="gameAuthIntro">
-          <p className="gameEyebrow">Стартовая миссия родителя</p>
-          <h1>Сначала родитель. Потом оператор.</h1>
+      <section className="academyAuthShell">
+        <div className="academyAuthIntro">
+          <p className="academyKicker">Старт родителя</p>
+          <h1>Сначала согласие и профиль. Потом миссии ребёнка.</h1>
           <p>
             Ребёнок не создаёт основной аккаунт сам. Родитель подтверждает согласие, задаёт
             безопасный профиль оператора и открывает первые миссии.
           </p>
-          <div className="signupSteps">
+          <div className="academySteps">
             <span>1. Аккаунт родителя</span>
             <span>2. Parent Consent</span>
             <span>3. Код оператора</span>
@@ -35,7 +35,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        <form className="gameForm">
+        <form className="academyForm">
           <label>
             Email родителя
             <input placeholder="parent@example.com" type="email" />
@@ -60,11 +60,11 @@ export default function RegisterPage() {
               <option>16</option>
             </select>
           </label>
-          <label className="checkLine">
+          <label className="academyCheck">
             <input type="checkbox" />
             <span>Я родитель или законный опекун и принимаю Parent Consent.</span>
           </label>
-          <a className="wideButton gameWideButton" href="/parent/dashboard">
+          <a className="academySubmit" href="/parent/dashboard">
             Создать аккаунт
           </a>
         </form>

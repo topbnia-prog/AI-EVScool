@@ -14,11 +14,11 @@ const steps = [
 
 export default function ParentSignupPage() {
   return (
-    <main className="gameAuthPage">
-      <nav className="gameNav">
-        <a href="/" className="gameBrand">
-          <span>MP</span>
-          MindPilot
+    <main className="academyAuthPage">
+      <nav className="academyNav">
+        <a href="/" className="academyBrand">
+          <span>MindPilot</span>
+          <b>AI Mission Academy</b>
         </a>
         <div>
           <a href="/login">Вход</a>
@@ -26,15 +26,15 @@ export default function ParentSignupPage() {
         </div>
       </nav>
 
-      <section className="gameAuthShell signupMission">
-        <div className="gameAuthIntro">
-          <p className="gameEyebrow">Шаг 1</p>
+      <section className="academyAuthShell">
+        <div className="academyAuthIntro">
+          <p className="academyKicker">Шаг 1</p>
           <h1>Регистрация родителя</h1>
           <p>
-            В MVP родитель владеет аккаунтом, подтверждает consent и создаёт детский профиль без
-            лишнего сбора данных.
+            Родитель владеет аккаунтом, подтверждает consent и создаёт детский профиль без лишнего
+            сбора данных.
           </p>
-          <div className="signupSteps">
+          <div className="academySteps">
             {steps.map((step, index) => (
               <span key={step}>
                 {index + 1}. {step}
@@ -43,7 +43,7 @@ export default function ParentSignupPage() {
           </div>
         </div>
 
-        <form className="gameForm">
+        <form className="academyForm">
           <label>
             Email родителя
             <input placeholder="parent@example.com" type="email" />
@@ -64,11 +64,11 @@ export default function ParentSignupPage() {
               <option>16</option>
             </select>
           </label>
-          <label className="checkLine">
+          <label className="academyCheck">
             <input type="checkbox" />
             <span>Я родитель или законный опекун и принимаю Parent Consent.</span>
           </label>
-          <a className="wideButton gameWideButton" href="/parent/dashboard">
+          <a className="academySubmit" href="/parent/dashboard">
             Создать operator profile
           </a>
         </form>
