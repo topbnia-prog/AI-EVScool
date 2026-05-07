@@ -1,11 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { authAccounts, resolveAccount, roleLabels } from "../lib/auth";
 
 export function SmartLoginForm() {
-  const router = useRouter();
   const [identifier, setIdentifier] = useState("operator-alpha");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("Введите логин и пароль. Роль система определит сама.");
@@ -26,7 +24,7 @@ export function SmartLoginForm() {
     }
 
     setMessage(`Роль распознана: ${roleLabels[account.role]}. Открываю нужную зону.`);
-    router.push(account.redirectTo);
+    window.location.assign(account.redirectTo);
   }
 
   return (

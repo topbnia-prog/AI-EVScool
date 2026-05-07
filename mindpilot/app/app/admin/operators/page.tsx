@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { AdminShell } from "../../_components/AdminShell";
+import { getActiveEnrollment, getCourseById } from "../../lib/courses";
 import { missions, operators, safetyAlerts } from "../../lib/mockData";
 
 export const metadata: Metadata = {
@@ -10,44 +12,39 @@ export default function AdminOperatorsPage() {
   const activeMission = missions.find((mission) => mission.status === "active");
 
   return (
-    <main className="appPage academyLitePage">
-      <nav className="appNav lightNav">
-        <a href="/admin/safety" className="brand">
-          MindPilot Admin
-        </a>
-        <div>
-          <a href="/admin/safety">Safety</a>
-          <a href="/admin/courses">Courses</a>
-          <a href="/admin/tasks">Tasks</a>
-          <a href="/parent/dashboard">Parent</a>
+    <AdminShell
+      eyebrow="Operators CRM"
+      title="Операторы и карта подхода"
+      description="Админ видит возраст, курс, миссию, MindScan, родительский взгляд, метрики, риски и safety history."
+    >
+      <section className="adminPanel">
+        <div className="adminPanelHeader">
+          <div>
+            <span>Operator list</span>
+            <strong>Фильтры скоро: возраст, язык, курс, риск, активность</strong>
+          </div>
+          <a href="/admin/parents">Parents</a>
         </div>
-      </nav>
-
-      <section className="adminHeader lightHeader">
-        <p className="academyKicker">Operators</p>
-        <h1>Операторы и карта подхода</h1>
-        <p>
-          Здесь админ видит не только возраст и прогресс, а рабочую картину ребёнка: мотивацию,
-          риски, стиль общения, текущую миссию и safety-события. Это нужно до первого урока и
-          перед каждым ручным вмешательством.
-        </p>
-      </section>
-
-      <section className="flowPanel lightPanel taskPagePanel">
         <div className="operatorRows adminOperatorRows">
-          {operators.map((operator) => (
-            <a href={`/admin/operators/${operator.id}`} key={operator.id}>
-              <span>
-                {operator.age} лет · {operator.ageBranch} · {operator.rank}
-              </span>
-              <strong>{operator.displayName}</strong>
-              <p>{operator.adminProfile.headline}</p>
-              <em>Текущая миссия: {activeMission?.title ?? "нет активной миссии"}</em>
-              <small>Safety events: {safetyAlerts.length}</small>
-            </a>
-          ))}
+          {operators.map((operator) => {
+            const enrollment = getActiveEnrollment(operator.id);
+            const course = enrollment ? getCourseById(enrollment.courseId) : undefined;
+
+            return (
+              <a href={`/admin/operators/${operator.id}`} key={operator.id}>
+                <span>
+                  {operator.age} лет · {operator.ageBranch} · {operator.rank}
+                </span>
+                <strong>{operator.displayName}</strong>
+                <p>{operator.adminProfile.headline}</p>
+                <em>Курс: {course?.title ?? "не назначен"}</em>
+                <em>Текущая миссия: {activeMission?.title ?? "нет активной миссии"}</em>
+                <small>Safety events: {safetyAlerts.length}</small>
+              </a>
+            );
+          })}
         </div>
       </section>
-    </main>
+    </AdminShell>
   );
 }

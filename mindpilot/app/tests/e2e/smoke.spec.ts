@@ -12,11 +12,16 @@ const publicRoutes = [
   { path: "/operator/mentor", text: "Напиши наставнику" },
   { path: "/operator/profile", text: "Метрики оператора" },
   { path: "/parent/dashboard", text: "Parent dashboard" },
+  { path: "/admin", text: "Что требует внимания сейчас" },
   { path: "/admin/operators", text: "Операторы" },
   { path: "/admin/operators/operator_alpha", text: "Карта подхода" },
-  { path: "/admin/courses", text: "состояние курса" },
-  { path: "/admin/safety", text: "Safety" },
+  { path: "/admin/courses", text: "Курсы должны" },
+  { path: "/admin/mentor", text: "Наставник должен проходить тесты" },
+  { path: "/admin/safety", text: "Очередь безопасности" },
+  { path: "/admin/parents", text: "Родительский аккаунт" },
+  { path: "/admin/analytics", text: "Метрики нужны" },
   { path: "/admin/tasks", text: "Задачи" },
+  { path: "/admin/settings", text: "Настройки" },
   { path: "/terms", text: "Terms" },
   { path: "/privacy", text: "Privacy" },
   { path: "/parent-consent", text: "Parent Consent" },
@@ -51,4 +56,14 @@ test("unified login routes operator account to operator dashboard", async ({ pag
   await page.getByRole("button", { name: "Войти" }).click();
 
   await expect(page).toHaveURL(/\/operator\/dashboard$/);
+});
+
+test("unified login routes admin account to command center", async ({ page }) => {
+  await page.goto("/login");
+
+  await page.getByLabel("Логин").fill("admin@mindpilot.local");
+  await page.getByLabel("Пароль").fill("admin");
+  await page.getByRole("button", { name: "Войти" }).click();
+
+  await expect(page).toHaveURL(/\/admin$/);
 });

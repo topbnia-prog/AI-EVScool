@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AdminShell } from "../../_components/AdminShell";
 import { courses } from "../../lib/courses";
 
 export const metadata: Metadata = {
@@ -8,29 +9,19 @@ export const metadata: Metadata = {
 
 export default function AdminCoursesPage() {
   return (
-    <main className="appPage academyLitePage">
-      <nav className="appNav lightNav">
-        <a href="/admin/safety" className="brand">
-          MindPilot Admin
-        </a>
-        <div>
-          <a href="/admin/operators">Operators</a>
-          <a href="/admin/tasks">Tasks</a>
-          <a href="/courses">Catalog</a>
+    <AdminShell
+      eyebrow="Course operations"
+      title="Курсы должны проходить QA до публикации"
+      description="Админ видит источник курса, статус запуска, метрики, количество уроков, зависимость от предыдущей траектории и готовность к safety-review."
+    >
+      <section className="adminPanel">
+        <div className="adminPanelHeader">
+          <div>
+            <span>Course registry</span>
+            <strong>Каталог и готовность</strong>
+          </div>
+          <a href="/courses">Public catalog</a>
         </div>
-      </nav>
-
-      <section className="adminHeader lightHeader">
-        <p className="academyKicker">Course operations</p>
-        <h1>Админ видит не только уроки, а состояние курса.</h1>
-        <p>
-          Здесь фиксируется источник курса, статус запуска, метрики, количество уроков и зависимость
-          от предыдущей траектории. Это место для будущих QA, переводов, safety-review и публикации
-          новых курсов.
-        </p>
-      </section>
-
-      <section className="flowPanel lightPanel taskPagePanel">
         <div className="adminCourseRows">
           {courses.map((course) => (
             <article key={course.id}>
@@ -62,6 +53,6 @@ export default function AdminCoursesPage() {
           ))}
         </div>
       </section>
-    </main>
+    </AdminShell>
   );
 }

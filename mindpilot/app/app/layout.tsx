@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MindPilot | AI-грамотность для юных операторов",
+  title: "MindPilot | Think clearly. Command AI.",
   description:
-    "Платформа миссий, которая учит детей управлять AI, проверять ответы и думать самостоятельно."
+    "MindPilot trains AI operators: clear thinking, verification, precise prompts and independent decisions."
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html data-scroll-behavior="smooth" lang="en">
       <body>{children}</body>
     </html>
   );

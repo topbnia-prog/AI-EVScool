@@ -2956,6 +2956,41 @@ body {
   gap: 10px;
 }
 
+.academyNavControls {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.languageToggle {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  min-height: 44px;
+  border: 1px solid rgba(22, 32, 51, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 24px rgba(22, 32, 51, 0.08);
+  padding: 4px;
+}
+
+.languageToggle button {
+  min-width: 38px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #667089;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.languageToggle button.active {
+  background: #162033;
+  color: #fffdf6;
+}
+
 .academyNav a:not(.academyBrand),
 .academyActions a,
 .studioHeader a,
@@ -5956,6 +5991,377 @@ body {
 @media (max-width: 640px) {
   .courseMetaGrid,
   .lessonPath {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Admin Operating System */
+.adminShellPage {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  background:
+    radial-gradient(circle at 86% 8%, rgba(155, 215, 239, 0.42), transparent 28%),
+    radial-gradient(circle at 18% 92%, rgba(205, 238, 199, 0.36), transparent 28%),
+    linear-gradient(180deg, #fbfaf5 0%, #f4f8f5 52%, #eef7f9 100%);
+  color: var(--liquid-text);
+}
+
+.adminSidebar {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border-right: 1px solid rgba(22, 32, 51, 0.08);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 12px 0 40px rgba(22, 32, 51, 0.05);
+  backdrop-filter: blur(22px);
+  padding: 22px;
+}
+
+.adminBrand {
+  display: grid;
+  gap: 4px;
+  color: var(--liquid-text);
+}
+
+.adminBrand span {
+  font-size: 18px;
+  font-weight: 760;
+}
+
+.adminBrand strong {
+  color: var(--liquid-muted);
+  font-size: 13px;
+  font-weight: 620;
+}
+
+.adminSidebar nav {
+  display: grid;
+  gap: 8px;
+}
+
+.adminSidebar nav a,
+.adminHeaderActions a,
+.adminPanelHeader a {
+  border: 1px solid rgba(22, 32, 51, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.66);
+  color: var(--liquid-text);
+  box-shadow: 0 10px 24px rgba(22, 32, 51, 0.06);
+  padding: 11px 12px;
+  font-size: 14px;
+  font-weight: 640;
+}
+
+.adminSidebar nav a:hover,
+.adminHeaderActions a:hover,
+.adminPanelHeader a:hover {
+  background: rgba(255, 255, 255, 0.94);
+  transform: translateY(-1px);
+}
+
+.adminDeployLock {
+  margin-top: auto;
+  border: 1px solid rgba(22, 32, 51, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 246, 191, 0.76);
+  padding: 14px;
+}
+
+.adminDeployLock span,
+.adminPanelHeader span,
+.adminKpiCard span,
+.adminAttentionRows span,
+.adminMiniRows span,
+.adminAuditRows span,
+.mentorTestRows span,
+.adminSettingRows span,
+.analyticsFunnel span,
+.parentAdminRows article > span {
+  display: block;
+  color: #667089;
+  font-size: 12px;
+  font-weight: 660;
+}
+
+.adminDeployLock strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--liquid-text);
+  font-size: 14px;
+  font-weight: 640;
+  line-height: 1.35;
+}
+
+.adminWorkspace {
+  width: min(1280px, 100%);
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  padding: 28px clamp(18px, 4vw, 46px) 54px;
+}
+
+.adminWorkspaceHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: start;
+}
+
+.adminWorkspaceHeader h1 {
+  max-width: 860px;
+  margin-top: 12px;
+  color: var(--liquid-text);
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 640;
+  line-height: 1.02;
+}
+
+.adminWorkspaceHeader p:not(.academyKicker) {
+  max-width: 780px;
+  margin-top: 14px;
+  color: var(--liquid-muted);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.adminHeaderActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.adminKpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.adminKpiCard,
+.adminPanel {
+  border: 1px solid rgba(22, 32, 51, 0.09);
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.62)),
+    rgba(255, 255, 255, 0.68);
+  box-shadow: 0 18px 44px rgba(22, 32, 51, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+.adminKpiCard {
+  min-height: 150px;
+  display: grid;
+  align-content: space-between;
+  padding: 18px;
+}
+
+.adminKpiCard.good {
+  background: linear-gradient(135deg, rgba(205, 238, 199, 0.82), rgba(255, 255, 255, 0.72));
+}
+
+.adminKpiCard.watch {
+  background: linear-gradient(135deg, rgba(255, 242, 168, 0.82), rgba(255, 255, 255, 0.72));
+}
+
+.adminKpiCard.risk {
+  background: linear-gradient(135deg, rgba(255, 185, 167, 0.82), rgba(255, 255, 255, 0.72));
+}
+
+.adminKpiCard strong {
+  color: var(--liquid-text);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 650;
+}
+
+.adminKpiCard p {
+  color: var(--liquid-muted);
+  line-height: 1.4;
+}
+
+.adminCommandGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.adminPanel {
+  padding: clamp(18px, 3vw, 24px);
+}
+
+.adminWidePanel {
+  grid-column: span 1;
+}
+
+.adminPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.adminPanelHeader strong,
+.adminPanel h2 {
+  display: block;
+  margin-top: 6px;
+  color: var(--liquid-text);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 640;
+}
+
+.adminAttentionRows,
+.adminMiniRows,
+.adminAuditRows,
+.mentorTestRows,
+.adminSettingRows,
+.parentAdminRows,
+.analyticsFunnel {
+  display: grid;
+  gap: 10px;
+}
+
+.adminAttentionRows a,
+.adminMiniRows a,
+.adminMiniRows div,
+.adminAuditRows div,
+.mentorTestRows div,
+.adminSettingRows div,
+.parentAdminRows article,
+.analyticsFunnel div {
+  border: 1px solid rgba(22, 32, 51, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--liquid-text);
+  padding: 14px;
+}
+
+.adminAttentionRows strong,
+.adminMiniRows strong,
+.adminAuditRows strong,
+.mentorTestRows strong,
+.adminSettingRows strong,
+.parentAdminRows strong,
+.analyticsFunnel strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--liquid-text);
+  font-weight: 640;
+}
+
+.adminAttentionRows p,
+.adminMiniRows p,
+.adminAuditRows p,
+.mentorTestRows p,
+.adminSettingRows p,
+.parentAdminRows p,
+.analyticsFunnel p,
+.adminPanel p {
+  margin-top: 8px;
+  color: var(--liquid-muted);
+  line-height: 1.5;
+}
+
+.adminMiniRows.twoColumn,
+.mentorTestRows,
+.adminSettingRows,
+.analyticsFunnel {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mentorTestRows div.needs_review,
+.adminSettingRows div.review {
+  background: rgba(255, 242, 168, 0.74);
+}
+
+.mentorTestRows div.missing,
+.adminSettingRows div.blocked,
+.adminSafetyRows div.high {
+  background: rgba(255, 185, 167, 0.74);
+}
+
+.mentorTestRows div.passing,
+.adminSettingRows div.ok {
+  background: rgba(205, 238, 199, 0.74);
+}
+
+.mentorTestRows em,
+.adminSettingRows em {
+  display: block;
+  margin-top: 8px;
+  color: #667089;
+  font-style: normal;
+  font-size: 13px;
+}
+
+.adminBigNumber strong {
+  display: block;
+  color: var(--liquid-text);
+  font-size: clamp(46px, 7vw, 82px);
+  font-weight: 620;
+}
+
+.analyticsFunnel div {
+  display: grid;
+  gap: 6px;
+}
+
+.analyticsFunnel strong {
+  font-size: 28px;
+}
+
+.parentAdminRows article {
+  display: grid;
+  gap: 12px;
+}
+
+.adminSafetyRows div {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 1080px) {
+  .adminShellPage {
+    grid-template-columns: 1fr;
+  }
+
+  .adminSidebar {
+    position: relative;
+    min-height: auto;
+  }
+
+  .adminSidebar nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .adminDeployLock {
+    margin-top: 0;
+  }
+
+  .adminKpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .adminWorkspaceHeader,
+  .adminPanelHeader {
+    flex-direction: column;
+  }
+
+  .adminCommandGrid,
+  .adminMiniRows.twoColumn,
+  .mentorTestRows,
+  .adminSettingRows,
+  .analyticsFunnel {
+    grid-template-columns: 1fr;
+  }
+
+  .adminSidebar nav,
+  .adminKpiGrid {
     grid-template-columns: 1fr;
   }
 }

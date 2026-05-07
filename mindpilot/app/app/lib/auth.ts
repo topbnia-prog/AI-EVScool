@@ -23,7 +23,7 @@ export const authAccounts: AuthAccount[] = [
     identifier: "admin@mindpilot.local",
     displayName: "MindPilot Admin",
     passwordHint: "admin",
-    redirectTo: "/admin/safety"
+    redirectTo: "/admin"
   }
 ];
 

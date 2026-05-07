@@ -17,6 +17,16 @@ export type MentorIntent =
 
 export type SafetySeverity = "info" | "low" | "medium" | "high";
 
+export type AdminAttentionArea =
+  | "Safety"
+  | "Operators"
+  | "Courses"
+  | "Mentor"
+  | "Parents"
+  | "Legal"
+  | "Billing"
+  | "System";
+
 export type OperatorMetric = {
   id: string;
   label: string;
@@ -162,6 +172,65 @@ export type AdminTask = {
   area: string;
   status: "Todo" | "Doing" | "Done";
   task: string;
+};
+
+export type AdminKpi = {
+  label: string;
+  value: string;
+  trend: string;
+  tone: "good" | "watch" | "risk" | "neutral";
+};
+
+export type AdminAttentionItem = {
+  id: string;
+  priority: "Critical" | "High" | "Medium" | "Low";
+  area: AdminAttentionArea;
+  title: string;
+  detail: string;
+  owner: string;
+  href: string;
+};
+
+export type AdminAuditLog = {
+  id: string;
+  actor: string;
+  action: string;
+  target: string;
+  time: string;
+  severity: SafetySeverity;
+};
+
+export type MentorBehaviorTest = {
+  id: string;
+  category: "Homework" | "Reflection" | "Safety" | "Out of context" | "Personal data";
+  prompt: string;
+  expectedBehavior: string;
+  status: "passing" | "needs_review" | "missing";
+  lastRun: string;
+};
+
+export type AdminParentRecord = {
+  id: string;
+  displayName: string;
+  email: string;
+  operators: string[];
+  consentStatus: ParentAccount["consentStatus"];
+  billingStatus: ParentAccount["billingStatus"];
+  weeklySummaryStatus: "ready" | "draft" | "blocked";
+  nextAction: string;
+};
+
+export type AnalyticsFunnelStep = {
+  label: string;
+  count: number;
+  conversion: string;
+};
+
+export type PlatformSetting = {
+  key: string;
+  value: string;
+  status: "ok" | "review" | "blocked";
+  note: string;
 };
 
 export type SafetyAlert = {

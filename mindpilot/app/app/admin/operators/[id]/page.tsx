@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { AdminShell } from "../../../_components/AdminShell";
+import { getActiveEnrollment, getCourseById } from "../../../lib/courses";
 import {
   missions,
   operatorProfile,
@@ -14,32 +16,17 @@ export const metadata: Metadata = {
 
 export default function AdminOperatorDetailPage() {
   const activeMission = missions.find((mission) => mission.status === "active");
+  const activeEnrollment = getActiveEnrollment(operatorProfile.id);
+  const activeCourse = activeEnrollment ? getCourseById(activeEnrollment.courseId) : undefined;
 
   return (
-    <main className="appPage academyLitePage">
-      <nav className="appNav lightNav">
-        <a href="/admin/operators" className="brand">
-          Operator Detail
-        </a>
-        <div>
-          <a href="/admin/operators">Operators</a>
-          <a href="/admin/safety">Safety</a>
-          <a href="/admin/courses">Courses</a>
-          <a href="/admin/tasks">Tasks</a>
-        </div>
-      </nav>
-
-      <section className="adminHeader lightHeader">
-        <p className="academyKicker">Admin child profile</p>
-        <h1>{operatorProfile.displayName}</h1>
-        <p>
-          Это рабочая “картина ребёнка” для админа: как начать первый урок, каким тоном общаться,
-          что мотивирует, где возможны риски и какие данные пришли от родителя и MindScan.
-        </p>
-      </section>
-
+    <AdminShell
+      eyebrow="Admin child profile"
+      title={operatorProfile.displayName}
+      description="Рабочая картина ребёнка для админа: первый урок, тон наставника, мотиваторы, риски, данные от родителя и MindScan."
+    >
       <section className="adminChildLayout">
-        <article className="flowPanel lightPanel childPortraitCard">
+        <article className="adminPanel childPortraitCard">
           <span className="baseBadge">Карта подхода</span>
           <h2>{operatorProfile.adminProfile.headline}</h2>
           <p>{operatorProfile.adminProfile.approach}</p>
@@ -53,6 +40,10 @@ export default function AdminOperatorDetailPage() {
               <strong>{operatorProfile.ageBranch}</strong>
             </div>
             <div>
+              <span>Курс</span>
+              <strong>{activeCourse?.title}</strong>
+            </div>
+            <div>
               <span>Миссия</span>
               <strong>{activeMission?.title}</strong>
             </div>
@@ -63,7 +54,7 @@ export default function AdminOperatorDetailPage() {
           </div>
         </article>
 
-        <article className="flowPanel lightPanel">
+        <article className="adminPanel">
           <h2>Первый урок</h2>
           <div className="adminProfileList">
             {operatorProfile.adminProfile.firstSessionPlan.map((step, index) => (
@@ -75,7 +66,7 @@ export default function AdminOperatorDetailPage() {
           </div>
         </article>
 
-        <article className="flowPanel lightPanel">
+        <article className="adminPanel">
           <h2>Взгляд родителя</h2>
           <div className="adminProfileList">
             <div>
@@ -97,7 +88,7 @@ export default function AdminOperatorDetailPage() {
           </div>
         </article>
 
-        <article className="flowPanel lightPanel">
+        <article className="adminPanel">
           <h2>MindScan ребёнка</h2>
           <div className="adminProfileList">
             <div>
@@ -119,7 +110,7 @@ export default function AdminOperatorDetailPage() {
           </div>
         </article>
 
-        <article className="flowPanel lightPanel">
+        <article className="adminPanel">
           <h2>Мотиваторы и риски</h2>
           <div className="tagCloud">
             {operatorProfile.adminProfile.motivators.map((item) => (
@@ -133,7 +124,7 @@ export default function AdminOperatorDetailPage() {
           </div>
         </article>
 
-        <article className="flowPanel lightPanel">
+        <article className="adminPanel">
           <h2>Метрики и safety</h2>
           <div className="metricTiles">
             {operatorProfile.metrics.map((metric) => (
@@ -158,11 +149,11 @@ export default function AdminOperatorDetailPage() {
         </article>
       </section>
 
-      <section className="flowPanel lightPanel adminSessionNote">
+      <section className="adminPanel adminSessionNote">
         <h2>Последний summary</h2>
         <p>{weeklySummary.mainInsight}</p>
         <div className="softNotice">{weeklySummary.parentPrompt}</div>
       </section>
-    </main>
+    </AdminShell>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AdminShell } from "../../_components/AdminShell";
 import { safetyAlerts } from "../../lib/mockData";
 
 export const metadata: Metadata = {
@@ -8,34 +9,23 @@ export const metadata: Metadata = {
 
 export default function AdminSafetyPage() {
   return (
-    <main className="appPage academyLitePage">
-      <nav className="appNav lightNav">
-        <a href="/" className="brand">
-          MindPilot Admin
-        </a>
-        <div>
-          <a href="/admin/tasks">Tasks</a>
-          <a href="/admin/courses">Courses</a>
-          <a href="/admin/operators">Operators</a>
-          <a href="/operator/dashboard">Operator</a>
-        </div>
-      </nav>
-
-      <section className="adminHeader lightHeader">
-        <p className="academyKicker">Safety controls</p>
-        <h1>Очередь безопасности</h1>
-        <p>
-          Перед запуском с детьми здесь должны жить safety-alerts, QA-события наставника, ручные
-          решения админа и история реакции на чувствительные темы.
-        </p>
-      </section>
-
-      <section className="adminGrid">
-        <div className="flowPanel lightPanel">
-          <h2>Сигналы</h2>
-          <div className="alertRows">
+    <AdminShell
+      eyebrow="Safety center"
+      title="Очередь безопасности"
+      description="Safety Center хранит события, категории риска, следующий шаг админа, parent notification flag и будущие resolution notes."
+    >
+      <section className="adminCommandGrid">
+        <article className="adminPanel adminWidePanel">
+          <div className="adminPanelHeader">
+            <div>
+              <span>Safety queue</span>
+              <strong>Сигналы</strong>
+            </div>
+            <a href="/admin/mentor">Mentor tests</a>
+          </div>
+          <div className="alertRows adminSafetyRows">
             {safetyAlerts.map((alert) => (
-              <div key={alert.id}>
+              <div className={alert.severity} key={alert.id}>
                 <span>
                   {alert.id} · {alert.severity}
                 </span>
@@ -45,10 +35,15 @@ export default function AdminSafetyPage() {
               </div>
             ))}
           </div>
-        </div>
+        </article>
 
-        <aside className="flowPanel lightPanel">
-          <h2>Guardrails до запуска</h2>
+        <aside className="adminPanel">
+          <div className="adminPanelHeader">
+            <div>
+              <span>Guardrails</span>
+              <strong>До запуска с детьми</strong>
+            </div>
+          </div>
           <ul className="adminChecks">
             <li>System prompt versioning</li>
             <li>Safety classifier before and after AI response</li>
@@ -58,6 +53,6 @@ export default function AdminSafetyPage() {
           </ul>
         </aside>
       </section>
-    </main>
+    </AdminShell>
   );
 }
