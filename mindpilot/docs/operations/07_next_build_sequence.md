@@ -189,7 +189,7 @@ Why:
 Do not create these before the shared local model and user flow are clearer:
 
 - real payment integration
-- real Claude mentor API
+- real external AI mentor API
 - real production auth
 - public deploy update
 - broad marketing pages

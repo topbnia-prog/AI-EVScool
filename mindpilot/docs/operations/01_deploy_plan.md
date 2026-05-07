@@ -29,7 +29,7 @@ Vercel project:
 5. Commit and push to GitHub.
 6. Deploy manually only when requested.
 7. Add Supabase client setup when accounts are ready.
-8. Add Claude and PayPal environment variables when accounts are ready.
+8. Add AI provider and PayPal environment variables when accounts are ready.
 9. Replace shell page with real operator dashboard.
 
 ## Environment Variables
@@ -39,7 +39,11 @@ To add later:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `AI_PROVIDER`
+- `AI_MODEL`
+- `OPENAI_API_KEY`
 - `ANTHROPIC_API_KEY`
+- `GEMINI_API_KEY`
 - `PAYPAL_CLIENT_ID`
 - `PAYPAL_CLIENT_SECRET`
 

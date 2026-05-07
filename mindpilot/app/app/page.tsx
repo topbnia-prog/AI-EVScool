@@ -15,6 +15,15 @@ const growthMetrics = [
   { label: "Автономность", value: "2/5", tone: "violet" }
 ];
 
+const baseZones = [
+  { label: "Карта миссий", value: "30 дней", icon: "✦" },
+  { label: "Наставник", value: "только вопросы", icon: "?" },
+  { label: "Радар навыков", value: "6 метрик", icon: "◎" },
+  { label: "Safety", value: "админ-контроль", icon: "✓" }
+];
+
+const orbitNodes = ["AI", "FACT", "PROMPT", "WHY", "SOURCE"];
+
 const principles = [
   {
     title: "Миссии вместо уроков",
@@ -75,25 +84,48 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="missionConsole growthConsole" aria-label="Карта миссий MindPilot">
-          <div className="consoleHeader">
-            <span>Operator I</span>
-            <strong>340 XP</strong>
+        <div className="pilotBaseVisual" aria-label="Визуальная база оператора MindPilot">
+          <div className="baseOrbit" aria-hidden="true">
+            {orbitNodes.map((node, index) => (
+              <span
+                key={node}
+                style={
+                  {
+                    "--node-index": index,
+                    "--node-count": orbitNodes.length
+                  } as CSSProperties
+                }
+              >
+                {node}
+              </span>
+            ))}
           </div>
-          <div className="mentorPanel compactMentor">
-            <div className="mentorAvatar">
-              <span />
-              <span />
-            </div>
-            <div>
-              <strong>AI-наставник</strong>
-              <p>Я не дам готовый ответ. Я помогу тебе проверить свою мысль.</p>
+
+          <div className="pilotCoreCard">
+            <span className="coreSignal">личная база</span>
+            <strong>Operator Base</strong>
+            <p>Миссия дня, наставник и карта роста собраны в одном игровом интерфейсе.</p>
+            <div className="coreRings" aria-hidden="true">
+              <i />
+              <i />
+              <i />
             </div>
           </div>
-          <div className="pathList compactPath">
+
+          <div className="baseZoneGrid">
+            {baseZones.map((zone) => (
+              <div key={zone.label}>
+                <span>{zone.icon}</span>
+                <strong>{zone.label}</strong>
+                <p>{zone.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="missionRail">
             {missionPath.map((item, index) => (
               <a
-                className={`pathItem ${item.status}`}
+                className={`missionNode ${item.status}`}
                 href={item.status === "locked" ? "/operator/dashboard" : "/operator/mission/2"}
                 key={item.label}
                 style={{ "--delay": `${index * 0.12}s` } as CSSProperties}
@@ -106,6 +138,7 @@ export default function Home() {
               </a>
             ))}
           </div>
+
         </div>
       </section>
 

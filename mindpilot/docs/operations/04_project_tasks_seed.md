@@ -22,11 +22,11 @@ This file tracks tasks that should appear in the future admin dashboard task sys
 | High | App | Done | Create parent dashboard with summary, consent, billing, progress, and safety placeholders | `app/app/parent/dashboard/page.tsx` |
 | High | App | Done | Create operator login and MindScan routes | `app/app/operator/login/page.tsx` |
 | High | App | Done | Refactor mission runner to read mission data and support all 6 steps | `app/app/operator/mission/[id]/page.tsx` |
-| High | AI Mentor | Done | Create frontend mentor guardrail states before real Claude integration | `app/app/lib/mockData.ts` |
+| High | AI Mentor | Done | Create frontend mentor guardrail states before real AI provider integration | `app/app/lib/mockData.ts` |
 | High | Admin | Done | Create admin operators list and operator detail pages | `app/app/admin/operators/page.tsx` |
 | High | Operations | Done | Create canonical MVP build spec from accepted docs | `docs/operations/08_mvp_build_spec.md` |
 | High | Technical | Todo | Plan Supabase schema and RLS from current TypeScript data shapes | `docs/operations/08_mvp_build_spec.md` |
-| High | Technical | Todo | Build mentor API route with schema validation and mock provider before Claude | `docs/operations/08_mvp_build_spec.md` |
+| High | Technical | Todo | Build mentor API route with schema validation and mock provider before any external AI provider | `docs/operations/08_mvp_build_spec.md` |
 | Medium | Technical | Done | Scaffold Next.js app | `docs/operations/01_deploy_plan.md` |
 | Medium | Deploy | Done | Configure manual Vercel deploy only | `docs/operations/01_deploy_plan.md` |
 | Medium | Technical | Done | Add frontend operator dashboard prototype to local app | `app/app/operator/dashboard/page.tsx` |

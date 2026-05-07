@@ -179,7 +179,7 @@ The frontend currently includes visible guardrail scenarios:
 - out-of-context redirect
 - safety fallback
 
-Before Claude integration, these states must become test cases. A real AI response must not be allowed to decide progress by itself.
+Before real AI provider integration, these states must become test cases. A real AI response must not be allowed to decide progress by itself.
 
 ## Admin Flow
 
@@ -241,9 +241,9 @@ The local app should pass:
 8. Add safety alerts.
 9. Add retention job.
 
-## Claude Integration Order
+## AI Provider Integration Order
 
-1. Build mentor API route without calling Claude.
+1. Build mentor API route without calling an external provider.
 2. Validate request state server-side.
 3. Validate JSON response schema.
 4. Add guardrail test fixtures.

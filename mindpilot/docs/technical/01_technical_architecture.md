@@ -11,7 +11,7 @@ Planned MVP:
 - Supabase Postgres
 - Supabase Auth
 - Supabase Row Level Security
-- Claude API for mentor dialogue and summaries
+- Configurable AI provider for mentor dialogue and summaries
 - PayPal for MVP payments
 - Vercel deploy
 
@@ -27,9 +27,9 @@ Vercel should be configured to deploy from that folder.
 
 ## AI Design
 
-Claude does not create full course content from scratch.
+The AI provider does not create full course content from scratch.
 
-Claude is used for:
+The configured provider is used for:
 
 - MindScan profile analysis
 - Socratic mentor dialogue inside a mission
@@ -37,6 +37,8 @@ Claude is used for:
 - Suggested metric deltas
 
 Course content is prepared, versioned, and stored in the database.
+
+The application must call AI only through the MindPilot mentor engine. Provider-specific SDKs such as OpenAI, Anthropic, Gemini, or a custom model are adapters, not product architecture.
 
 ## Guardrails
 

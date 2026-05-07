@@ -4492,3 +4492,410 @@ body {
 .lightPanel {
   box-shadow: 0 14px 34px rgba(22, 32, 51, 0.07);
 }
+
+/* MindPilot visual language: personal growth base */
+.academyPage {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(255, 218, 198, 0.56), transparent 31%),
+    radial-gradient(circle at 82% 9%, rgba(191, 232, 245, 0.74), transparent 30%),
+    radial-gradient(circle at 70% 86%, rgba(205, 238, 199, 0.58), transparent 26%),
+    linear-gradient(180deg, #fffdf6 0%, #f3f7ee 48%, #f7fbff 100%);
+  color: #172033;
+}
+
+.academyPage::before {
+  opacity: 0.26;
+}
+
+.academyHero.compactHero {
+  align-items: center;
+  grid-template-columns: minmax(0, 0.82fr) minmax(560px, 1.18fr);
+}
+
+.pilotBaseVisual {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+  border: 1px solid rgba(23, 32, 51, 0.09);
+  border-radius: 34px;
+  background:
+    linear-gradient(rgba(23, 32, 51, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 32, 51, 0.03) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(239, 249, 245, 0.78));
+  background-size: 34px 34px, 34px 34px, auto;
+  box-shadow: 0 28px 70px rgba(23, 32, 51, 0.13);
+  padding: clamp(20px, 3vw, 34px);
+}
+
+.pilotBaseVisual::before,
+.pilotBaseVisual::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.pilotBaseVisual::before {
+  inset: 9% 11% auto auto;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(155, 215, 239, 0.55), transparent 68%);
+  animation: basePulse 5.8s ease-in-out infinite;
+}
+
+.pilotBaseVisual::after {
+  right: -64px;
+  bottom: -70px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 218, 198, 0.52), transparent 70%);
+}
+
+.baseOrbit {
+  position: absolute;
+  inset: 55px 70px auto auto;
+  width: 290px;
+  height: 290px;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 999px;
+  animation: slowSpin 28s linear infinite;
+}
+
+.baseOrbit::before,
+.baseOrbit::after {
+  content: "";
+  position: absolute;
+  inset: 42px;
+  border: 1px dashed rgba(23, 32, 51, 0.12);
+  border-radius: inherit;
+}
+
+.baseOrbit::after {
+  inset: 92px;
+  border-style: solid;
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.baseOrbit span {
+  --angle: calc((360deg / var(--node-count)) * var(--node-index));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  width: 62px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #315b67;
+  font-size: 11px;
+  font-weight: 720;
+  transform: rotate(var(--angle)) translate(146px) rotate(calc(-1 * var(--angle)));
+  transform-origin: center;
+  box-shadow: 0 10px 22px rgba(23, 32, 51, 0.08);
+}
+
+.pilotCoreCard {
+  position: relative;
+  z-index: 2;
+  width: min(360px, 100%);
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 22px 44px rgba(23, 32, 51, 0.11);
+  padding: 24px;
+  backdrop-filter: blur(16px);
+}
+
+.coreSignal {
+  width: max-content;
+  border-radius: 999px;
+  background: rgba(205, 238, 199, 0.88);
+  color: #294f42;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 10px;
+}
+
+.pilotCoreCard strong {
+  color: #172033;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 660;
+  line-height: 1;
+}
+
+.pilotCoreCard p,
+.mentorSignalCard p,
+.baseZoneGrid p,
+.missionNode span {
+  color: #5a6578;
+  line-height: 1.45;
+}
+
+.coreRings {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.coreRings i {
+  width: 42px;
+  height: 8px;
+  border-radius: 999px;
+  background: #89d9c8;
+  animation: ringLoad 2.6s ease-in-out infinite;
+}
+
+.coreRings i:nth-child(2) {
+  width: 66px;
+  background: #9bd7ef;
+  animation-delay: 0.16s;
+}
+
+.coreRings i:nth-child(3) {
+  width: 34px;
+  background: #ffd6c6;
+  animation-delay: 0.32s;
+}
+
+.baseZoneGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+  width: min(230px, 42%);
+  margin-top: 18px;
+}
+
+.baseZoneGrid div {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 2px 10px;
+  align-items: center;
+  min-height: 70px;
+  border: 1px solid rgba(23, 32, 51, 0.09);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 12px;
+  box-shadow: 0 14px 32px rgba(23, 32, 51, 0.08);
+}
+
+.baseZoneGrid span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 12px;
+  background: #bfe8f5;
+  color: #172033;
+  font-size: 18px;
+}
+
+.baseZoneGrid strong {
+  color: #172033;
+  font-size: 14px;
+  font-weight: 640;
+}
+
+.baseZoneGrid p {
+  grid-column: 2;
+  font-size: 12px;
+}
+
+.missionRail {
+  position: absolute;
+  z-index: 3;
+  right: 24px;
+  bottom: 32px;
+  width: min(390px, 56%);
+  display: grid;
+  gap: 10px;
+}
+
+.missionNode {
+  --node-color: #cdeec7;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 30px rgba(23, 32, 51, 0.09);
+  padding: 12px;
+  animation: nodeEnter 0.7s ease both;
+  animation-delay: var(--delay);
+}
+
+.missionNode.active {
+  --node-color: #bfe8f5;
+  border-color: rgba(42, 107, 196, 0.34);
+  transform: translateX(-18px);
+}
+
+.missionNode.locked {
+  opacity: 0.58;
+}
+
+.missionNode i {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--node-color);
+  color: #172033;
+  font-style: normal;
+  font-weight: 720;
+}
+
+.missionNode b {
+  display: block;
+  margin-bottom: 2px;
+  color: #172033;
+  font-weight: 660;
+}
+
+.mentorSignalCard {
+  position: absolute;
+  z-index: 4;
+  left: 34px;
+  bottom: 34px;
+  width: min(280px, 42%);
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 42px rgba(23, 32, 51, 0.11);
+  padding: 14px;
+  backdrop-filter: blur(16px);
+}
+
+.mentorSignalCard > span {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 36% 38%, #ffffff 0 9%, transparent 10%),
+    radial-gradient(circle at 64% 38%, #ffffff 0 9%, transparent 10%),
+    linear-gradient(135deg, #9bd7ef, #89d9c8);
+}
+
+.mentorSignalCard > span::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(23, 32, 51, 0.36);
+}
+
+.mentorSignalCard strong {
+  color: #172033;
+  font-weight: 660;
+}
+
+@keyframes slowSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes basePulse {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.62;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.92;
+  }
+}
+
+@keyframes ringLoad {
+  0%,
+  100% {
+    transform: scaleX(0.72);
+    opacity: 0.62;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes nodeEnter {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .academyHero.compactHero {
+    grid-template-columns: 1fr;
+  }
+
+  .pilotBaseVisual {
+    min-height: 720px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pilotBaseVisual {
+    min-height: auto;
+    display: grid;
+    gap: 16px;
+  }
+
+  .baseOrbit {
+    position: relative;
+    inset: auto;
+    width: min(250px, 100%);
+    height: 250px;
+    margin: 0 auto;
+  }
+
+  .baseOrbit span {
+    transform: rotate(var(--angle)) translate(124px) rotate(calc(-1 * var(--angle)));
+  }
+
+  .missionRail,
+  .mentorSignalCard {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+
+  .missionNode.active {
+    transform: none;
+  }
+
+  .baseZoneGrid {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .mentorSignalCard {
+    width: 100%;
+  }
+}
