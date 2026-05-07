@@ -1,5 +1,10 @@
 import type { CSSProperties } from "react";
-import { DashboardPhone, ProfilePhone } from "./_components/OperatorPhone";
+import {
+  GrowthRadar3D,
+  MentorCore3D,
+  OperatorBase3D,
+  SafetyCube3D
+} from "./_components/MindPilot3D";
 
 const missionPath = [
   { label: "Старт", detail: "Понять, что AI не магия", status: "done" },
@@ -188,9 +193,35 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="growthPhonePair">
-          <DashboardPhone />
-          <ProfilePhone />
+        <div className="growth3DGallery" aria-label="3D визуалы MindPilot">
+          <article className="growth3DCard primary">
+            <OperatorBase3D />
+            <div>
+              <span>Личная база</span>
+              <strong>Не экран школы, а место где ребёнок растёт.</strong>
+            </div>
+          </article>
+          <article className="growth3DCard">
+            <MentorCore3D />
+            <div>
+              <span>Наставник</span>
+              <strong>AI ведёт вопросами и не делает работу за ребёнка.</strong>
+            </div>
+          </article>
+          <article className="growth3DCard">
+            <GrowthRadar3D />
+            <div>
+              <span>Радар навыков</span>
+              <strong>Ребёнок видит рост, а не оценки и давление.</strong>
+            </div>
+          </article>
+          <article className="growth3DCard">
+            <SafetyCube3D />
+            <div>
+              <span>Safety</span>
+              <strong>Админ видит сигналы риска до того, как это станет проблемой.</strong>
+            </div>
+          </article>
         </div>
       </section>
 

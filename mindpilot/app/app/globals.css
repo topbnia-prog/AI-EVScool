@@ -4493,6 +4493,377 @@ body {
   box-shadow: 0 14px 34px rgba(22, 32, 51, 0.07);
 }
 
+/* 3D visual system */
+.growth3DGallery {
+  display: grid;
+  gap: 14px;
+}
+
+.growth3DCard {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.76fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 14% 20%, rgba(191, 232, 245, 0.42), transparent 36%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(248, 253, 246, 0.74));
+  box-shadow: 0 20px 52px rgba(23, 32, 51, 0.1);
+  padding: 16px;
+}
+
+.growth3DCard.primary {
+  min-height: 230px;
+  background:
+    radial-gradient(circle at 22% 22%, rgba(255, 218, 198, 0.5), transparent 34%),
+    radial-gradient(circle at 76% 72%, rgba(205, 238, 199, 0.5), transparent 34%),
+    rgba(255, 255, 255, 0.86);
+}
+
+.growth3DCard span {
+  display: block;
+  width: max-content;
+  margin-bottom: 9px;
+  border-radius: 999px;
+  background: rgba(191, 232, 245, 0.72);
+  color: #315b67;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 10px;
+}
+
+.growth3DCard strong {
+  display: block;
+  color: #172033;
+  font-size: clamp(17px, 2vw, 23px);
+  font-weight: 640;
+  line-height: 1.15;
+}
+
+.mp3dScene {
+  position: relative;
+  min-height: 178px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(rgba(23, 32, 51, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 32, 51, 0.035) 1px, transparent 1px),
+    linear-gradient(160deg, rgba(236, 250, 255, 0.72), rgba(255, 250, 232, 0.42));
+  background-size: 28px 28px, 28px 28px, auto;
+  perspective: 760px;
+  transform-style: preserve-3d;
+}
+
+.mp3dGlow,
+.mp3dHalo {
+  position: absolute;
+  inset: auto 14% 8% 14%;
+  height: 34%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(127, 215, 204, 0.5), transparent 72%);
+  filter: blur(6px);
+}
+
+.mp3dPlatform {
+  position: absolute;
+  left: 12%;
+  right: 10%;
+  bottom: 30px;
+  height: 98px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #eff9ff, #e3f4e6);
+  box-shadow: 0 24px 42px rgba(23, 32, 51, 0.16);
+  transform: rotateX(58deg) rotateZ(-18deg);
+  transform-style: preserve-3d;
+}
+
+.mp3dPlatform::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 16px;
+}
+
+.mp3dTower {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #bfe8f5, #7fd7cc);
+  box-shadow: 0 18px 30px rgba(23, 32, 51, 0.18);
+  transform: translateZ(48px) rotateX(-58deg) rotateZ(18deg);
+}
+
+.mp3dTower.main {
+  left: 18px;
+  top: -22px;
+}
+
+.mp3dTower.side {
+  right: 30px;
+  top: -8px;
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(145deg, #ffd6c6, #fff6bf);
+}
+
+.mp3dTower span {
+  width: 25px;
+  height: 25px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.mp3dTower strong,
+.mp3dPanel b {
+  color: #172033;
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.mp3dPanel {
+  position: absolute;
+  left: 76px;
+  top: 24px;
+  display: grid;
+  gap: 5px;
+  width: 112px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 14px 28px rgba(23, 32, 51, 0.14);
+  padding: 12px;
+  transform: translateZ(36px) rotateX(-58deg) rotateZ(18deg);
+}
+
+.mp3dPanel i {
+  height: 7px;
+  border-radius: 999px;
+  background: #9bd7ef;
+}
+
+.mp3dPanel i:nth-child(3) {
+  width: 72%;
+  background: #89d9c8;
+}
+
+.mp3dPanel i:nth-child(4) {
+  width: 48%;
+  background: #ffd6c6;
+}
+
+.mp3dPath {
+  position: absolute;
+  left: 32px;
+  right: 28px;
+  bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mp3dPath span {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 0 0 6px rgba(127, 215, 204, 0.2);
+  transform: translateZ(22px);
+}
+
+.mp3dMentorScene {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(191, 232, 245, 0.78), transparent 42%),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.92), rgba(239, 247, 255, 0.62));
+}
+
+.mp3dMentorCore {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  width: 86px;
+  height: 86px;
+  place-items: center;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #7fd7cc, #9bd7ef);
+  box-shadow: 0 24px 44px rgba(49, 91, 103, 0.24);
+  transform: translate(-50%, -50%) rotateX(12deg) rotateY(-18deg);
+  transform-style: preserve-3d;
+}
+
+.mp3dMentorCore span {
+  position: absolute;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.mp3dMentorCore span:first-child {
+  left: 27px;
+}
+
+.mp3dMentorCore span:nth-child(2) {
+  right: 27px;
+}
+
+.mp3dMentorCore i {
+  position: absolute;
+  bottom: 25px;
+  width: 28px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(23, 32, 51, 0.38);
+}
+
+.mp3dQuestionCard {
+  position: absolute;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #315b67;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 14px 28px rgba(23, 32, 51, 0.1);
+  padding: 9px 11px;
+}
+
+.mp3dQuestionCard.one {
+  left: 10%;
+  top: 22%;
+  transform: rotate(-8deg);
+}
+
+.mp3dQuestionCard.two {
+  right: 8%;
+  bottom: 22%;
+  transform: rotate(8deg);
+}
+
+.mp3dRadar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 112px;
+  height: 112px;
+  border: 2px solid rgba(49, 91, 103, 0.16);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 22px 44px rgba(23, 32, 51, 0.14);
+  transform: translate(-50%, -50%) rotateX(58deg) rotateZ(45deg);
+  transform-style: preserve-3d;
+}
+
+.mp3dRadar span {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(49, 91, 103, 0.12);
+  border-radius: 24px;
+}
+
+.mp3dRadar span:nth-child(2) {
+  inset: 28px;
+}
+
+.mp3dRadar span:nth-child(3) {
+  inset: 42px;
+}
+
+.mp3dRadar span:nth-child(4) {
+  inset: 54px;
+  background: #7fd7cc;
+}
+
+.mp3dRadar b {
+  position: absolute;
+  inset: 23px 34px 18px 22px;
+  border-radius: 20px;
+  background: rgba(155, 215, 239, 0.56);
+  clip-path: polygon(50% 0, 94% 30%, 80% 88%, 22% 100%, 0 38%);
+  transform: translateZ(26px);
+}
+
+.mp3dMetricChip {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  color: #315b67;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(23, 32, 51, 0.09);
+  padding: 8px 10px;
+}
+
+.mp3dMetricChip.top {
+  left: 14%;
+  top: 14%;
+}
+
+.mp3dMetricChip.right {
+  right: 8%;
+  top: 45%;
+}
+
+.mp3dMetricChip.bottom {
+  left: 18%;
+  bottom: 12%;
+}
+
+.mp3dCube {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 92px;
+  height: 92px;
+  transform: translate(-50%, -50%) rotateX(-22deg) rotateY(-34deg);
+  transform-style: preserve-3d;
+}
+
+.mp3dCube span {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #cdeec7, #9bd7ef);
+  box-shadow: 0 22px 42px rgba(23, 32, 51, 0.15);
+}
+
+.mp3dCube .front {
+  inset: 0;
+  color: #172033;
+  font-size: 15px;
+  font-weight: 760;
+  transform: translateZ(46px);
+}
+
+.mp3dCube .side {
+  inset: 0;
+  background: #7fd7cc;
+  transform: rotateY(90deg) translateZ(46px);
+}
+
+.mp3dCube .top {
+  inset: 0;
+  background: #fff6bf;
+  transform: rotateX(90deg) translateZ(46px);
+}
+
+.mp3dShieldRing {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  border: 1px dashed rgba(49, 91, 103, 0.24);
+  border-radius: 999px;
+  transform: translate(-50%, -50%) rotateX(62deg);
+}
+
 /* MindPilot visual language: personal growth base */
 .academyPage {
   background:
