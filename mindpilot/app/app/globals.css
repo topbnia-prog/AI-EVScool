@@ -10,6 +10,25 @@
   --mint: #44d7a8;
   --cyan: #53c7f0;
   --rose: #ff7b8a;
+  --liquid-bg: #f7f8f2;
+  --liquid-cool: #eef8fa;
+  --liquid-warm: #fff7ea;
+  --liquid-text: #172033;
+  --liquid-muted: #526073;
+  --liquid-mint: #89d9c8;
+  --liquid-blue: #9bd7ef;
+  --liquid-peach: #ffd6c6;
+  --liquid-lemon: #fff2a8;
+  --liquid-green: #cdeec7;
+  --liquid-violet: #dad6ff;
+  --liquid-danger: #ffb9a7;
+  --glass-bg: rgba(255, 255, 255, 0.66);
+  --glass-bg-strong: rgba(255, 255, 255, 0.86);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-line: rgba(23, 32, 51, 0.09);
+  --glass-shadow: 0 24px 60px rgba(22, 32, 51, 0.12);
+  --glass-shadow-soft: 0 16px 42px rgba(22, 32, 51, 0.09);
+  --glass-blur: blur(22px);
 }
 
 * {
@@ -4864,6 +4883,112 @@ body {
   transform: translate(-50%, -50%) rotateX(62deg);
 }
 
+.mp3dMissionScene {
+  min-height: 270px;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 242, 168, 0.56), transparent 30%),
+    radial-gradient(circle at 76% 28%, rgba(155, 215, 239, 0.48), transparent 34%),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.9), rgba(239, 250, 255, 0.66));
+}
+
+.mp3dMissionBoard {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  display: flex;
+  gap: 12px;
+  width: 250px;
+  height: 82px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(205, 238, 199, 0.64));
+  box-shadow: 0 28px 54px rgba(23, 32, 51, 0.16);
+  transform: translate(-50%, -50%) rotateX(58deg) rotateZ(-10deg);
+  transform-style: preserve-3d;
+}
+
+.mp3dMissionBoard span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #172033;
+  font-size: 12px;
+  font-weight: 760;
+  transform: translateZ(18px);
+}
+
+.mp3dMissionBoard span:nth-child(-n + 2) {
+  background: #89d9c8;
+}
+
+.mp3dMissionBoard span:nth-child(3) {
+  background: #9bd7ef;
+}
+
+.mp3dMissionCard {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  display: grid;
+  gap: 7px;
+  width: 180px;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 22px 40px rgba(23, 32, 51, 0.14);
+  padding: 16px;
+  transform: translate(-50%, -50%) rotateX(8deg) rotateY(-14deg);
+}
+
+.mp3dMissionCard b {
+  color: #172033;
+  font-size: 15px;
+}
+
+.mp3dMissionCard i {
+  height: 8px;
+  border-radius: 999px;
+  background: #9bd7ef;
+}
+
+.mp3dMissionCard i:nth-child(3) {
+  width: 72%;
+  background: #89d9c8;
+}
+
+.mp3dMissionCard i:nth-child(4) {
+  width: 46%;
+  background: #ffd6c6;
+}
+
+.mp3dSourceChip,
+.mp3dCheckChip {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #315b67;
+  font-size: 12px;
+  font-weight: 760;
+  box-shadow: 0 14px 26px rgba(23, 32, 51, 0.1);
+  padding: 9px 12px;
+}
+
+.mp3dSourceChip {
+  left: 12%;
+  top: 24%;
+  transform: rotate(-9deg);
+}
+
+.mp3dCheckChip {
+  right: 10%;
+  bottom: 26%;
+  transform: rotate(8deg);
+}
+
 /* MindPilot visual language: personal growth base */
 .academyPage {
   background:
@@ -5268,5 +5393,302 @@ body {
 
   .mentorSignalCard {
     width: 100%;
+  }
+}
+
+/* MindPilot Liquid Base system */
+.glassPanel,
+.operatorScreenShell,
+.growthBaseBoard,
+.pilotBaseVisual,
+.preLessonCards article,
+.audienceSection article,
+.compactPrinciples article,
+.growth3DCard {
+  border: 1px solid var(--glass-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.54)),
+    rgba(255, 255, 255, 0.58);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+}
+
+.glassCard,
+.baseMainCard,
+.baseMetric,
+.baseMentorNote,
+.profileRows div,
+.guardrailGrid div,
+.liquidHeroModule,
+.liquidModuleGrid article,
+.liquidMissionLab,
+.liquidMissionSteps div {
+  border: 1px solid var(--glass-line);
+  background: var(--glass-bg-strong);
+  box-shadow: var(--glass-shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.academyPage,
+.operatorScreenPage {
+  color: var(--liquid-text);
+  background:
+    radial-gradient(circle at 14% 16%, rgba(255, 214, 198, 0.48), transparent 30%),
+    radial-gradient(circle at 82% 10%, rgba(155, 215, 239, 0.58), transparent 32%),
+    radial-gradient(circle at 74% 88%, rgba(205, 238, 199, 0.5), transparent 30%),
+    linear-gradient(180deg, var(--liquid-warm), var(--liquid-bg) 46%, var(--liquid-cool));
+}
+
+.operatorScreenPage {
+  padding: 22px clamp(16px, 4vw, 58px) 50px;
+}
+
+.systemNav,
+.academyNav {
+  color: var(--liquid-text);
+}
+
+.systemNav {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.systemNav .brand {
+  color: var(--liquid-text);
+  font-size: 18px;
+  font-weight: 760;
+  letter-spacing: 0;
+}
+
+.systemNav div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.systemNav a:not(.brand),
+.academyNav a:not(.academyBrand),
+.academyActions a,
+.baseTopbar a,
+.wideButton,
+.liquidPrimaryAction {
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.46)),
+    rgba(255, 255, 255, 0.52);
+  color: var(--liquid-text);
+  box-shadow: 0 12px 28px rgba(22, 32, 51, 0.1);
+  backdrop-filter: blur(18px);
+}
+
+.systemNav a:not(.brand) {
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 650;
+  padding: 10px 13px;
+}
+
+.academyActions a:first-child,
+.wideButton,
+.liquidPrimaryAction {
+  background:
+    linear-gradient(135deg, rgba(255, 214, 198, 0.96), rgba(255, 242, 168, 0.9)),
+    #ffd6c6;
+  border-color: rgba(255, 255, 255, 0.82);
+}
+
+.operatorScreenShell {
+  width: min(1180px, 100%);
+  margin: clamp(38px, 6vw, 74px) auto 0;
+  grid-template-columns: minmax(0, 0.85fr) minmax(420px, 1.15fr);
+  border-radius: 34px;
+  padding: clamp(20px, 4vw, 42px);
+}
+
+.screenSideCopy h1,
+.academyHero h1,
+.growthBaseIntro h2,
+.preLessonSection h2,
+.audienceSection h2 {
+  color: var(--liquid-text);
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.screenSideCopy p,
+.academyHeroCopy > p:not(.academyKicker),
+.growthBaseIntro p,
+.preLessonSection p,
+.audienceSection p {
+  color: var(--liquid-muted);
+}
+
+.profileRows div,
+.guardrailGrid div {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.profileRows span,
+.guardrailGrid span {
+  color: #667089;
+}
+
+.profileRows strong,
+.guardrailGrid strong {
+  color: var(--liquid-text);
+}
+
+.guardrailGrid p {
+  color: var(--liquid-muted);
+}
+
+.liquidOperatorBase,
+.liquidMissionLab {
+  display: grid;
+  gap: 14px;
+}
+
+.liquidHeroModule {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.86fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  border-radius: 26px;
+  padding: 16px;
+}
+
+.liquidHeroModule .mp3dScene {
+  min-height: 230px;
+}
+
+.liquidHeroModule span,
+.liquidModuleGrid span,
+.liquidMissionSteps span {
+  display: block;
+  width: max-content;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  background: rgba(191, 232, 245, 0.76);
+  color: #315b67;
+  font-size: 12px;
+  font-weight: 720;
+  padding: 7px 10px;
+}
+
+.liquidHeroModule strong {
+  display: block;
+  color: var(--liquid-text);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 650;
+  line-height: 1;
+}
+
+.liquidHeroModule p {
+  margin-top: 10px;
+  color: var(--liquid-muted);
+  line-height: 1.55;
+}
+
+.liquidModuleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.liquidModuleGrid article {
+  border-radius: 24px;
+  padding: 14px;
+}
+
+.liquidModuleGrid .mp3dScene {
+  min-height: 180px;
+  margin-bottom: 12px;
+}
+
+.liquidModuleGrid strong {
+  display: block;
+  color: var(--liquid-text);
+  font-size: 20px;
+  font-weight: 640;
+}
+
+.liquidMissionLab {
+  border-radius: 28px;
+  padding: 16px;
+}
+
+.liquidMissionLab .mp3dScene {
+  min-height: 310px;
+}
+
+.liquidMissionSteps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.liquidMissionSteps div {
+  display: grid;
+  gap: 8px;
+  min-height: 86px;
+  border-radius: 18px;
+  padding: 12px;
+  opacity: 0.72;
+}
+
+.liquidMissionSteps div.done {
+  background: rgba(205, 238, 199, 0.76);
+  opacity: 1;
+}
+
+.liquidMissionSteps div.active {
+  border-color: rgba(83, 151, 220, 0.34);
+  background: rgba(191, 232, 245, 0.78);
+  opacity: 1;
+}
+
+.liquidMissionSteps span {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.liquidMissionSteps strong {
+  color: var(--liquid-text);
+  font-size: 14px;
+  font-weight: 630;
+}
+
+.liquidPrimaryAction {
+  display: grid;
+  min-height: 48px;
+  place-items: center;
+  border-radius: 14px;
+  font-weight: 680;
+}
+
+@media (max-width: 980px) {
+  .operatorScreenShell,
+  .liquidHeroModule {
+    grid-template-columns: 1fr;
+  }
+
+  .liquidMissionSteps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .liquidModuleGrid,
+  .liquidMissionSteps {
+    grid-template-columns: 1fr;
   }
 }

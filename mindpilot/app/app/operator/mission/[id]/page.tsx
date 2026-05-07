@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MissionPhone } from "../../../_components/OperatorPhone";
+import { MissionLab3D } from "../../../_components/MindPilot3D";
 import { mentorScenarios, missions } from "../../../lib/mockData";
 
 export const metadata: Metadata = {
@@ -41,7 +41,20 @@ export default function MissionPage() {
             ))}
           </div>
         </div>
-        <MissionPhone />
+        <div className="liquidMissionLab">
+          <MissionLab3D />
+          <div className="liquidMissionSteps">
+            {mission.steps.map((step, index) => (
+              <div className={index < 2 ? "done" : index === 2 ? "active" : ""} key={step.id}>
+                <span>{index + 1}</span>
+                <strong>{step.label}</strong>
+              </div>
+            ))}
+          </div>
+          <a className="liquidPrimaryAction" href="/operator/mentor">
+            Продолжить с наставником
+          </a>
+        </div>
       </section>
     </main>
   );

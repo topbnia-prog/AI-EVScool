@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardPhone } from "../../_components/OperatorPhone";
+import { GrowthRadar3D, MentorCore3D, OperatorBase3D } from "../../_components/MindPilot3D";
 import { missions, operatorProfile } from "../../lib/mockData";
 
 export const metadata: Metadata = {
@@ -47,7 +47,28 @@ export default function OperatorDashboardPage() {
             </div>
           </div>
         </div>
-        <DashboardPhone />
+        <div className="liquidOperatorBase">
+          <article className="liquidHeroModule">
+            <OperatorBase3D />
+            <div>
+              <span>Серия дней</span>
+              <strong>{operatorProfile.streakCurrent} дней подряд</strong>
+              <p>База показывает текущую миссию, XP и личный прогресс без рейтингов.</p>
+            </div>
+          </article>
+          <div className="liquidModuleGrid">
+            <article>
+              <MentorCore3D />
+              <span>Наставник</span>
+              <strong>Ведёт вопросами</strong>
+            </article>
+            <article>
+              <GrowthRadar3D />
+              <span>Метрики</span>
+              <strong>6 навыков роста</strong>
+            </article>
+          </div>
+        </div>
       </section>
     </main>
   );
