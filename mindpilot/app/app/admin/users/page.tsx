@@ -2,17 +2,22 @@ import type { Metadata } from "next";
 import { AdminShell } from "../../_components/AdminShell";
 import { AdminUserManager } from "../../_components/AdminUserManager";
 import { accessInvites, managedUsers } from "../../lib/mockData";
+import { getAdminUsersFromSupabase } from "../../lib/supabase/adminUsers";
 
 export const metadata: Metadata = {
   title: "Admin Users | MindPilot",
   description: "Управление пользователями, тестерами и доступами MindPilot."
 };
 
-export default function AdminUsersPage() {
-  const activeFreeTesters = managedUsers.filter(
+export default async function AdminUsersPage() {
+  const supabaseDataset = await getAdminUsersFromSupabase();
+  const users = supabaseDataset?.users ?? managedUsers;
+  const invites = supabaseDataset?.invites ?? accessInvites;
+  const dataSource = supabaseDataset?.source ?? "mock";
+  const activeFreeTesters = users.filter(
     (user) => user.plan === "free_tester" && user.status !== "blocked"
   );
-  const invitedUsers = managedUsers.filter((user) => user.status === "invited");
+  const invitedUsers = users.filter((user) => user.status === "invited");
 
   return (
     <AdminShell
@@ -33,17 +38,21 @@ export default function AdminUsersPage() {
         </article>
         <article className="adminKpiCard neutral">
           <span>Invite codes</span>
-          <strong>{accessInvites.length}</strong>
+          <strong>{invites.length}</strong>
           <p>Коды доступа для первых семей и операторов.</p>
         </article>
         <article className="adminKpiCard risk">
-          <span>Needs backend</span>
-          <strong>Supabase</strong>
-          <p>Следующий шаг: сохранять users, invites и audit в базе.</p>
+          <span>Data source</span>
+          <strong>{dataSource === "supabase" ? "Supabase" : "Mock"}</strong>
+          <p>
+            {dataSource === "supabase"
+              ? "Админка читает users, invites и access grants из базы."
+              : "Добавьте Supabase env keys, чтобы админка читала реальные данные."}
+          </p>
         </article>
       </section>
 
-      <AdminUserManager initialUsers={managedUsers} invites={accessInvites} />
+      <AdminUserManager initialUsers={users} invites={invites} />
     </AdminShell>
   );
 }

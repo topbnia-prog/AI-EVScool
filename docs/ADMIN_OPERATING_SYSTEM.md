@@ -230,3 +230,14 @@ persist this into:
 
 No child email is required for operator access. A parent account creates or receives the child
 operator code.
+
+## Supabase connection
+
+Supabase is now the planned persistent backend. See:
+
+```text
+docs/SUPABASE_SETUP.md
+```
+
+The admin users page can read `profiles`, `access_grants` and `access_invites` from Supabase when
+the server env keys exist. Without keys it stays on mock data so local design work remains stable.
