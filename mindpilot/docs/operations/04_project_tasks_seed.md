@@ -32,6 +32,8 @@ This file tracks tasks that should appear in the future admin dashboard task sys
 | Medium | Technical | Done | Add frontend operator dashboard prototype to local app | `app/app/operator/dashboard/page.tsx` |
 | Medium | UX | Done | Rebuild sanitized UX prototype ideas as React components without private names | `app/app/_components/OperatorPhone.tsx` |
 | Medium | UX | Done | Align landing, login/register, operator dashboard, mission, mentor, and profile screens with planned mobile cockpit UX | `app/app/page.tsx` |
+| High | Product | Done | Add parent registration survey, child MindScan, and admin child profile model | `docs/operations/09_child_diagnostics_admin_profile.md` |
+| High | Admin | Doing | Expand admin panel from prototype into full operator, child profile, safety, tasks, and notes workspace | `app/app/admin/operators/[id]/page.tsx` |
 | Medium | Admin | Done | Build admin task dashboard UI prototype from admin task system spec | `app/app/admin/tasks/page.tsx` |
 | Medium | Operations | Todo | Add backup, monitoring, cost, and safety notification plan | `docs/operations/06_molecular_project_audit.md` |
 

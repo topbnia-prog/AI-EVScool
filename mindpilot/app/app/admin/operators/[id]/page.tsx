@@ -9,15 +9,15 @@ import {
 
 export const metadata: Metadata = {
   title: "Operator Detail | MindPilot Admin",
-  description: "Карточка оператора в админке MindPilot."
+  description: "Полная карточка ребёнка-оператора в админке MindPilot."
 };
 
 export default function AdminOperatorDetailPage() {
   const activeMission = missions.find((mission) => mission.status === "active");
 
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="appPage academyLitePage">
+      <nav className="appNav lightNav">
         <a href="/admin/operators" className="brand">
           Operator Detail
         </a>
@@ -28,19 +28,21 @@ export default function AdminOperatorDetailPage() {
         </div>
       </nav>
 
-      <section className="adminHeader">
-        <p className="eyebrow">Admin operator card</p>
+      <section className="adminHeader lightHeader">
+        <p className="academyKicker">Admin child profile</p>
         <h1>{operatorProfile.displayName}</h1>
         <p>
-          Эта карточка показывает профиль, метрики, safety-события и админские
-          заметки. Позже здесь появятся summaries последних сессий.
+          Это рабочая “картина ребёнка” для админа: как начать первый урок, каким тоном общаться,
+          что мотивирует, где возможны риски и какие данные пришли от родителя и MindScan.
         </p>
       </section>
 
-      <section className="dashboardSplit">
-        <div className="flowPanel">
-          <h2>Профиль</h2>
-          <div className="profileRows">
+      <section className="adminChildLayout">
+        <article className="flowPanel lightPanel childPortraitCard">
+          <span className="baseBadge">Карта подхода</span>
+          <h2>{operatorProfile.adminProfile.headline}</h2>
+          <p>{operatorProfile.adminProfile.approach}</p>
+          <div className="portraitMeta">
             <div>
               <span>Возраст</span>
               <strong>{operatorProfile.age}</strong>
@@ -58,18 +60,80 @@ export default function AdminOperatorDetailPage() {
               <strong>{parentAccount.billingStatus}</strong>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div className="flowPanel">
-          <h2>Session summary</h2>
-          <p className="summaryText">{weeklySummary.mainInsight}</p>
-          <div className="softNotice">{weeklySummary.parentPrompt}</div>
-        </div>
-      </section>
+        <article className="flowPanel lightPanel">
+          <h2>Первый урок</h2>
+          <div className="adminProfileList">
+            {operatorProfile.adminProfile.firstSessionPlan.map((step, index) => (
+              <div key={step}>
+                <span>Шаг {index + 1}</span>
+                <p>{step}</p>
+              </div>
+            ))}
+          </div>
+        </article>
 
-      <section className="dashboardSplit">
-        <div className="flowPanel">
-          <h2>Метрики</h2>
+        <article className="flowPanel lightPanel">
+          <h2>Взгляд родителя</h2>
+          <div className="adminProfileList">
+            <div>
+              <span>Как учится</span>
+              <p>{operatorProfile.parentInsight.learningStyle}</p>
+            </div>
+            <div>
+              <span>Что мотивирует</span>
+              <p>{operatorProfile.parentInsight.motivation}</p>
+            </div>
+            <div>
+              <span>Где осторожно</span>
+              <p>{operatorProfile.parentInsight.frustrationSignal}</p>
+            </div>
+            <div>
+              <span>Цель родителя</span>
+              <p>{operatorProfile.parentInsight.parentGoal}</p>
+            </div>
+          </div>
+        </article>
+
+        <article className="flowPanel lightPanel">
+          <h2>MindScan ребёнка</h2>
+          <div className="adminProfileList">
+            <div>
+              <span>Опыт с AI</span>
+              <p>{operatorProfile.mindScan.confidenceWithAi}</p>
+            </div>
+            <div>
+              <span>Темп</span>
+              <p>{operatorProfile.mindScan.preferredPace}</p>
+            </div>
+            <div>
+              <span>Формат</span>
+              <p>{operatorProfile.mindScan.challengeStyle}</p>
+            </div>
+            <div>
+              <span>Тон</span>
+              <p>{operatorProfile.mindScan.communicationStyle}</p>
+            </div>
+          </div>
+        </article>
+
+        <article className="flowPanel lightPanel">
+          <h2>Мотиваторы и риски</h2>
+          <div className="tagCloud">
+            {operatorProfile.adminProfile.motivators.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+          <div className="riskList">
+            {operatorProfile.adminProfile.risks.map((risk) => (
+              <p key={risk}>{risk}</p>
+            ))}
+          </div>
+        </article>
+
+        <article className="flowPanel lightPanel">
+          <h2>Метрики и safety</h2>
           <div className="metricTiles">
             {operatorProfile.metrics.map((metric) => (
               <div key={metric.id}>
@@ -78,21 +142,25 @@ export default function AdminOperatorDetailPage() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="flowPanel">
-          <h2>Safety events</h2>
-          <div className="alertRows">
+          <div className="alertRows compactAlerts">
             {safetyAlerts.map((alert) => (
               <div key={alert.id}>
-                <span>{alert.id} · {alert.severity}</span>
+                <span>
+                  {alert.id} · {alert.severity}
+                </span>
                 <strong>{alert.category}</strong>
                 <p>{alert.summary}</p>
                 <em>{alert.status}</em>
               </div>
             ))}
           </div>
-        </div>
+        </article>
+      </section>
+
+      <section className="flowPanel lightPanel adminSessionNote">
+        <h2>Последний summary</h2>
+        <p>{weeklySummary.mainInsight}</p>
+        <div className="softNotice">{weeklySummary.parentPrompt}</div>
       </section>
     </main>
   );

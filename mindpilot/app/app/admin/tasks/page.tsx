@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function AdminTasksPage() {
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="appPage academyLitePage">
+      <nav className="appNav lightNav">
         <a href="/admin/safety" className="brand">
           MindPilot Admin
         </a>
@@ -20,20 +20,22 @@ export default function AdminTasksPage() {
         </div>
       </nav>
 
-      <section className="adminHeader">
-        <p className="eyebrow">Internal task system</p>
+      <section className="adminHeader lightHeader">
+        <p className="academyKicker">Internal task system</p>
         <h1>Задачи проекта</h1>
         <p>
-          Позже это будет настоящая таблица `admin_tasks`. Сейчас это первый
-          видимый каркас, чтобы ничего не терялось в переписке.
+          Это первый видимый каркас будущей таблицы `admin_tasks`, чтобы юридические вопросы,
+          методология, safety и продуктовые долги не терялись в переписке.
         </p>
       </section>
 
-      <section className="flowPanel taskPagePanel">
+      <section className="flowPanel lightPanel taskPagePanel">
         <div className="taskRows">
           {adminTasks.map((task) => (
             <div key={task.id}>
-              <span>{task.priority} · {task.status}</span>
+              <span>
+                {task.priority} · {task.status}
+              </span>
               <strong>{task.area}</strong>
               <p>{task.task}</p>
             </div>

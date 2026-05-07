@@ -15,8 +15,8 @@ export default function ParentDashboardPage() {
   const openSafetyAlerts = safetyAlerts.filter((alert) => alert.status !== "resolved");
 
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="appPage academyLitePage">
+      <nav className="appNav lightNav">
         <a href="/" className="brand">
           MindPilot Parent
         </a>
@@ -27,21 +27,21 @@ export default function ParentDashboardPage() {
         </div>
       </nav>
 
-      <section className="adminHeader">
-        <p className="eyebrow">Parent dashboard</p>
+      <section className="adminHeader lightHeader">
+        <p className="academyKicker">Parent dashboard</p>
         <h1>Прогресс без лишнего контроля.</h1>
         <p>
-          Родитель видит прогресс, summaries и safety-сигналы, но не полный чат
-          ребёнка по умолчанию.
+          Родитель видит направление роста, недельные summaries, статус согласия и safety-сигналы.
+          Полный чат ребёнка не показывается по умолчанию: мы защищаем самостоятельность и доверие.
         </p>
       </section>
 
       <section className="dashboardSplit">
-        <div className="flowPanel">
-          <h2>Оператор</h2>
+        <div className="flowPanel lightPanel">
+          <h2>Профиль оператора</h2>
           <div className="profileRows">
             <div>
-              <span>Имя</span>
+              <span>Псевдоним</span>
               <strong>{operatorProfile.displayName}</strong>
             </div>
             <div>
@@ -63,7 +63,15 @@ export default function ParentDashboardPage() {
           </div>
         </div>
 
-        <div className="flowPanel">
+        <div className="flowPanel lightPanel">
+          <h2>Что мы поняли о ребёнке</h2>
+          <p className="summaryText">{operatorProfile.adminProfile.headline}</p>
+          <div className="softNotice">{operatorProfile.parentInsight.supportNote}</div>
+        </div>
+      </section>
+
+      <section className="dashboardSplit">
+        <div className="flowPanel lightPanel">
           <h2>Weekly summary</h2>
           <p className="summaryText">{weeklySummary.mainInsight}</p>
           <div className="profileRows">
@@ -78,24 +86,8 @@ export default function ParentDashboardPage() {
           </div>
           <div className="softNotice">{weeklySummary.parentPrompt}</div>
         </div>
-      </section>
 
-      <section className="dashboardSplit">
-        <div className="flowPanel">
-          <h2>Метрики</h2>
-          <div className="metricTiles">
-            {operatorProfile.metrics.map((metric) => (
-              <div key={metric.id}>
-                <span>{metric.label}</span>
-                <strong>
-                  {metric.previous} / {metric.value}
-                </strong>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flowPanel">
+        <div className="flowPanel lightPanel">
           <h2>Safety</h2>
           <div className="alertRows">
             {openSafetyAlerts.map((alert) => (

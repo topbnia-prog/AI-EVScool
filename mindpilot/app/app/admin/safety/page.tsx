@@ -3,13 +3,13 @@ import { safetyAlerts } from "../../lib/mockData";
 
 export const metadata: Metadata = {
   title: "Admin Safety | MindPilot",
-  description: "Админская safety-панель MindPilot."
+  description: "Safety-панель MindPilot."
 };
 
 export default function AdminSafetyPage() {
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="appPage academyLitePage">
+      <nav className="appNav lightNav">
         <a href="/" className="brand">
           MindPilot Admin
         </a>
@@ -20,22 +20,24 @@ export default function AdminSafetyPage() {
         </div>
       </nav>
 
-      <section className="adminHeader">
-        <p className="eyebrow">Safety controls</p>
+      <section className="adminHeader lightHeader">
+        <p className="academyKicker">Safety controls</p>
         <h1>Очередь безопасности</h1>
         <p>
-          Перед реальным запуском с детьми здесь должны жить safety-alerts,
-          QA-события наставника и ручные решения админа.
+          Перед запуском с детьми здесь должны жить safety-alerts, QA-события наставника, ручные
+          решения админа и история реакции на чувствительные темы.
         </p>
       </section>
 
       <section className="adminGrid">
-        <div className="flowPanel">
+        <div className="flowPanel lightPanel">
           <h2>Сигналы</h2>
           <div className="alertRows">
             {safetyAlerts.map((alert) => (
               <div key={alert.id}>
-                <span>{alert.id} · {alert.severity}</span>
+                <span>
+                  {alert.id} · {alert.severity}
+                </span>
                 <strong>{alert.category}</strong>
                 <p>{alert.summary}</p>
                 <em>{alert.status}</em>
@@ -44,7 +46,7 @@ export default function AdminSafetyPage() {
           </div>
         </div>
 
-        <aside className="flowPanel">
+        <aside className="flowPanel lightPanel">
           <h2>Guardrails до запуска</h2>
           <ul className="adminChecks">
             <li>System prompt versioning</li>

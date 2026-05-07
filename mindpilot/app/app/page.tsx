@@ -30,6 +30,21 @@ const principles = [
   }
 ];
 
+const audienceBlocks = [
+  {
+    title: "Для родителя",
+    text:
+      "MindPilot не обещает магию и не заменяет школу. Он учит ребёнка безопасно пользоваться AI: проверять факты, замечать ошибки, не отдавать мышление инструменту и не просить готовую домашку.",
+    points: ["родитель даёт согласие", "ребёнок входит без email", "видны summaries и safety-сигналы"]
+  },
+  {
+    title: "Для ребёнка",
+    text:
+      "Это не урок с оценками. Это личная база: сегодня есть миссия, наставник задаёт вопросы, профиль показывает рост, а достижения открываются за реальные навыки.",
+    points: ["миссии короткие", "нет публичных рейтингов", "AI-наставник не ругает и не давит"]
+  }
+];
+
 export default function Home() {
   return (
     <main className="academyPage">
@@ -144,6 +159,49 @@ export default function Home() {
           <DashboardPhone />
           <ProfilePhone />
         </div>
+      </section>
+
+      <section className="preLessonSection">
+        <div>
+          <p className="academyKicker">Перед первым уроком</p>
+          <h2>Сначала мы понимаем ребёнка, потом начинаем миссию.</h2>
+          <p>
+            У каждого ребёнка разный вход: одному нужен вызов, другому спокойный шаг за шагом,
+            третьему примеры из игр. Поэтому перед первой миссией есть два коротких слоя:
+            родительский взгляд и MindScan самого ребёнка.
+          </p>
+        </div>
+        <div className="preLessonCards">
+          <article>
+            <span>1</span>
+            <h3>Взгляд родителя</h3>
+            <p>Что мотивирует, где ребёнок быстро устаёт, чего родитель хочет от курса.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>MindScan ребёнка</h3>
+            <p>Темп, интересы, опыт с AI, любимый формат задания и стиль подсказок.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Карта подхода</h3>
+            <p>Админ видит краткий профиль: тон наставника, риски, мотиваторы и план первой встречи.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="audienceSection">
+        {audienceBlocks.map((block) => (
+          <article key={block.title}>
+            <h2>{block.title}</h2>
+            <p>{block.text}</p>
+            <div>
+              {block.points.map((point) => (
+                <span key={point}>{point}</span>
+              ))}
+            </div>
+          </article>
+        ))}
       </section>
 
       <section className="academyPrinciples compactPrinciples">

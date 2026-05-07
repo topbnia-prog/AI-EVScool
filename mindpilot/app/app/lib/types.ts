@@ -18,6 +18,32 @@ export type OperatorMetric = {
   previous: number;
 };
 
+export type ParentInsight = {
+  learningStyle: string;
+  motivation: string;
+  frustrationSignal: string;
+  parentGoal: string;
+  supportNote: string;
+};
+
+export type MindScanProfile = {
+  confidenceWithAi: string;
+  preferredPace: string;
+  challengeStyle: string;
+  communicationStyle: string;
+  curiosityTopics: string[];
+  firstLessonApproach: string;
+};
+
+export type AdminChildProfile = {
+  headline: string;
+  approach: string;
+  motivators: string[];
+  risks: string[];
+  mentorTone: string;
+  firstSessionPlan: string[];
+};
+
 export type ParentAccount = {
   id: string;
   email: string;
@@ -41,6 +67,9 @@ export type OperatorProfile = {
   interests: string[];
   learningGoal: string;
   metrics: OperatorMetric[];
+  parentInsight: ParentInsight;
+  mindScan: MindScanProfile;
+  adminProfile: AdminChildProfile;
 };
 
 export type MissionStep = {

@@ -3,15 +3,15 @@ import { missions, operators, safetyAlerts } from "../../lib/mockData";
 
 export const metadata: Metadata = {
   title: "Admin Operators | MindPilot",
-  description: "Список операторов в админке MindPilot."
+  description: "Список операторов и диагностических профилей в админке MindPilot."
 };
 
 export default function AdminOperatorsPage() {
   const activeMission = missions.find((mission) => mission.status === "active");
 
   return (
-    <main className="appPage">
-      <nav className="appNav">
+    <main className="appPage academyLitePage">
+      <nav className="appNav lightNav">
         <a href="/admin/safety" className="brand">
           MindPilot Admin
         </a>
@@ -22,23 +22,27 @@ export default function AdminOperatorsPage() {
         </div>
       </nav>
 
-      <section className="adminHeader">
-        <p className="eyebrow">Operators</p>
-        <h1>Операторы</h1>
+      <section className="adminHeader lightHeader">
+        <p className="academyKicker">Operators</p>
+        <h1>Операторы и карта подхода</h1>
         <p>
-          Здесь админ видит прогресс, текущую миссию, safety-сигналы и статус
-          подписки без публичных рейтингов.
+          Здесь админ видит не только возраст и прогресс, а рабочую картину ребёнка: мотивацию,
+          риски, стиль общения, текущую миссию и safety-события. Это нужно до первого урока и
+          перед каждым ручным вмешательством.
         </p>
       </section>
 
-      <section className="flowPanel taskPagePanel">
-        <div className="operatorRows">
+      <section className="flowPanel lightPanel taskPagePanel">
+        <div className="operatorRows adminOperatorRows">
           {operators.map((operator) => (
             <a href={`/admin/operators/${operator.id}`} key={operator.id}>
-              <span>{operator.age} лет · {operator.ageBranch}</span>
+              <span>
+                {operator.age} лет · {operator.ageBranch} · {operator.rank}
+              </span>
               <strong>{operator.displayName}</strong>
-              <p>Текущая миссия: {activeMission?.title ?? "нет активной миссии"}</p>
-              <em>Safety events: {safetyAlerts.length}</em>
+              <p>{operator.adminProfile.headline}</p>
+              <em>Текущая миссия: {activeMission?.title ?? "нет активной миссии"}</em>
+              <small>Safety events: {safetyAlerts.length}</small>
             </a>
           ))}
         </div>
