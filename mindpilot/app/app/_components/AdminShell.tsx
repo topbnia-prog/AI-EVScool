@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 const adminNavItems = [
   { href: "/admin", label: "Command" },
+  { href: "/admin/users", label: "Users" },
   { href: "/admin/operators", label: "Operators" },
   { href: "/admin/courses", label: "Courses" },
   { href: "/admin/mentor", label: "Mentor" },

@@ -24,6 +24,22 @@ export const authAccounts: AuthAccount[] = [
     displayName: "MindPilot Admin",
     passwordHint: "admin",
     redirectTo: "/admin"
+  },
+  {
+    id: "tester_parent_beta",
+    role: "parent",
+    identifier: "tester-parent@example.com",
+    displayName: "Тестер Parent Beta",
+    passwordHint: "free14",
+    redirectTo: "/parent/dashboard"
+  },
+  {
+    id: "tester_operator_beta",
+    role: "operator",
+    identifier: "tester-operator-beta",
+    displayName: "Tester Operator Beta",
+    passwordHint: "free14",
+    redirectTo: "/operator/dashboard"
   }
 ];
 

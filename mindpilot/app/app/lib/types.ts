@@ -4,6 +4,10 @@ export type MissionStatus = "completed" | "active" | "locked";
 
 export type UserRole = "parent" | "operator" | "admin";
 
+export type AccountStatus = "active" | "invited" | "paused" | "blocked";
+
+export type AccessPlan = "free_tester" | "trial" | "paid" | "internal";
+
 export type CourseStatus = "active" | "locked" | "draft";
 
 export type CourseAudience = "operator" | "parent" | "admin";
@@ -151,6 +155,41 @@ export type AuthAccount = {
   displayName: string;
   passwordHint: string;
   redirectTo: string;
+};
+
+export type ManagedUser = {
+  id: string;
+  role: UserRole;
+  displayName: string;
+  login: string;
+  status: AccountStatus;
+  plan: AccessPlan;
+  linkedOperatorId?: string;
+  linkedParentId?: string;
+  accessUntil: string;
+  createdAt: string;
+  lastSeen: string;
+  notes: string;
+};
+
+export type AccessInvite = {
+  id: string;
+  code: string;
+  role: UserRole;
+  plan: AccessPlan;
+  seats: number;
+  used: number;
+  expiresAt: string;
+  status: "active" | "expired" | "disabled";
+  note: string;
+};
+
+export type AdminSystemAction = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  tone: "primary" | "neutral" | "warning";
 };
 
 export type MentorMessage = {

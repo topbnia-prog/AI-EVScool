@@ -4,6 +4,7 @@ import {
   adminAttentionItems,
   adminAuditLogs,
   adminKpis,
+  adminSystemActions,
   adminTasks,
   safetyAlerts
 } from "../lib/mockData";
@@ -34,6 +35,25 @@ export default function AdminCommandCenterPage() {
       </section>
 
       <section className="adminCommandGrid">
+        <article className="adminPanel adminWidePanel">
+          <div className="adminPanelHeader">
+            <div>
+              <span>System actions</span>
+              <strong>Управление системой</strong>
+            </div>
+            <a href="/admin/users">Users</a>
+          </div>
+          <div className="adminActionGrid">
+            {adminSystemActions.map((action) => (
+              <a className={action.tone} href={action.href} key={action.id}>
+                <span>{action.id}</span>
+                <strong>{action.title}</strong>
+                <p>{action.description}</p>
+              </a>
+            ))}
+          </div>
+        </article>
+
         <article className="adminPanel adminWidePanel">
           <div className="adminPanelHeader">
             <div>

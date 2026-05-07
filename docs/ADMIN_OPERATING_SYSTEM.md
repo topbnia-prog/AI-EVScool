@@ -195,3 +195,38 @@ The first app version can use structured mock data. The database version should 
 - `analytics_snapshots`
 
 All admin actions that change safety, courses, prompts, users or payments must write to an audit log.
+
+## User and tester management
+
+Route:
+
+```text
+/admin/users
+```
+
+This is the system-management section for beta operations.
+
+Admin must be able to:
+
+- create a free tester parent account;
+- create an operator code for a child after parent consent;
+- choose role: parent, operator, admin;
+- choose access plan: free tester, trial, paid, internal;
+- set access length;
+- pause or block access;
+- move a user from free tester to trial or paid;
+- see invite codes and seat usage;
+- record an audit event for every access change.
+
+The current UI implements the full product shape with local state. The database version should
+persist this into:
+
+- `profiles`
+- `access_grants`
+- `invites`
+- `admin_audit_logs`
+- `operator_profiles`
+- `parent_accounts`
+
+No child email is required for operator access. A parent account creates or receives the child
+operator code.

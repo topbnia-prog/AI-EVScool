@@ -20,6 +20,7 @@ export default function AdminParentsPage() {
             <span>Parent records</span>
             <strong>Аккаунты родителей</strong>
           </div>
+          <a href="/admin/users">Add tester</a>
           <a href="/parent-consent">Consent text</a>
         </div>
         <div className="parentAdminRows">

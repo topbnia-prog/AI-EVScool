@@ -2893,10 +2893,12 @@ body {
 html {
   background: #f7f4eb;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .academyPage,
@@ -3859,7 +3861,8 @@ body {
   font-weight: 760;
 }
 
-.baseTopbar a {
+.baseTopbar a,
+.baseTopAction {
   border: 1px solid rgba(22, 32, 51, 0.1);
   border-radius: 10px;
   background: #bfe8f5;
@@ -5510,6 +5513,7 @@ body {
 .academyNav a:not(.academyBrand),
 .academyActions a,
 .baseTopbar a,
+.baseTopAction,
 .wideButton,
 .liquidPrimaryAction {
   border: 1px solid rgba(255, 255, 255, 0.76);
@@ -5878,6 +5882,223 @@ body {
 
 .courseOperatorShell {
   grid-template-columns: minmax(0, 0.72fr) minmax(480px, 1.28fr);
+}
+
+/* Public hero cleanup: no framed image-inside-image composition */
+.academyHero.compactHero {
+  grid-template-columns: minmax(0, 510px) minmax(390px, 500px);
+}
+
+.pilotBaseVisual {
+  min-height: 560px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  isolation: isolate;
+}
+
+.pilotBaseVisual::before {
+  inset: 6% auto auto 6%;
+  width: 310px;
+  height: 310px;
+  opacity: 0.56;
+  z-index: -1;
+}
+
+.pilotBaseVisual::after {
+  right: 4%;
+  bottom: 2%;
+  width: 240px;
+  height: 240px;
+  opacity: 0.46;
+  z-index: -1;
+}
+
+.pilotCoreCard {
+  width: min(430px, 100%);
+  margin-inline-start: auto;
+}
+
+.baseOrbit {
+  inset: 48px 74px auto auto;
+  opacity: 0.82;
+}
+
+.baseZoneGrid {
+  width: min(280px, 58%);
+  margin-inline-start: auto;
+}
+
+.baseZoneGrid div,
+.missionNode,
+.pilotCoreCard {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    rgba(255, 255, 255, 0.74);
+}
+
+.missionRail {
+  right: 0;
+  bottom: 8px;
+  width: min(420px, 88%);
+}
+
+[dir="rtl"] .missionRail {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .baseZoneGrid,
+[dir="rtl"] .pilotCoreCard {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+@media (max-width: 900px) {
+  .academyHero.compactHero {
+    grid-template-columns: 1fr;
+  }
+
+  .pilotBaseVisual {
+    width: min(620px, 100%);
+    min-height: auto;
+    display: grid;
+    gap: 18px;
+    overflow: hidden;
+    margin-inline: auto;
+    padding: 16px;
+  }
+
+  .baseOrbit {
+    display: none;
+  }
+
+  .pilotCoreCard,
+  .baseZoneGrid,
+  .missionRail,
+  [dir="rtl"] .baseZoneGrid,
+  [dir="rtl"] .pilotCoreCard {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin: 0;
+  }
+
+  .missionRail {
+    display: grid;
+    gap: 10px;
+  }
+
+  .missionNode.active {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .pilotBaseVisual {
+    width: 100%;
+    min-height: auto;
+    display: grid;
+    gap: 14px;
+    overflow: hidden;
+    padding: 4px 0 0;
+  }
+
+  .pilotBaseVisual::before {
+    inset: 24px auto auto 16px;
+    width: 170px;
+    height: 170px;
+  }
+
+  .pilotBaseVisual::after {
+    right: -22px;
+    bottom: 18px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .baseOrbit {
+    position: relative;
+    inset: auto;
+    width: min(230px, 100%);
+    height: 230px;
+    margin: 0 auto;
+  }
+
+  .baseOrbit span {
+    transform: rotate(var(--angle)) translate(114px) rotate(calc(-1 * var(--angle)));
+  }
+
+  .pilotCoreCard,
+  .baseZoneGrid,
+  .missionRail,
+  [dir="rtl"] .baseZoneGrid,
+  [dir="rtl"] .pilotCoreCard {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin: 0;
+  }
+
+  .missionRail {
+    display: grid;
+    gap: 10px;
+  }
+
+  .missionNode.active {
+    transform: none;
+  }
+
+  .pilotCoreCard {
+    border-radius: 18px;
+    padding: 18px;
+  }
+
+  .pilotCoreCard strong {
+    font-size: clamp(28px, 9vw, 36px);
+  }
+
+  .growth3DGallery {
+    gap: 16px;
+  }
+
+  .growth3DCard,
+  .growth3DCard.primary {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .growth3DCard > div {
+    min-width: 0;
+  }
+
+  .growth3DCard span {
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 8px;
+    white-space: normal;
+  }
+
+  .growth3DCard strong {
+    max-width: 100%;
+    font-size: clamp(18px, 5.6vw, 24px);
+    line-height: 1.22;
+    overflow-wrap: anywhere;
+  }
+
+  .growth3DCard .mp3dScene {
+    width: 100%;
+    min-height: 210px;
+  }
+
+  .growth3DCard.primary .mp3dScene {
+    min-height: 230px;
+  }
 }
 
 .operatorCoursePanel {
@@ -6323,6 +6544,131 @@ body {
   background: rgba(255, 255, 255, 0.72);
 }
 
+.adminActionGrid,
+.adminUsersLayout {
+  display: grid;
+  gap: 14px;
+}
+
+.adminActionGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.adminActionGrid a,
+.managedUserRows div,
+.adminInviteRows div {
+  border: 1px solid rgba(22, 32, 51, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--liquid-text);
+  padding: 14px;
+}
+
+.adminActionGrid a.primary {
+  background: rgba(205, 238, 199, 0.78);
+}
+
+.adminActionGrid a.warning {
+  background: rgba(255, 242, 168, 0.78);
+}
+
+.adminActionGrid span,
+.managedUserRows span,
+.adminInviteRows span {
+  display: block;
+  color: #667089;
+  font-size: 12px;
+  font-weight: 660;
+}
+
+.adminActionGrid strong,
+.managedUserRows strong,
+.adminInviteRows strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--liquid-text);
+  font-weight: 640;
+}
+
+.adminActionGrid p,
+.managedUserRows p,
+.adminInviteRows p {
+  margin-top: 8px;
+  color: var(--liquid-muted);
+  line-height: 1.5;
+}
+
+.adminUsersLayout {
+  grid-template-columns: minmax(320px, 0.82fr) minmax(280px, 0.68fr);
+}
+
+.adminUsersLayout .adminWidePanel {
+  grid-column: 1 / -1;
+}
+
+.adminUserForm {
+  display: grid;
+  gap: 12px;
+}
+
+.adminUserForm label {
+  display: grid;
+  gap: 7px;
+  color: var(--liquid-text);
+  font-weight: 610;
+}
+
+.adminUserForm input,
+.adminUserForm select,
+.adminUserForm textarea,
+.adminFilterSelect {
+  width: 100%;
+  border: 1px solid rgba(22, 32, 51, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--liquid-text);
+  font: inherit;
+  padding: 11px 12px;
+}
+
+.adminInviteRows,
+.managedUserRows {
+  display: grid;
+  gap: 10px;
+}
+
+.adminInviteRows em,
+.managedUserRows em {
+  display: block;
+  margin-top: 8px;
+  color: #667089;
+  font-size: 13px;
+  font-style: normal;
+}
+
+.userActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.userActionRow button {
+  border: 1px solid rgba(22, 32, 51, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--liquid-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 640;
+  padding: 8px 11px;
+}
+
+.userActionRow button:hover {
+  background: #ffffff;
+}
+
 @media (max-width: 1080px) {
   .adminShellPage {
     grid-template-columns: 1fr;
@@ -6356,7 +6702,9 @@ body {
   .adminMiniRows.twoColumn,
   .mentorTestRows,
   .adminSettingRows,
-  .analyticsFunnel {
+  .analyticsFunnel,
+  .adminActionGrid,
+  .adminUsersLayout {
     grid-template-columns: 1fr;
   }
 
@@ -6364,4 +6712,189 @@ body {
   .adminKpiGrid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Production homepage pass: tighter desktop composition after live visual review */
+.academyNav {
+  width: min(1120px, 100%);
+  min-height: 50px;
+}
+
+.academyHero.compactHero {
+  width: min(1120px, 100%);
+  min-height: auto;
+  grid-template-columns: minmax(0, 500px) minmax(420px, 480px);
+  gap: clamp(46px, 6vw, 82px);
+  padding: clamp(46px, 5.5vw, 70px) 0 clamp(68px, 7vw, 94px);
+}
+
+.academyHero h1,
+.compactHero h1 {
+  max-width: 610px;
+  font-size: clamp(40px, 3.9vw, 58px);
+  line-height: 1.04;
+}
+
+.academyHeroCopy > p:not(.academyKicker) {
+  max-width: 540px;
+}
+
+.pilotBaseVisual {
+  min-height: 505px;
+}
+
+.pilotCoreCard {
+  width: min(390px, 100%);
+  padding: clamp(20px, 2.8vw, 30px);
+}
+
+.pilotCoreCard strong {
+  font-size: clamp(34px, 3.4vw, 46px);
+}
+
+.baseZoneGrid {
+  width: min(250px, 52%);
+  gap: 8px;
+}
+
+.baseZoneGrid div {
+  min-height: 62px;
+}
+
+.missionRail {
+  bottom: 0;
+  width: min(382px, 84%);
+  gap: 9px;
+}
+
+.missionNode {
+  min-height: 62px;
+}
+
+.growthBaseSection {
+  margin-top: clamp(10px, 2.4vw, 34px);
+}
+
+@media (min-width: 901px) {
+  [dir="rtl"] .academyHero.compactHero {
+    grid-template-columns: minmax(420px, 480px) minmax(0, 500px);
+  }
+}
+
+@media (max-width: 900px) {
+  .academyHero.compactHero {
+    grid-template-columns: 1fr;
+    padding-top: 36px;
+  }
+
+  .pilotBaseVisual {
+    min-height: auto;
+  }
+}
+
+@media (min-width: 901px) {
+  .pilotBaseVisual {
+    min-height: auto;
+    display: grid;
+    gap: 14px;
+    align-content: center;
+  }
+
+  .baseOrbit {
+    display: none;
+  }
+
+  .pilotCoreCard,
+  .baseZoneGrid,
+  .missionRail,
+  [dir="rtl"] .baseZoneGrid,
+  [dir="rtl"] .pilotCoreCard {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin: 0;
+  }
+
+  .baseZoneGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .missionRail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .missionNode,
+  .missionNode.active {
+    min-height: 76px;
+    transform: none;
+  }
+}
+
+@media (min-width: 981px) {
+  .growthBaseSection {
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+    gap: clamp(22px, 4vw, 48px);
+  }
+
+  .growthBaseIntro {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .growthBaseBoard {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .growth3DGallery {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .growth3DCard,
+  .growth3DCard.primary {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .growth3DCard .mp3dScene,
+  .growth3DCard.primary .mp3dScene {
+    min-height: 150px;
+  }
+
+  .growth3DCard strong {
+    font-size: clamp(16px, 1.45vw, 20px);
+    line-height: 1.22;
+  }
+}
+
+[dir="rtl"] .academyForm,
+[dir="rtl"] .academyAuthIntro,
+[dir="rtl"] .loginDemoAccounts button {
+  text-align: right;
+}
+
+[dir="rtl"] .academyCheck {
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  gap: 10px;
+  direction: ltr;
+}
+
+[dir="rtl"] .academyCheck input {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+[dir="rtl"] .academyCheck span {
+  grid-column: 1;
+  grid-row: 1;
+  direction: rtl;
+  text-align: right;
 }

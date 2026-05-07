@@ -8,32 +8,33 @@ import {
   OperatorBase3D,
   SafetyCube3D
 } from "./_components/MindPilot3D";
-
-type Language = "ru" | "he" | "en";
-
-const supportedLanguages: Language[] = ["ru", "he", "en"];
-const languageStorageKey = "mindpilot_language";
-
-const orbitNodes = ["AI", "FACT", "PROMPT", "WHY", "SOURCE"];
+import {
+  languageCookieName,
+  languageMaxAgeSeconds,
+  languageStorageKey,
+  supportedLanguages,
+  type Language
+} from "./lib/language";
 
 const copy = {
   ru: {
     dir: "ltr",
     title: "MindPilot | Think clearly. Command AI.",
     brandSubtitle: "AI Operator System",
-    nav: { courses: "Курсы", login: "Вход", start: "Начать" },
+    nav: { courses: "Курсы", login: "Вход", start: "Регистрация" },
     hero: {
       kicker: "Think clearly · Command AI · 10-16",
       title: "MindPilot учит управлять AI, а не зависеть от него.",
       text:
         "Это не школа AI и не курс промптов. MindPilot тренирует ясность мышления, проверку фактов, точные запросы и самостоятельные решения рядом с AI.",
-      primary: "Создать аккаунт родителя",
-      secondary: "Единый вход"
+      primary: "Регистрация",
+      secondary: "Вход"
     },
     visual: {
       aria: "Визуальная база оператора MindPilot",
-      signal: "operator base",
-      title: "Control Room",
+      nodes: ["AI", "ФАКТ", "ПРОМПТ", "ПОЧЕМУ", "ИСТОЧНИК"],
+      signal: "база оператора",
+      title: "Пульт управления",
       text: "MindScan, миссия дня, AI-наставник и карта роста собраны в одной системе.",
       zones: [
         { label: "MindScan", value: "профиль мышления", icon: "01" },
@@ -150,19 +151,20 @@ const copy = {
     dir: "rtl",
     title: "MindPilot | Think clearly. Command AI.",
     brandSubtitle: "AI Operator System",
-    nav: { courses: "קורסים", login: "כניסה", start: "התחלה" },
+    nav: { courses: "קורסים", login: "כניסה", start: "הרשמה" },
     hero: {
       kicker: "Think clearly · Command AI · גילאי 10-16",
       title: "MindPilot מלמד לנהל AI, לא להיות תלוי בו.",
       text:
         "זה לא בית ספר ל-AI ולא קורס פרומפטים. MindPilot מאמן חשיבה בהירה, בדיקת עובדות, בקשות מדויקות וקבלת החלטות עצמאית לצד AI.",
-      primary: "יצירת חשבון הורה",
-      secondary: "כניסה אחידה"
+      primary: "הרשמה",
+      secondary: "כניסה"
     },
     visual: {
       aria: "תצוגת בסיס המפעיל של MindPilot",
-      signal: "operator base",
-      title: "Control Room",
+      nodes: ["AI", "עובדה", "פרומפט", "למה", "מקור"],
+      signal: "בסיס מפעיל",
+      title: "חדר בקרה",
       text: "MindScan, משימת היום, מנטור AI ומפת צמיחה נמצאים במערכת אחת.",
       zones: [
         { label: "MindScan", value: "פרופיל חשיבה", icon: "01" },
@@ -279,17 +281,18 @@ const copy = {
     dir: "ltr",
     title: "MindPilot | Think clearly. Command AI.",
     brandSubtitle: "AI Operator System",
-    nav: { courses: "Courses", login: "Login", start: "Start" },
+    nav: { courses: "Courses", login: "Log in", start: "Sign up" },
     hero: {
       kicker: "Think clearly · Command AI · ages 10-16",
       title: "MindPilot teaches people to command AI, not depend on it.",
       text:
         "This is not an AI school and not a prompt course. MindPilot trains clear thinking, fact verification, precise requests, and independent decisions with AI.",
-      primary: "Create parent account",
-      secondary: "Unified login"
+      primary: "Sign up",
+      secondary: "Log in"
     },
     visual: {
       aria: "MindPilot operator base visual",
+      nodes: ["AI", "FACT", "PROMPT", "WHY", "SOURCE"],
       signal: "operator base",
       title: "Control Room",
       text: "MindScan, daily mission, AI mentor, and growth map live in one system.",
@@ -433,6 +436,7 @@ export default function Home() {
     document.documentElement.lang = language;
     document.documentElement.dir = t.dir;
     document.title = t.title;
+    document.cookie = `${languageCookieName}=${language}; path=/; max-age=${languageMaxAgeSeconds}; samesite=lax`;
   }, [language, t.dir, t.title]);
 
   function chooseLanguage(nextLanguage: Language) {
@@ -448,7 +452,6 @@ export default function Home() {
           <b>{t.brandSubtitle}</b>
         </a>
         <div className="academyNavControls">
-          <a href="/courses">{t.nav.courses}</a>
           <a href="/login">{t.nav.login}</a>
           <a href="/register" className="academyNavPrimary">
             {t.nav.start}
@@ -481,13 +484,13 @@ export default function Home() {
 
         <div className="pilotBaseVisual" aria-label={t.visual.aria}>
           <div className="baseOrbit" aria-hidden="true">
-            {orbitNodes.map((node, index) => (
+            {t.visual.nodes.map((node, index) => (
               <span
                 key={node}
                 style={
                   {
                     "--node-index": index,
-                    "--node-count": orbitNodes.length
+                    "--node-count": t.visual.nodes.length
                   } as CSSProperties
                 }
               >
@@ -519,9 +522,8 @@ export default function Home() {
 
           <div className="missionRail">
             {t.visual.path.map((item, index) => (
-              <a
+              <div
                 className={`missionNode ${item.status}`}
-                href={item.status === "locked" ? "/operator/dashboard" : "/operator/mission/2"}
                 key={item.label}
                 style={{ "--delay": `${index * 0.12}s` } as CSSProperties}
               >
@@ -530,30 +532,10 @@ export default function Home() {
                   <b>{item.label}</b>
                   {item.detail}
                 </span>
-              </a>
+              </div>
             ))}
           </div>
         </div>
-      </section>
-
-      <section className="preLessonSection courseIntroSection">
-        <div>
-          <p className="academyKicker">{t.courses.kicker}</p>
-          <h2>{t.courses.title}</h2>
-          <p>{t.courses.text}</p>
-        </div>
-        <div className="preLessonCards">
-          {t.courses.cards.map((card) => (
-            <article key={card.title}>
-              <span>{card.label}</span>
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
-            </article>
-          ))}
-        </div>
-        <a className="courseIntroAction" href="/courses">
-          {t.courses.action}
-        </a>
       </section>
 
       <section className="growthBaseSection">
@@ -569,7 +551,7 @@ export default function Home() {
               <span>{t.operator.today}</span>
               <strong>{t.operator.mission}</strong>
             </div>
-            <a href="/operator/dashboard">{t.operator.open}</a>
+            <span className="baseTopAction">{t.operator.open}</span>
           </div>
 
           <div className="baseMainCard">
@@ -684,10 +666,7 @@ export default function Home() {
       </section>
 
       <footer className="academyFooter">
-        <a href="/terms">Terms</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/parent-consent">Parent Consent</a>
-        <a href="/child-safety-policy">Child Safety Policy</a>
+        <p>MindPilot · Think clearly. Command AI.</p>
       </footer>
     </main>
   );

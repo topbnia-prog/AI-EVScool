@@ -3,8 +3,11 @@ import type {
   AdminAuditLog,
   AdminKpi,
   AdminParentRecord,
+  AdminSystemAction,
   AdminTask,
   AnalyticsFunnelStep,
+  AccessInvite,
+  ManagedUser,
   MentorMessage,
   MentorBehaviorTest,
   MentorScenario,
@@ -310,6 +313,12 @@ export const adminKpis: AdminKpi[] = [
     tone: "watch"
   },
   {
+    label: "Free testers",
+    value: "3",
+    trend: "2 invited, 1 active operator",
+    tone: "good"
+  },
+  {
     label: "Consent / Billing",
     value: "Trial",
     trend: "consent принят, payment provider pending",
@@ -353,6 +362,15 @@ export const adminAttentionItems: AdminAttentionItem[] = [
     detail: "Нужно подтвердить consent, privacy, retention, платежи и работу с несовершеннолетними.",
     owner: "Legal",
     href: "/admin/tasks"
+  },
+  {
+    id: "Q-005",
+    priority: "High",
+    area: "System",
+    title: "Выдать бесплатные доступы первым тестерам",
+    detail: "Нужно создать parent/operator доступы, назначить курс и дату окончания free test.",
+    owner: "Admin",
+    href: "/admin/users"
   }
 ];
 
@@ -428,6 +446,120 @@ export const adminParentRecords: AdminParentRecord[] = [
     billingStatus: parentAccount.billingStatus,
     weeklySummaryStatus: "draft",
     nextAction: "После миссии 2 подготовить первый weekly summary."
+  }
+];
+
+export const managedUsers: ManagedUser[] = [
+  {
+    id: "user_admin_alpha",
+    role: "admin",
+    displayName: "MindPilot Admin",
+    login: "admin@mindpilot.local",
+    status: "active",
+    plan: "internal",
+    accessUntil: "без срока",
+    createdAt: "Сегодня",
+    lastSeen: "сейчас",
+    notes: "Владелец системы. Может управлять пользователями, курсами, safety и настройками."
+  },
+  {
+    id: "user_parent_alpha",
+    role: "parent",
+    displayName: parentAccount.displayName,
+    login: parentAccount.email,
+    status: "active",
+    plan: "trial",
+    linkedOperatorId: operatorProfile.id,
+    accessUntil: "30 дней",
+    createdAt: "Сегодня",
+    lastSeen: "сегодня",
+    notes: "Демо-родитель для проверки consent, billing и weekly summary."
+  },
+  {
+    id: "user_operator_alpha",
+    role: "operator",
+    displayName: operatorProfile.displayName,
+    login: "operator-alpha",
+    status: "active",
+    plan: "free_tester",
+    linkedParentId: parentAccount.id,
+    accessUntil: "30 дней",
+    createdAt: "Сегодня",
+    lastSeen: "сегодня",
+    notes: "Первый оператор в базовом курсе. Доступ бесплатный для тестирования методологии."
+  },
+  {
+    id: "user_parent_beta",
+    role: "parent",
+    displayName: "Тестер Parent Beta",
+    login: "tester-parent@example.com",
+    status: "invited",
+    plan: "free_tester",
+    accessUntil: "14 дней после активации",
+    createdAt: "Сегодня",
+    lastSeen: "ещё не входил",
+    notes: "Новый бесплатный тестер. Нужно пройти регистрацию родителя и MindScan ребёнка."
+  },
+  {
+    id: "user_operator_beta",
+    role: "operator",
+    displayName: "Tester Operator Beta",
+    login: "tester-operator-beta",
+    status: "invited",
+    plan: "free_tester",
+    accessUntil: "14 дней после активации",
+    createdAt: "Сегодня",
+    lastSeen: "ещё не входил",
+    notes: "Оператор для проверки другого профиля обучения."
+  }
+];
+
+export const accessInvites: AccessInvite[] = [
+  {
+    id: "INV-1001",
+    code: "MINDPILOT-FREE-14",
+    role: "parent",
+    plan: "free_tester",
+    seats: 5,
+    used: 1,
+    expiresAt: "через 14 дней",
+    status: "active",
+    note: "Для первых семей, которые бесплатно проверяют регистрацию и первые миссии."
+  },
+  {
+    id: "INV-1002",
+    code: "OPERATOR-BETA",
+    role: "operator",
+    plan: "free_tester",
+    seats: 5,
+    used: 0,
+    expiresAt: "через 14 дней",
+    status: "active",
+    note: "Для выдачи кода ребёнку после согласия родителя."
+  }
+];
+
+export const adminSystemActions: AdminSystemAction[] = [
+  {
+    id: "ACT-USER",
+    title: "Добавить free tester",
+    description: "Создать тестовый parent/operator доступ, назначить курс и срок доступа.",
+    href: "/admin/users",
+    tone: "primary"
+  },
+  {
+    id: "ACT-COURSE",
+    title: "Проверить готовность курса",
+    description: "Открыть QA по урокам, переводам, safety и mentor tests.",
+    href: "/admin/courses",
+    tone: "neutral"
+  },
+  {
+    id: "ACT-SAFETY",
+    title: "Закрыть high safety",
+    description: "Разобрать открытый sensitive fallback перед реальными детьми.",
+    href: "/admin/safety",
+    tone: "warning"
   }
 ];
 
