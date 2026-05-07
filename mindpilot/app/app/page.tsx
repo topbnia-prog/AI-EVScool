@@ -1,25 +1,32 @@
 import type { CSSProperties } from "react";
-import { DashboardPhone, MentorPhone, MissionPhone, ProfilePhone } from "./_components/OperatorPhone";
+import { DashboardPhone, ProfilePhone } from "./_components/OperatorPhone";
 
 const missionPath = [
-  { label: "Старт", detail: "AI без магии", status: "done" },
-  { label: "Ошибка", detail: "Поймать галлюцинацию", status: "active" },
-  { label: "Промпт", detail: "Управлять ответом", status: "next" },
+  { label: "Старт", detail: "Понять, что AI не магия", status: "done" },
+  { label: "Ошибка AI", detail: "Поймать уверенную ложь", status: "active" },
+  { label: "Промпт", detail: "Собрать сильный запрос", status: "next" },
   { label: "Проверка", detail: "Доказать факт", status: "locked" }
+];
+
+const growthMetrics = [
+  { label: "Проверка", value: "3/5", tone: "mint" },
+  { label: "Критичность", value: "3/5", tone: "blue" },
+  { label: "Промпты", value: "3/5", tone: "peach" },
+  { label: "Автономность", value: "2/5", tone: "violet" }
 ];
 
 const principles = [
   {
-    title: "Не урок, а миссия",
-    text: "Короткий зацеп, испытание, симуляция и рефлексия. Ребёнок двигается как в игре."
+    title: "Миссии вместо уроков",
+    text: "Короткий зацеп, испытание, симуляция и рефлексия. Без оценок и школьного давления."
   },
   {
-    title: "Наставник не даёт ответы",
-    text: "Он задаёт вопросы, помогает проверить мысль и не пишет домашние задания за ребёнка."
+    title: "Наставник задаёт вопросы",
+    text: "AI не пишет за ребёнка. Он помогает проверить мысль и найти следующий шаг."
   },
   {
-    title: "Растут навыки, не оценки",
-    text: "В профиле видны метрики: проверка, критичность, промпты, автономность и понимание AI."
+    title: "Растёт личный профиль",
+    text: "Ребёнок видит прогресс навыков, серию дней, достижения и текущий ранг."
   }
 ];
 
@@ -39,13 +46,13 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="academyHero">
+      <section className="academyHero compactHero">
         <div className="academyHeroCopy">
           <p className="academyKicker">30 дней · дети 10-16 · родительский контроль</p>
-          <h1>Ребёнок учится управлять AI через миссии, а не слушать лекции.</h1>
+          <h1>Личная база роста для ребёнка, который учится управлять AI.</h1>
           <p>
-            MindPilot превращает AI-грамотность в спокойную игровую систему: карта прогресса,
-            ранги, достижения, AI-наставник и безопасные границы.
+            MindPilot делает AI-грамотность похожей на прохождение: миссии, наставник, метрики,
+            серия дней и профиль навыков. Без готовых ответов и без гонки с другими детьми.
           </p>
           <div className="academyActions">
             <a href="/register">Создать аккаунт родителя</a>
@@ -53,17 +60,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="missionConsole" aria-label="Карта миссий MindPilot">
+        <div className="missionConsole growthConsole" aria-label="Карта миссий MindPilot">
           <div className="consoleHeader">
             <span>Operator I</span>
             <strong>340 XP</strong>
           </div>
-          <div className="missionOrbit">
-            <span className="floatingToken tokenOne">AI</span>
-            <span className="floatingToken tokenTwo">?</span>
-            <span className="floatingToken tokenThree">OK</span>
-          </div>
-          <div className="mentorPanel">
+          <div className="mentorPanel compactMentor">
             <div className="mentorAvatar">
               <span />
               <span />
@@ -73,13 +75,13 @@ export default function Home() {
               <p>Я не дам готовый ответ. Я помогу тебе проверить свою мысль.</p>
             </div>
           </div>
-          <div className="pathList">
+          <div className="pathList compactPath">
             {missionPath.map((item, index) => (
               <a
                 className={`pathItem ${item.status}`}
                 href={item.status === "locked" ? "/operator/dashboard" : "/operator/mission/2"}
                 key={item.label}
-                style={{ "--delay": `${index * 0.14}s` } as CSSProperties}
+                style={{ "--delay": `${index * 0.12}s` } as CSSProperties}
               >
                 <i>{index + 1}</i>
                 <span>
@@ -92,7 +94,59 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="academyPrinciples">
+      <section className="growthBaseSection">
+        <div className="growthBaseIntro">
+          <p className="academyKicker">Что видит ребёнок</p>
+          <h2>Интерфейс должен ощущаться как личная база роста.</h2>
+          <p>
+            Не огромный промо-сайт и не школьный журнал. Это спокойная рабочая зона оператора:
+            куда зайти, что пройти, какой навык вырос и что спросить у наставника.
+          </p>
+        </div>
+
+        <div className="growthBaseBoard">
+          <div className="baseTopbar">
+            <div>
+              <span>Сегодня</span>
+              <strong>Миссия 2 · Анатомия ошибки</strong>
+            </div>
+            <a href="/operator/dashboard">Открыть базу</a>
+          </div>
+
+          <div className="baseMainCard">
+            <span className="baseBadge">В процессе</span>
+            <h3>Поймать уверенную ошибку AI</h3>
+            <p>Оператор проверяет ответ, ищет источник и пишет вывод своими словами.</p>
+            <div className="baseProgress">
+              <i>
+                <b />
+              </i>
+              <span>3 из 6 шагов</span>
+            </div>
+          </div>
+
+          <div className="baseMetricGrid">
+            {growthMetrics.map((metric) => (
+              <div className={`baseMetric ${metric.tone}`} key={metric.label}>
+                <span>{metric.label}</span>
+                <strong>{metric.value}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="baseMentorNote">
+            <span>Наставник</span>
+            <p>Что именно в ответе AI требует проверки?</p>
+          </div>
+        </div>
+
+        <div className="growthPhonePair">
+          <DashboardPhone />
+          <ProfilePhone />
+        </div>
+      </section>
+
+      <section className="academyPrinciples compactPrinciples">
         {principles.map((principle) => (
           <article key={principle.title}>
             <h2>{principle.title}</h2>
@@ -101,26 +155,7 @@ export default function Home() {
         ))}
       </section>
 
-      <section className="screenStudio">
-        <div className="studioHeader">
-          <p className="academyKicker">Что видит оператор</p>
-          <h2>Интерфейс ребёнка должен ощущаться как личная база роста.</h2>
-          <div>
-            <a href="/operator/dashboard">База</a>
-            <a href="/operator/mission/2">Миссия</a>
-            <a href="/operator/mentor">Наставник</a>
-            <a href="/operator/profile">Профиль</a>
-          </div>
-        </div>
-        <div className="phoneGallery academyPhones">
-          <DashboardPhone />
-          <MissionPhone />
-          <MentorPhone />
-          <ProfilePhone />
-        </div>
-      </section>
-
-      <section className="parentLayer">
+      <section className="parentLayer compactParentLayer">
         <div>
           <p className="academyKicker">Что контролирует родитель</p>
           <h2>Взрослая часть остаётся строгой: consent, безопасность, отчёты и платежи.</h2>
